@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
+            <string>SFUIText-Regular</string>
+            <string>SFUIText-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="groupDetailMemberCell" rowHeight="62" id="KGk-i7-Jjw" customClass="GroupDetailMembersCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_placeholder_user" translatesAutoresizingMaskIntoConstraints="NO" id="vVp-3T-Izk">
+                        <rect key="frame" x="8" y="11" width="40" height="40"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7g-bw-HVO">
+                        <rect key="frame" x="66" y="15" width="41" height="20"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.76000000000000001" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rhq-n5-ZeQ">
+                        <rect key="frame" x="66" y="35" width="31" height="15"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="12"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.44" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Admin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Djm-TJ-Z1v">
+                        <rect key="frame" x="227" y="15" width="74" height="15"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="12"/>
+                        <color key="textColor" red="1" green="0.59999999999999998" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Rhq-n5-ZeQ" firstAttribute="leading" secondItem="W7g-bw-HVO" secondAttribute="leading" id="ATf-SM-dbS"/>
+                    <constraint firstItem="Rhq-n5-ZeQ" firstAttribute="top" secondItem="W7g-bw-HVO" secondAttribute="bottom" id="D3n-n6-tsS"/>
+                    <constraint firstItem="W7g-bw-HVO" firstAttribute="top" secondItem="vVp-3T-Izk" secondAttribute="top" constant="4" id="DET-CE-CRv"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Djm-TJ-Z1v" secondAttribute="trailing" constant="11" id="Yd2-pi-lBR"/>
+                    <constraint firstItem="vVp-3T-Izk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="cNN-j7-dsH"/>
+                    <constraint firstItem="Djm-TJ-Z1v" firstAttribute="top" secondItem="W7g-bw-HVO" secondAttribute="top" id="jnQ-C4-otX"/>
+                    <constraint firstItem="W7g-bw-HVO" firstAttribute="leading" secondItem="vVp-3T-Izk" secondAttribute="trailing" multiplier="1.2" constant="8" symbolic="YES" id="kQR-Kk-Gxr"/>
+                    <constraint firstItem="vVp-3T-Izk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="nql-98-SI0"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="imageMember" destination="vVp-3T-Izk" id="Hsd-UD-ovn"/>
+                <outlet property="labelGroupAdmin" destination="Djm-TJ-Z1v" id="qfO-7n-hk8"/>
+                <outlet property="labelMemberName" destination="W7g-bw-HVO" id="7OJ-Zx-9ds"/>
+                <outlet property="lblMemberLastSeen" destination="Rhq-n5-ZeQ" id="bZu-a5-fre"/>
+            </connections>
+            <point key="canvasLocation" x="488" y="252"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="img_placeholder_user" width="40" height="40"/>
+    </resources>
+</document>

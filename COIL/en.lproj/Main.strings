@@ -1,0 +1,39 @@
+
+/* Class = "UILabel"; text = "OR CONTINUE USING"; ObjectID = "1kc-f2-EqX"; */
+"1kc-f2-EqX.text" = "OR CONTINUE USING";
+
+/* Class = "UILabel"; text = "Setup Profile"; ObjectID = "3lX-uU-vwe"; */
+"3lX-uU-vwe.text" = "Setup Profile";
+
+/* Class = "UITextView"; text = "Bio"; ObjectID = "8nI-de-eKm"; */
+"8nI-de-eKm.text" = "Bio";
+
+/* Class = "UIButton"; normalTitle = "LOGIN"; ObjectID = "9z0-Bd-T0B"; */
+"9z0-Bd-T0B.normalTitle" = "LOGIN";
+
+/* Class = "UIButton"; normalTitle = "FINISH"; ObjectID = "BnC-tM-Dhz"; */
+"BnC-tM-Dhz.normalTitle" = "FINISH";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "Py9-jn-CFy"; */
+"Py9-jn-CFy.placeholder" = "Email";
+
+/* Class = "UITextField"; placeholder = "Full Name"; ObjectID = "RPm-4m-eLl"; */
+"RPm-4m-eLl.placeholder" = "Full Name";
+
+/* Class = "UIButton"; normalTitle = "CONTINUE"; ObjectID = "RUy-UW-Bkf"; */
+"RUy-UW-Bkf.normalTitle" = "CONTINUE";
+
+/* Class = "UIButton"; normalTitle = "FACEBOOK"; ObjectID = "ZTz-Us-Hn3"; */
+"ZTz-Us-Hn3.normalTitle" = "FACEBOOK";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "cDa-QR-hFk"; */
+"cDa-QR-hFk.placeholder" = "Password";
+
+/* Class = "UIButton"; normalTitle = "SIGN UP"; ObjectID = "cY8-MF-gBl"; */
+"cY8-MF-gBl.normalTitle" = "SIGN UP";
+
+/* Class = "UILabel"; text = "Input your email id and password to register with coil."; ObjectID = "ju2-yb-vj9"; */
+"ju2-yb-vj9.text" = "Input your email id and password to register with coil.";
+
+/* Class = "UILabel"; text = "Welcome!"; ObjectID = "q8r-Ip-rNe"; */
+"q8r-Ip-rNe.text" = "Welcome!";
