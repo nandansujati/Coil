@@ -56,6 +56,7 @@
 
 -(void)setUp
 {
+    _lblNoPosts.hidden=YES;
     _values = [[NSMutableArray alloc]init];
     _finalFeedArray=[[NSMutableArray alloc]init];
     self.tableView.estimatedRowHeight=123;
@@ -84,6 +85,10 @@
                 Usersarray=[response_success valueForKey:@"feed"];
                 _finalFeedArray = [modal ListmethodCall:Usersarray];
                 _groupName.text=[[response_success valueForKey:@"group"]valueForKey:@"name"];
+                if (Usersarray.count==0) {
+                    _lblNoPosts.hidden=NO;
+                    _tableView.hidden=YES;
+                }
                 [[SharedClass SharedManager]removeLoader];
                 [self CallDataSource];
                 
@@ -206,18 +211,19 @@
 
 - (IBAction)btn3Dots:(id)sender
 {
-    BOOL useCustomView = YES;
-        if (useCustomView)
-        {
-            _GroupsMenu = (GroupSettingMenu *)[[[NSBundle mainBundle] loadNibNamed:@"GroupSettingMenu" owner:self options:nil] objectAtIndex:0];
-            _GroupsMenu.frame = CGRectMake(20, self.view.frame.size.height/2-_GroupsMenu.frame.size.height/2, self.view.frame.size.width-40, _GroupsMenu.frame.size.height);
-            _GroupsMenu.layer.cornerRadius = 3.f;
-            _GroupsMenu.layer.borderColor = [UIColor clearColor].CGColor;
-            _GroupsMenu.layer.borderWidth = 3.f;
-            _GroupsMenu.delegate=self;
-            modalView = [[RNBlurModalView alloc] initWithViewController:self view:_GroupsMenu];
-        }
-        [modalView show];
+    [self groupDetailsPressed];
+//    BOOL useCustomView = YES;
+//        if (useCustomView)
+//        {
+//            _GroupsMenu = (GroupSettingMenu *)[[[NSBundle mainBundle] loadNibNamed:@"GroupSettingMenu" owner:self options:nil] objectAtIndex:0];
+//            _GroupsMenu.frame = CGRectMake(20, self.view.frame.size.height/2-_GroupsMenu.frame.size.height/2, self.view.frame.size.width-40, _GroupsMenu.frame.size.height);
+//            _GroupsMenu.layer.cornerRadius = 3.f;
+//            _GroupsMenu.layer.borderColor = [UIColor clearColor].CGColor;
+//            _GroupsMenu.layer.borderWidth = 3.f;
+//            _GroupsMenu.delegate=self;
+//            modalView = [[RNBlurModalView alloc] initWithViewController:self view:_GroupsMenu];
+//        }
+//        [modalView show];
 
 }
 

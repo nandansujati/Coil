@@ -8,14 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import "Header.h"
-@interface GroupDetailVC : UIViewController<UITableViewDataSource,buttonPressedDelegate>
+@interface GroupDetailVC : UIViewController<UITableViewDataSource,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+{
+   // NSString *discoverabilityString;
+    NSInteger discoverabilityTag;
+    NSInteger notificationTag;
+    BOOL notificationTrue;
+}
 @property(nonatomic,strong)NSString *Access_Token;
 @property(nonatomic,strong)NSString *Group_Id;
 @property(nonatomic,strong)NSDictionary *DictParameters;
+@property(nonatomic,strong)NSDictionary *DictUpdateParameters;
 @property(nonatomic,strong)NSMutableArray *GroupsArray;
 @property (strong, nonatomic) NSString *UrlImage;
-
-
+@property(nonatomic,strong)NSString *notificationFromModal;
+@property(nonatomic,strong)NSMutableArray *arrayImage;
 @property (strong, nonatomic)  NSString *labelGroupName;
 @property (strong, nonatomic)  NSString *labelActiveMembers;
 @property (strong, nonatomic) NSString *memberCount;

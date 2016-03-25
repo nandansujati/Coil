@@ -38,7 +38,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ole-il-IuW">
-                    <rect key="frame" x="13" y="154" width="42" height="21"/>
+                    <rect key="frame" x="13" y="154" width="529" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -59,6 +59,9 @@
                     </constraints>
                     <inset key="contentEdgeInsets" minX="-6" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <state key="normal" image="ic_edit"/>
+                    <connections>
+                        <action selector="btnEdit:" destination="iN0-l3-epB" eventType="touchUpInside" id="zUk-7L-zad"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UkR-b0-fLi">
                     <rect key="frame" x="550" y="8" width="50" height="50"/>
@@ -96,10 +99,16 @@
                             <state key="normal" title="Open">
                                 <color key="titleColor" red="1" green="0.59999999999999998" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="btnDiscoverabilty:" destination="iN0-l3-epB" eventType="touchUpInside" id="TKj-lT-r8k"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgj-e5-J1x">
                             <rect key="frame" x="540" y="89" width="40" height="40"/>
                             <state key="normal" image="switch_pressed"/>
+                            <connections>
+                                <action selector="btnNotifications:" destination="iN0-l3-epB" eventType="touchUpInside" id="dIq-B0-veh"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -199,6 +208,7 @@
                 <constraint firstItem="CJX-Eg-jOA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="CcT-oq-VcP"/>
                 <constraint firstAttribute="trailing" secondItem="a8A-PL-CVN" secondAttribute="trailing" constant="20" id="DpH-wD-aIK"/>
                 <constraint firstAttribute="trailing" secondItem="8Fn-cg-NRp" secondAttribute="trailing" id="EwZ-av-usa"/>
+                <constraint firstItem="BPg-7r-2zX" firstAttribute="leading" secondItem="Ole-il-IuW" secondAttribute="trailing" constant="8" symbolic="YES" id="FGk-pP-4pu"/>
                 <constraint firstItem="F98-hj-keH" firstAttribute="top" secondItem="HcO-zN-rxo" secondAttribute="bottom" constant="8" symbolic="YES" id="Hoe-9c-nOj"/>
                 <constraint firstItem="a8A-PL-CVN" firstAttribute="centerY" secondItem="F98-hj-keH" secondAttribute="centerY" id="K5h-do-LNG"/>
                 <constraint firstItem="ZW9-He-AQg" firstAttribute="top" secondItem="Ole-il-IuW" secondAttribute="bottom" constant="1" id="MjD-9n-8Ag"/>
@@ -222,6 +232,7 @@
             <connections>
                 <outlet property="ConstraintFilesHeight" destination="UKa-6i-z64" id="KnR-ae-BGS"/>
                 <outlet property="btnDiscoverability" destination="wUj-U8-plg" id="xtA-YX-N5K"/>
+                <outlet property="btnNotifications" destination="bgj-e5-J1x" id="Ixc-AD-2Fe"/>
                 <outlet property="collectionViewFiles" destination="ZbI-yQ-JH7" id="BCL-CT-HSW"/>
                 <outlet property="filesCount" destination="38V-hd-yiZ" id="LaI-8q-K1e"/>
                 <outlet property="imageGroup" destination="CJX-Eg-jOA" id="1Kx-MS-cjO"/>

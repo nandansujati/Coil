@@ -1339,18 +1339,19 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7l-JY-xSV">
-                                        <rect key="frame" x="277" y="22" width="47" height="20"/>
+                                        <rect key="frame" x="278" y="23" width="45" height="19"/>
                                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eam-yd-gXa">
-                                        <rect key="frame" x="554" y="12" width="30" height="40"/>
+                                        <rect key="frame" x="560" y="12" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="W0k-RX-uyi"/>
-                                            <constraint firstAttribute="width" constant="30" id="anW-bd-dEg"/>
+                                            <constraint firstAttribute="width" constant="40" id="anW-bd-dEg"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
                                         <state key="normal" image="ic_more_orange">
                                             <color key="titleColor" red="0.95686274510000002" green="0.59607843140000005" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -1360,7 +1361,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mz2-oC-te1">
-                                        <rect key="frame" x="506" y="12" width="40" height="40"/>
+                                        <rect key="frame" x="512" y="12" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="X73-rg-8M3"/>
                                             <constraint firstAttribute="height" constant="40" id="YUq-kl-hlh"/>
@@ -1380,7 +1381,7 @@
                                     <constraint firstItem="h7l-JY-xSV" firstAttribute="centerX" secondItem="BJC-3m-Ped" secondAttribute="centerX" id="F4k-We-lH8"/>
                                     <constraint firstItem="Eam-yd-gXa" firstAttribute="centerY" secondItem="BJC-3m-Ped" secondAttribute="centerY" id="Hm9-yj-UPZ"/>
                                     <constraint firstItem="h7l-JY-xSV" firstAttribute="centerY" secondItem="BJC-3m-Ped" secondAttribute="centerY" id="Qsb-wW-jFl"/>
-                                    <constraint firstAttribute="trailing" secondItem="Eam-yd-gXa" secondAttribute="trailing" constant="16" id="eD0-PP-idA"/>
+                                    <constraint firstAttribute="trailing" secondItem="Eam-yd-gXa" secondAttribute="trailing" id="eD0-PP-idA"/>
                                     <constraint firstItem="mz2-oC-te1" firstAttribute="centerY" secondItem="Eam-yd-gXa" secondAttribute="centerY" id="mw2-My-OCB"/>
                                     <constraint firstItem="zDu-y4-9Z9" firstAttribute="leading" secondItem="BJC-3m-Ped" secondAttribute="leading" constant="16" id="tt7-Zo-ULZ"/>
                                     <constraint firstItem="zDu-y4-9Z9" firstAttribute="centerY" secondItem="BJC-3m-Ped" secondAttribute="centerY" id="wlE-pm-mWe"/>
@@ -1395,6 +1396,12 @@
                                     <outlet property="delegate" destination="tni-Gf-lfT" id="0IB-ZA-EPl"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No posts to show right now." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="77J-R0-Ti7">
+                                <rect key="frame" x="194" y="289" width="213" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1403,12 +1410,15 @@
                             <constraint firstItem="xjI-fS-ADx" firstAttribute="top" secondItem="Mj0-ho-wz6" secondAttribute="bottom" id="YIh-Kq-gKo"/>
                             <constraint firstItem="Mj0-ho-wz6" firstAttribute="top" secondItem="BJC-3m-Ped" secondAttribute="bottom" id="Yc0-jk-t6g"/>
                             <constraint firstItem="BJC-3m-Ped" firstAttribute="leading" secondItem="KHb-O7-L7t" secondAttribute="leading" id="gGi-RA-zFa"/>
+                            <constraint firstItem="77J-R0-Ti7" firstAttribute="centerY" secondItem="KHb-O7-L7t" secondAttribute="centerY" id="hIi-ry-l0D"/>
                             <constraint firstAttribute="trailing" secondItem="BJC-3m-Ped" secondAttribute="trailing" id="hWi-yL-VpO"/>
+                            <constraint firstItem="77J-R0-Ti7" firstAttribute="centerX" secondItem="KHb-O7-L7t" secondAttribute="centerX" id="ndf-vz-sYy"/>
                             <constraint firstItem="BJC-3m-Ped" firstAttribute="top" secondItem="KHb-O7-L7t" secondAttribute="top" id="uf4-Zt-ZRk"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="groupName" destination="h7l-JY-xSV" id="j1c-tb-oEE"/>
+                        <outlet property="lblNoPosts" destination="77J-R0-Ti7" id="DKW-RK-rC2"/>
                         <outlet property="tableView" destination="Mj0-ho-wz6" id="Eqf-zN-TBj"/>
                     </connections>
                 </viewController>
@@ -1419,7 +1429,6 @@
         <!--Group DetailVC-->
         <scene sceneID="s1K-II-oD3">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1tV-ts-tz3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="GroupDetailVC" id="FG0-hP-BMu" customClass="GroupDetailVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="W75-0G-mje"/>
@@ -1449,6 +1458,7 @@
                         <outlet property="tableView" destination="5Wp-Ez-TGj" id="yEq-zQ-nhy"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1tV-ts-tz3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3341" y="-1158"/>
         </scene>

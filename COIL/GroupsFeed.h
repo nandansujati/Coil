@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 - (IBAction)btnBack:(id)sender;
 @property(nonatomic,strong)NSMutableArray *values;
+@property (weak, nonatomic) IBOutlet UILabel *lblNoPosts;
 
 @property (weak, nonatomic) IBOutlet UILabel *groupName;
 @end

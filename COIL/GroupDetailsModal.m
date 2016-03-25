@@ -23,6 +23,7 @@
     data.MembersArray=[GroupDetailsModal parserArray:[Dict valueForKey:@"members"]];
     data.is_admin=[Dict valueForKey:@"is_admin"];
     data.file_count=[Dict valueForKey:@"file_count"];
+    data.notification=[Dict valueForKey:@"notification"];
     return data;
     
 }

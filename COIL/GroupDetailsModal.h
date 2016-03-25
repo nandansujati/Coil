@@ -24,6 +24,7 @@
 @property(nonatomic,strong)NSString *MemberAdmin_Access;
 @property(nonatomic,strong)NSString *MemberIsBlocked;
 @property(nonatomic,strong)NSString *MemberStatus;
+@property(nonatomic,strong)NSString *notification;
 
 @property (nonatomic, strong) NSString *member_count;
 @property (nonatomic, strong) NSString *file_count;

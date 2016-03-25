@@ -24,6 +24,8 @@
 #define UrlGroupFeed [NSString stringWithFormat:@"%@%@",BasePath,@"getGroupFeed"]
 #define UrlLikePost [NSString stringWithFormat:@"%@%@",BasePath,@"likePost"]
 #define UrlUnlikePost [NSString stringWithFormat:@"%@%@",BasePath,@"unlikePost"]
+#define UrlUpdateGroup [NSString stringWithFormat:@"%@%@",BasePath,@"updateGroup"]
+
 
 
 #define ImagePath [NSString stringWithFormat:@"%@%@",BasePath,@"photo/"]

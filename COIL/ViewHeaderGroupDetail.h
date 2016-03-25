@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Header.h"
 @protocol buttonPressedDelegate
 -(void)btnBackPressed;
+-(void)btnEditPressed;
+-(void)btnDiscoverablitypPressed;
+-(void)btnNotificationsPressed;
+-(void)imagePressed;
 @end
 @interface ViewHeaderGroupDetail : UIView
 @property(nonatomic,strong)id<buttonPressedDelegate>delegate;
@@ -17,13 +22,17 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnDiscoverability;
 
 
+- (IBAction)btnDiscoverabilty:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UILabel *labelActiveMembers;
 @property (weak, nonatomic) IBOutlet UILabel *memberCount;
+- (IBAction)btnNotifications:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnNotifications;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionViewFiles;
 @property (weak, nonatomic) IBOutlet UILabel *filesCount;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *ConstraintFilesHeight;
 - (IBAction)btnBack:(id)sender;
+- (IBAction)btnEdit:(id)sender;
 @end

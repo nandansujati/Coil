@@ -11,6 +11,37 @@
 @implementation ViewHeaderGroupDetail
 
 
+
+
+-(void)awakeFromNib
+{
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width,_imageGroup.frame.size.height);
+    
+    // Add colors to layer
+    UIColor *centerColor = [UIColor colorWithRed:0.2 green:0.3 blue:0.3 alpha:0.25];
+    UIColor *endColor = [UIColor grayColor];
+    gradient.colors = [NSArray arrayWithObjects:
+                       (id)[centerColor CGColor],
+                       (id)[centerColor CGColor],
+                       (id)[centerColor CGColor],
+                       (id)[endColor CGColor],
+                       nil];
+    
+    [self.imageGroup.layer insertSublayer:gradient atIndex:0];
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+    [_imageGroup addGestureRecognizer:gesture];
+   // gesture.delegate = self;
+    self.imageGroup.userInteractionEnabled=YES;
+    self.imageGroup.clipsToBounds = YES;
+    
+}
+
+
+-(void)handleTap:(UITapGestureRecognizer*)gesure
+{
+    [_delegate imagePressed];
+}
 -(id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if(self) {
@@ -25,4 +56,16 @@
     [_delegate btnBackPressed];
 }
 
+- (IBAction)btnEdit:(id)sender
+{
+    [_delegate btnEditPressed];
+    
+}
+
+- (IBAction)btnDiscoverabilty:(id)sender {
+    [_delegate btnDiscoverablitypPressed];
+}
+- (IBAction)btnNotifications:(id)sender {
+    [_delegate btnNotificationsPressed];
+}
 @end
