@@ -14,11 +14,12 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
+@property (weak, nonatomic) IBOutlet UILabel *labelNoData;
 
 @property(nonatomic,strong)NSString *Access_Token;
 @property(nonatomic,strong)NSDictionary *DictParameters;
 @property(nonatomic,strong)NSMutableArray *FinalGroupsArray;
 - (IBAction)btnGroupsMenu:(id)sender;
-- (IBAction)btnSearch:(id)sender;
+- (IBAction)btnBroadcast:(id)sender;
 
 @end

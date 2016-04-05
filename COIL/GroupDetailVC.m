@@ -8,8 +8,13 @@
 
 #import "GroupDetailVC.h"
 #define CellIdentifierMemberCell @"groupDetailMemberCell"
-@interface GroupDetailVC ()<buttonPressedDelegate>
+@interface GroupDetailVC ()<buttonPressedDelegate,menuPressed,SendPeopleIdsDetail>
+{
+    RNBlurModalView *modalView;
+}
 //@property DataSourceClass *datasource;
+@property(nonatomic,strong)AppDelegate *appDelegate;
+@property(nonatomic,strong)GroupSettingMenu *GroupsMenu;
 @property(nonatomic,strong)ViewHeaderGroupDetail *HeaderView;
 @end
 
@@ -17,32 +22,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+     _appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [self setupUI];
     // Do any additional setup after loading the view.
 }
 
--(void)viewDidLayoutSubviews
-{
-    
-}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-//- (id)initWithCoder:(NSCoder *)aDecoder
-//{
-//    self = [super initWithCoder:aDecoder];
-//    
-//    if (self)
-//    {
-//        self.datasource = [[DataSourceClass alloc] init];
-//    }
-//    return self;
-//}
 
 -(void)setupUI
 {
+    _MemberArray=[[NSMutableArray alloc]init];
     _arrayImage=[[NSMutableArray alloc]init];
    // _collectionView.dataSource = _datasource;
     NSDictionary *Dictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"AccessToken"];
@@ -62,14 +56,12 @@
 
 -(void)loadUpdateParameters
 {
-    _DictUpdateParameters=@{@"access_token":_Access_Token,@"group_id":_Group_Id,@"name":_labelGroupName,@"privacy":[NSString stringWithFormat:@"%d",discoverabilityTag],@"notification":[NSString stringWithFormat:@"%d",notificationTag]};
+    _DictUpdateParameters=@{@"access_token":_Access_Token,@"group_id":_Group_Id,@"name":_labelGroupName,@"privacy":[NSString stringWithFormat:@"%ld",(long)discoverabilityTag],@"notification":[NSString stringWithFormat:@"%ld",(long)notificationTag]};
     
 }
 -(void)loadData
 {
-    
     GroupDetailsModal *modal=[[GroupDetailsModal alloc]init];
-    
     NSInteger valueNetwork=[[SharedClass SharedManager]NetworkCheck];
     if (valueNetwork==0)
     {
@@ -79,10 +71,12 @@
             NSInteger value=[[response_success valueForKey:@"success"]integerValue];
             if (value==1)
             {
-                _GroupsArray = [modal ListmethodCall:response_success];
-                [self viewSetUp];
-             //   [self CallDataSource];
-                //[_collectionView reloadData];
+                
+               
+                    _GroupsArray = [modal ListmethodCall:response_success];
+                    [self viewSetUp];
+                
+           
             }
             
         }
@@ -95,22 +89,27 @@
     
 }
 
-
 -(void)viewSetUp
 {
     for (GroupDetailsModal *modal in _GroupsArray)
     {
-        _labelGroupName=modal.name;
+        if (_appDelegate.PushFromGroupDetail==NO) {
+            _labelGroupName=modal.name;
+            
+            _UrlImage = [NSString stringWithFormat:@"%@%@/300/%f",ImagePath,modal.image,self.view.frame.size.width];
+            [self getActiveMembersCount :modal];
+            [self setDiscoverability:modal];
+            _notificationFromModal=modal.notification;
+            _filesCount=modal.file_count;
+            [self setMemberTable:modal];
+            [self setFilesData ];
+        }
+        else
+        {
+           [self setMemberTable:modal];
+        }
         
-       // [self setGroupImage:modal];
-        _UrlImage = [NSString stringWithFormat:@"%@%@/300/%f",ImagePath,modal.image,self.view.frame.size.width];
-        [self getActiveMembersCount :modal];
-        [self setDiscoverability:modal];
-        _notificationFromModal=modal.notification;
-//
-        _filesCount=modal.file_count;
-        [self setMemberTable:modal];
-        [self setFilesData ];
+       
     }
     
 }
@@ -121,19 +120,19 @@
     
     
     
-    if ([_filesCount integerValue]==0)
-    {
+//    if ([_filesCount integerValue]==0)
+//    {
         _HeaderView = [[ViewHeaderGroupDetail alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 368)];
         _HeaderView.filesCount.hidden=YES;
         _HeaderView.ConstraintFilesHeight.constant = 0;
-    }
-    else
-    {
-        _HeaderView = [[ViewHeaderGroupDetail alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 458)];
-        _HeaderView.filesCount.text=[NSString stringWithFormat:@"%@",_filesCount];
-        _HeaderView.filesCount.hidden=NO;
-    }
-    
+//    }
+//    else
+//    {
+//        _HeaderView = [[ViewHeaderGroupDetail alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 458)];
+//        _HeaderView.filesCount.text=[NSString stringWithFormat:@"%@",_filesCount];
+//        _HeaderView.filesCount.hidden=NO;
+//    }
+
     _HeaderView.lblGroupName.text=_labelGroupName;
     [self setGroupImage];
     _HeaderView.delegate=self;
@@ -204,39 +203,78 @@
     return cell;
 }
 
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    BOOL useCustomView = YES;
+    if (useCustomView)
+    {
+        _GroupsMenu = (GroupSettingMenu *)[[[NSBundle mainBundle] loadNibNamed:@"GroupSettingMenu" owner:self options:nil] objectAtIndex:0];
+        _GroupsMenu.frame = CGRectMake(20, self.view.frame.size.height/2-_GroupsMenu.frame.size.height/2, self.view.frame.size.width-40, _GroupsMenu.frame.size.height);
+        _GroupsMenu.layer.cornerRadius = 3.f;
+        _GroupsMenu.layer.borderColor = [UIColor clearColor].CGColor;
+        _GroupsMenu.layer.borderWidth = 3.f;
+        _GroupsMenu.delegate=self;
+        currentIndexPath=indexPath;
+         modalView = [[RNBlurModalView alloc] initWithViewController:self view:_GroupsMenu];
+    }
+        [modalView show];
+    
+}
+
+
+-(void)makeGroupAdminPressed
+{
+     GroupDetailsModal *modal=[_MemberArray objectAtIndex:currentIndexPath.row];
+   NSLog(@"%@", modal.MemberId);
+    NSDictionary *dictParam=@{@"access_token":_Access_Token,@"group_id":_Group_Id,@"other_id":modal.MemberId};
+    
+    [iOSRequest postData:UrlMakeAdmin :dictParam :^(NSDictionary *response_success) {
+        [modalView hide];
+        
+        NSInteger Value=[modal.MemberAdmin_Access intValue];
+     
+         if (Value==0)
+            Value=1;
+        
+        NSString *ValueChanged=[NSString stringWithFormat:@"%li",(long)Value];
+        modal.MemberAdmin_Access=ValueChanged;
+        
+        
+        [_MemberArray replaceObjectAtIndex:currentIndexPath.row withObject:modal];
+        
+        [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:currentIndexPath.row inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+
+    } :^(NSError *response_error) {
+        [modalView hide];
+    }];
+}
+
 -(void)setMemberTable :(GroupDetailsModal*)modal
 {
     _memberCount=[NSString stringWithFormat:@"%ld",(long)[modal.member_count integerValue]];
-    _MemberArray=modal.MembersArray;
+    _MemberArray =[[NSMutableArray alloc]init];
+    [_MemberArray addObjectsFromArray: modal.MembersArray];
     [self  setData];
-    
     
 }
 
 -(void)setDiscoverability :(GroupDetailsModal*)modal
 {
-//    if ([modal.Privacy isEqualToString:@"0"]) {
-//        [_HeaderView.btnDiscoverability setTitle:@"Open" forState:UIControlStateNormal];
-//    }
-//   else if ([modal.Privacy isEqualToString:@"1"]) {
-//        [_HeaderView.btnDiscoverability setTitle:@"Close" forState:UIControlStateNormal];
-//    }
-//   else if ([modal.Privacy isEqualToString:@"2"]) {
-//        [_HeaderView.btnDiscoverability setTitle:@"Secret" forState:UIControlStateNormal];
-//    }
     if ([modal.Privacy isEqualToString:@"0"]) {
         _textDiscoverability=@"Open";
-      //  discoverabilityString=@"Open";
+      
     }
     else if ([modal.Privacy isEqualToString:@"1"]) {
         _textDiscoverability=@"Close";
-       // discoverabilityString=@"Close";
+     
     }
     else if ([modal.Privacy isEqualToString:@"2"]) {
         _textDiscoverability=@"Secret";
-      //  discoverabilityString=@"Secret";
+      
     }
 }
+
 -(void)setGroupImage
 {
     if (_UrlImage.length>0)
@@ -341,6 +379,7 @@
     [self presentViewController:alert animated:YES completion:nil];
 
 }
+
 -(void)imagePressed
 {
 
@@ -487,15 +526,38 @@
     
 }
 
+
+-(void)btnAddPeoplePressed
+{
+    _appDelegate.PushFromGroupDetail=YES;
+    AddPeopleVC *peopleVC=[self.storyboard instantiateViewControllerWithIdentifier:@"AddPeopleVC"];
+    peopleVC.delegate=self;
+    [self.navigationController pushViewController:peopleVC animated:YES];
+}
+
+
+-(void)sendUserIdsArrayToGroupDetail:(NSArray *)UserIdsArray
+{
+    NSString *UsersIds=[UserIdsArray componentsJoinedByString:@","];
+    NSDictionary *dictParam=@{@"access_token":_Access_Token,@"group_id":_Group_Id,@"users":UsersIds};
+    
+    [iOSRequest postData:UrlAddNewMembers :dictParam :^(NSDictionary *response_success) {
+        
+        [self loadData];
+        
+    } :^(NSError *response_error) {
+       
+    }];
+
+}
 - (void)btnBackPressed
 {
     
     for (GroupDetailsModal *modal in _GroupsArray) {
        
-        
-        
         if (_labelGroupName!=modal.name) {
             NSLog(@"group name chnaged");
+            [_delegate groupNmaeChanged:_labelGroupName];
         }
         
         if (discoverabilityTag!=[modal.Privacy integerValue] ) {
@@ -504,19 +566,13 @@
         
         
         [self updateGroupApi];
-//        // [self setGroupImage:modal];
-//        _UrlImage = [NSString stringWithFormat:@"%@%@/300/%f",ImagePath,modal.image,self.view.frame.size.width];
-//        [self getActiveMembersCount :modal];
-//        [self setDiscoverability:modal];
-//        
-//        //
-//        _filesCount=modal.file_count;
-//        [self setMemberTable:modal];
-//        [self setFilesData ];
+
     }
     
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+
 
 
 -(void)updateGroupApi
@@ -527,7 +583,7 @@
     if (valueNetwork==0)
     {
         [self loadUpdateParameters];
-        [iOSRequest postMutliPartData:UrlUpdateGroup :_DictUpdateParameters :imageData :^(NSDictionary *response_success) {
+        [iOSRequest postMutliPartData:UrlUpdateGroup :@"image":_DictUpdateParameters :imageData :^(NSDictionary *response_success) {
             [[SharedClass SharedManager]removeLoader];
             NSInteger value=[[response_success valueForKey:@"success"]integerValue];
             if (value==1)

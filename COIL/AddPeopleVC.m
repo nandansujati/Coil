@@ -7,8 +7,9 @@
 //
 
 #import "AddPeopleVC.h"
+#import <MessageUI/MessageUI.h>
 #define CellIdentifierAddPeople @"AddPeopleCell"
-@interface AddPeopleVC ()<bntClicked>
+@interface AddPeopleVC ()<bntClicked,MFMessageComposeViewControllerDelegate>
 @property(nonatomic,strong)CNContactStore *store;
 @property(nonatomic,strong)ContactModal *Modal;
 @property(nonatomic,strong)AddPeopleCell *Addcell;
@@ -19,6 +20,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [self setupUI];
    
     // Do any additional setup after loading the view.
@@ -256,6 +258,36 @@
 }
 
 
+
+-(void)BtnInvite:(NSIndexPath *)indexpath
+{
+    _Addcell = (AddPeopleCell*)[self.tableView cellForRowAtIndexPath:indexpath];
+    _Modal = [_FinalContactArray objectAtIndex:indexpath.row];
+    
+    
+    if([MFMessageComposeViewController canSendText]) {
+        MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init]; // Create message VC
+        messageController.messageComposeDelegate = self;
+        
+        NSMutableArray *recipients = [[NSMutableArray alloc] init];
+        [recipients addObject:[_Modal.Phone objectAtIndex:0]];
+        messageController.recipients = recipients;
+        
+        messageController.body = @"Inviting you to Join COIL"; // Set initial text to example message
+        
+        dispatch_async(dispatch_get_main_queue(), ^{ // Present VC when possible
+            [self presentViewController:messageController animated:YES completion:NULL];
+        });
+    }
+    
+    
+    
+}
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 73;
@@ -268,14 +300,21 @@
 
 - (IBAction)btnDone:(id)sender
 {
-//    if (_ArrayUserEmails.count ==0 &&_ArrayUserIds.count==0)
-//    {
-//        [self.navigationController popViewControllerAnimated:YES];
-//    }
-//    else
-       DoneClicked=YES;
-      [self CreateGroupApiCall];
-       
+    if (_ArrayUserIds.count>0)
+    {
+        if (_appDelegate.PushFromGroupDetail==NO) {
+            DoneClicked=YES;
+            [self CreateGroupApiCall];
+        }
+      else
+      {
+          [_delegate sendUserIdsArrayToGroupDetail:_ArrayUserIds];
+          [self.navigationController popViewControllerAnimated:YES];
+      }
+
+        
+    }
+    
 }
 
 -(void)CreateGroupApiCall
@@ -288,7 +327,7 @@
         _UserIds=[_ArrayUserIds componentsJoinedByString:@","];
         
         [self loadParameters];
-        [iOSRequest postMutliPartData:UrlCreateGroup :_DictAddPeopleParameters :_ImageData :^(NSDictionary *response_success){
+        [iOSRequest postMutliPartData:UrlCreateGroup : @"image":_DictAddPeopleParameters :_ImageData :^(NSDictionary *response_success){
             [[SharedClass SharedManager]removeLoader];
             NSInteger value=[[response_success valueForKey:@"success"]integerValue];
             if (value==1)

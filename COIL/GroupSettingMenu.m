@@ -12,7 +12,7 @@
 -(void)awakeFromNib
 {
     self.tableView.dataSource = self.datasource;
-    _ArrayItems=[NSArray arrayWithObjects:@"Group Details",@"Invite People",@"Take Attendance", nil];
+    _ArrayItems=[NSArray arrayWithObjects:@"View Tiffany's Profile",@"Make Group Admin",@"Remove Tiffany", nil];
     [self setData];
 }
 
@@ -53,9 +53,9 @@
 #pragma mark- TableView Delegate Methods
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row==0)
+    if (indexPath.row==1)
     {
-        [_delegate groupDetailsPressed];
+        [_delegate makeGroupAdminPressed];
     }
 
    

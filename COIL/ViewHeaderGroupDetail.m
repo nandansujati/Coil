@@ -62,6 +62,10 @@
     
 }
 
+- (IBAction)btnAddPeople:(id)sender {
+    [_delegate btnAddPeoplePressed];
+}
+
 - (IBAction)btnDiscoverabilty:(id)sender {
     [_delegate btnDiscoverablitypPressed];
 }

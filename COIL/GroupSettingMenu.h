@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Header.h"
 @protocol menuPressed
--(void)groupDetailsPressed;
+-(void)makeGroupAdminPressed;
 @end
 @interface GroupSettingMenu : UIView
 @property DataSourceClass *datasource;

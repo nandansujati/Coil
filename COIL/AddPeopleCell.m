@@ -33,7 +33,22 @@
 }
 
 
-- (IBAction)btnInvite:(id)sender {
+-(void)configureForCellWithModal:(MyGroupsModal *)item
+{
+    _image.layer.cornerRadius=5.0;
+    self.labelName.text=item.name;
+    if (item.image)
+    {
+        NSURL *URLImage=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@/40/40",ImagePath,item.image]];
+        [self.image sd_setImageWithURL:URLImage placeholderImage:[UIImage imageNamed:@"img_placeholder_user"]];
+    }
+    else
+        self.image.image=[UIImage imageNamed:@"img_placeholder_user"];
+}
+
+- (IBAction)btnInvite:(id)sender
+{
+    [_delegate BtnInvite:_indexPath];
 }
 
 - (IBAction)btnCheckbox:(id)sender {

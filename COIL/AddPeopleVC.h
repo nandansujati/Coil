@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "Header.h"
+@protocol SendPeopleIdsDetail
+-(void)sendUserIdsArrayToGroupDetail:(NSArray *)UserIdsArray;
+@end
 @interface AddPeopleVC : UIViewController<UITextFieldDelegate>
 {
     BOOL DoneClicked;
 }
+@property(nonatomic,strong)id<SendPeopleIdsDetail>delegate;
 @property(nonatomic,strong)NSString* GroupName;
 @property(nonatomic,strong)NSData *ImageData;
 @property(nonatomic,strong)NSDictionary *DictContactsParameters;
@@ -24,7 +28,7 @@
 @property(nonatomic,strong)NSMutableArray *ArrayUserEmails;
 @property(nonatomic,strong)NSMutableArray *ArrayUserIds;
 @property (weak, nonatomic) IBOutlet UITextField *txtFieldSearch;
-
+@property(nonatomic,strong)AppDelegate *appDelegate;
 @property(nonatomic,strong)NSArray *NewFinalArray;
 @property(nonatomic,strong)NSString *UserEmails;
 @property(nonatomic,strong)NSString *UserIds;

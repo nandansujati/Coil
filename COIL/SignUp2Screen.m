@@ -47,6 +47,9 @@
     _txtFullName.delegate=self;
     [self registerForKeyboardNotifications];//KeyboardNotifications
     
+    NSDictionary *Dictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"AccessToken"];
+    _access_token=[Dictionary valueForKey:@"access_token"];
+    
     UITapGestureRecognizer *pgr = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self action:@selector(handleTap:)];
     pgr.delegate = self;
@@ -359,7 +362,7 @@
         {
             [[SharedClass SharedManager]Loader:self.view];
             [self loadParameters];
-            [iOSRequest postMutliPartData:UrlsetUpProfile :_DictParameters :data :^(NSDictionary *response_success)
+            [iOSRequest postMutliPartData:UrlsetUpProfile :@"image":_DictParameters :data :^(NSDictionary *response_success)
              {
                  [[SharedClass SharedManager]removeLoader];
                  NSInteger value=[[response_success valueForKey:@"success"]integerValue];

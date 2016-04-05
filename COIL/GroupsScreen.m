@@ -42,6 +42,7 @@
 }
 -(void)setupUI
 {
+    _labelNoData.hidden=YES;
     _collectionView.dataSource = _datasource;
     NSDictionary *Dictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"AccessToken"];
     _Access_Token=[Dictionary valueForKey:@"access_token"];
@@ -82,8 +83,12 @@
                 NSMutableArray *Usersarray=[[NSMutableArray alloc]init];
                 Usersarray=[response_success valueForKey:@"groups"];
                 _FinalGroupsArray = [modal ListmethodCall:Usersarray];
-                 [self CallDataSource];
-                //[_collectionView reloadData];
+                if (_FinalGroupsArray.count>0) {
+                    _labelNoData.hidden=YES;
+                    [self CallDataSource];
+                }
+                else
+                    _labelNoData.hidden=NO;
             }
             
         }
@@ -163,9 +168,9 @@
     [self performSegueWithIdentifier:@"NewGroupVC" sender:self];
 }
 
-- (IBAction)btnSearch:(id)sender
+- (IBAction)btnBroadcast:(id)sender
 {
-
+  [self performSegueWithIdentifier:@"NewBroadcast" sender:self];
 }
 
 

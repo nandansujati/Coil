@@ -26,6 +26,7 @@
     data.is_liked=[Dict valueForKey:@"i_liked"];
     data.groupName = [[Dict valueForKey:@"group"] valueForKey:@"name"];
     data.activeMemberCount = [Dict valueForKey:@"member_count"];
+    data.media_ext=[Dict valueForKey:@""];
     return data;
     
 }

@@ -74,6 +74,9 @@
             NSString *str=[response_success valueForKey:@"success"];
             NSString *msg=[response_success valueForKey:@"msg"];
             _Access_token=[[response_success valueForKey:@"user"]valueForKey:@"access_token"];
+            NSDictionary *DictionaryLastAccessed=@{@"access_token":[[response_success valueForKey:@"user"]valueForKey:@"access_token"]};
+            
+            [[NSUserDefaults standardUserDefaults] setObject:DictionaryLastAccessed forKey:@"AccessToken"];
             int successValue=[str intValue];
             if (successValue==1)
             {
@@ -231,17 +234,17 @@
 }
 
 
-
-#pragma mark- SegueMethos
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"SegueSignUp2"])
-    {
-        _SetUpPrfile = [segue destinationViewController];
-        _SetUpPrfile.access_token=self.Access_token;
-    }
-   
-}
+//
+//#pragma mark- SegueMethos
+//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//    if ([segue.identifier isEqualToString:@"SegueSignUp2"])
+//    {
+//        _SetUpPrfile = [segue destinationViewController];
+//        _SetUpPrfile.access_token=self.Access_token;
+//    }
+//   
+//}
 #pragma mark- Button Actions
 - (IBAction)btnBack:(id)sender
 {

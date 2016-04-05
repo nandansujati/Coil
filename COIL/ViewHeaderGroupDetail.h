@@ -14,6 +14,7 @@
 -(void)btnDiscoverablitypPressed;
 -(void)btnNotificationsPressed;
 -(void)imagePressed;
+-(void)btnAddPeoplePressed;
 @end
 @interface ViewHeaderGroupDetail : UIView
 @property(nonatomic,strong)id<buttonPressedDelegate>delegate;
@@ -35,4 +36,5 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *ConstraintFilesHeight;
 - (IBAction)btnBack:(id)sender;
 - (IBAction)btnEdit:(id)sender;
+- (IBAction)btnAddPeople:(id)sender;
 @end

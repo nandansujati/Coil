@@ -7,15 +7,20 @@
 //
 
 #import "GroupsFeed.h"
+#import "YPBubbleTransition.h"
+
 #define CellIdentifierGroupFeedCell @"GroupFeedCell"
-@interface GroupsFeed ()<menuPressed,BtnFeedCellPressed>
-{
-    RNBlurModalView *modalView;
-}
+#define CellIdentifierGroupFeedImageCell @"GroupFeedImageCell"
+@interface GroupsFeed ()<BtnFeedCellPressed,UIViewControllerAnimatedTransitioning,GroupsFeedReload,floatMenuDelegate,settingGroupChanged,BtnFeedImageCellPressed>
+
+
+@property(nonatomic,strong)YPBubbleTransition * transition;
 @property DataSourceClass *datasource;
-@property(nonatomic,strong)GroupSettingMenu *GroupsMenu;
+
 @property(nonatomic,strong)GroupDetailVC *groupDetailsVC;
 @property(nonatomic,strong)groupFeedCell *cell;
+@property(nonatomic,strong)groupFeedImageCell *cellImage;
+
 @end
 
 @implementation GroupsFeed
@@ -43,10 +48,29 @@
     return self;
 }
 
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+
+- (YPBubbleTransition *)transition
 {
-    [modalView hide];
+    if (!_transition) {
+    _transition = [[YPBubbleTransition alloc] init];
+    }
+    return _transition;
 }
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+    self.transition.transitionMode = YPBubbleTransitionModePresent;
+    self.transition.startPoint = self.btnAddPost.center;
+     self.transition.bubbleColor = [UIColor colorWithRed:255.0/255.0f green:153.0/255.0f blue:120.0/255.0f alpha:1.0f];
+    return self.transition;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    self.transition.transitionMode = YPBubbleTransitionModePresent;
+    self.transition.startPoint = self.btnAddPost.center;
+    self.transition.bubbleColor = [UIColor colorWithRed:255.0/255.0f green:153.0/255.0f blue:120.0/255.0f alpha:1.0f];
+    return self.transition;
+}
+
 
 -(void)loadParameters
 {
@@ -59,12 +83,13 @@
     _lblNoPosts.hidden=YES;
     _values = [[NSMutableArray alloc]init];
     _finalFeedArray=[[NSMutableArray alloc]init];
-    self.tableView.estimatedRowHeight=123;
+    self.tableView.estimatedRowHeight=200;
     NSDictionary *Dictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"AccessToken"];
     _accessToken=[Dictionary valueForKey:@"access_token"];
      [[SharedClass SharedManager]LoaderWhiteOverlay:self.view];
     [self loadData];
 }
+
 
 -(void)loadData
 {
@@ -76,7 +101,7 @@
         [self loadParameters];
         
         [iOSRequest postData:UrlGroupFeed :_dictParameters :^(NSDictionary *response_success) {
-            [[SharedClass SharedManager]removeLoader];
+            
             NSInteger value=[[response_success valueForKey:@"success"]integerValue];
             if (value==1)
             {
@@ -92,7 +117,7 @@
                 [[SharedClass SharedManager]removeLoader];
                 [self CallDataSource];
                 
-                //[_collectionView reloadData];
+
             }
             else
                 [[SharedClass SharedManager]removeLoader];
@@ -115,35 +140,23 @@
 
 -(void)CallDataSource
 {
-//    TableViewCellConfigureBlock configureCell = ^(groupFeedCell *cell,id item,id imageItems)
-//    {
-//        cell.indexPath
-//        cell.delegate=self;
-//        [cell configureForCellWithCountry:item];
-//    };
-//    
-//    
-//    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([groupFeedCell class]) bundle:nil] forCellReuseIdentifier:CellIdentifierGroupFeedCell];
-//    
-//    
-//    
-//    self.datasource = [[DataSourceClass alloc] initWithItems:_finalFeedArray
-//                                                  imageItems:nil
-//                                              cellIdentifier:CellIdentifierGroupFeedCell
-//                                          configureCellBlock:configureCell];
-//    self.tableView.dataSource = _datasource;
-//    [self.tableView reloadData];
-    
-    
-    
-    
     if (!(_finalFeedArray.count==0) )
     {
         _tableView.hidden=NO;
+        _lblNoPosts.hidden=YES;
         [self.tableView reloadData];
     }
     else
+    {
+        _lblNoPosts.hidden=NO;
         _tableView.hidden=YES;
+    }
+    
+}
+
+-(void)ReloadFeeds
+{
+    [self loadData];
 }
 
 
@@ -167,63 +180,108 @@
         cell = [nib objectAtIndex:0];
         
     }
+    
+    _cellImage = (groupFeedImageCell*)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifierGroupFeedImageCell];
+    
+    if (_cellImage == nil)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"groupFeedImageCell" owner:self options:nil];
+        _cellImage = [nib objectAtIndex:0];
+        
+    }
 //    id item = [self itemAtIndexPath:indexPath];
 //    id ImageItem=[self imageAtIndexPath:indexPath];
       GroupFeedModal *modal=[_finalFeedArray objectAtIndex:indexPath.row];
-     [cell configureForCellWithCountry:modal];
-    cell.delegate=self;
-    cell.indexPath=indexPath;
-    
-    for (int i = 0; i<[_finalFeedArray count]; i++)
-    {
-        [_values addObject:@"NO"];
-    }
-    
-    if([[_values objectAtIndex:indexPath.row]isEqualToString:@"NO"])
-    {
-        [cell.btnLike setSelected:NO];
+    if ([modal.media isEqualToString:@""]) {
+        [cell configureForCellWithCountry:modal];
+        cell.delegate=self;
+        cell.indexPath=indexPath;
+        
+        for (int i = 0; i<[_finalFeedArray count]; i++)
+        {
+            [_values addObject:@"NO"];
+        }
+        
+        if([[_values objectAtIndex:indexPath.row]isEqualToString:@"NO"])
+        {
+            [cell.btnLike setSelected:NO];
+        }
+        else
+        {
+            [cell.btnLike setSelected:YES];
+        }
+        
+        
+        
+        NSInteger IsFavourite=[modal.is_liked intValue];
+        
+        if (IsFavourite ==1)
+        {
+            [_values replaceObjectAtIndex:indexPath.row withObject:@"YES"];
+            [cell.btnLike setImage:[UIImage imageNamed:@"ic_like_active"] forState:UIControlStateSelected];
+            [cell.btnLike setSelected:YES];
+        }
+        else
+        {
+            [_values replaceObjectAtIndex:indexPath.row withObject:@"NO"];
+            [cell.btnLike setImage:[UIImage imageNamed:@"ic_like_inactive"] forState:UIControlStateSelected];
+            [cell.btnLike setSelected:NO];
+        }
+        
+        return cell;
+
     }
     else
     {
-        [cell.btnLike setSelected:YES];
+        [_cellImage configureForCellWithCountry:modal];
+        _cellImage.delegate=self;
+        _cellImage.indexPath=indexPath;
+        
+        for (int i = 0; i<[_finalFeedArray count]; i++)
+        {
+            [_values addObject:@"NO"];
+        }
+        
+        if([[_values objectAtIndex:indexPath.row]isEqualToString:@"NO"])
+        {
+            [_cellImage.btnLike setSelected:NO];
+        }
+        else
+        {
+            [_cellImage.btnLike setSelected:YES];
+        }
+        
+        
+        
+        NSInteger IsFavourite=[modal.is_liked intValue];
+        
+        if (IsFavourite ==1)
+        {
+            [_values replaceObjectAtIndex:indexPath.row withObject:@"YES"];
+            [_cellImage.btnLike setImage:[UIImage imageNamed:@"ic_like_active"] forState:UIControlStateSelected];
+            [_cellImage.btnLike setSelected:YES];
+        }
+        else
+        {
+            [_values replaceObjectAtIndex:indexPath.row withObject:@"NO"];
+            [_cellImage.btnLike setImage:[UIImage imageNamed:@"ic_like_inactive"] forState:UIControlStateSelected];
+            [_cellImage.btnLike setSelected:NO];
+        }
+        
+        return _cellImage;
+
     }
+         }
+
+
+- (IBAction)unwindForSegue:(UIStoryboardSegue *)unwindSegue towardsViewController:(UIViewController *)subsequentV
+{
     
-    
-    
-    NSInteger IsFavourite=[modal.is_liked intValue];
-    
-    if (IsFavourite ==1)
-    {
-        [_values replaceObjectAtIndex:indexPath.row withObject:@"YES"];
-        [cell.btnLike setImage:[UIImage imageNamed:@"ic_like_active"] forState:UIControlStateSelected];
-        [cell.btnLike setSelected:YES];
-    }
-    else
-    {
-        [_values replaceObjectAtIndex:indexPath.row withObject:@"NO"];
-        [cell.btnLike setImage:[UIImage imageNamed:@"ic_like_inactive"] forState:UIControlStateSelected];
-        [cell.btnLike setSelected:NO];
-    }
-    
-    return cell;
 }
-
-
 - (IBAction)btn3Dots:(id)sender
 {
     [self groupDetailsPressed];
-//    BOOL useCustomView = YES;
-//        if (useCustomView)
-//        {
-//            _GroupsMenu = (GroupSettingMenu *)[[[NSBundle mainBundle] loadNibNamed:@"GroupSettingMenu" owner:self options:nil] objectAtIndex:0];
-//            _GroupsMenu.frame = CGRectMake(20, self.view.frame.size.height/2-_GroupsMenu.frame.size.height/2, self.view.frame.size.width-40, _GroupsMenu.frame.size.height);
-//            _GroupsMenu.layer.cornerRadius = 3.f;
-//            _GroupsMenu.layer.borderColor = [UIColor clearColor].CGColor;
-//            _GroupsMenu.layer.borderWidth = 3.f;
-//            _GroupsMenu.delegate=self;
-//            modalView = [[RNBlurModalView alloc] initWithViewController:self view:_GroupsMenu];
-//        }
-//        [modalView show];
+
 
 }
 
@@ -231,19 +289,21 @@
 {
     _groupDetailsVC=[self.storyboard instantiateViewControllerWithIdentifier:@"GroupDetailVC"];
     _groupDetailsVC.Group_Id=self.Group_Id;
+    _groupDetailsVC.delegate=self;
     [self.navigationController pushViewController:_groupDetailsVC animated:YES];
-    [modalView hide];
+  
 }
 
+-(void)groupNmaeChanged:(NSString *)groupName
+{
+    _groupName.text=groupName;
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return UITableViewAutomaticDimension ;
     
 }
-- (CGFloat)tableView:(UITableView *)tableView estimatedheightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 123;
-}
+
 
 -(void)btnLikePressed :(NSIndexPath*)indexPath
 {
@@ -264,7 +324,24 @@
 
 }
 
-
+-(void)btnLikePressedImage :(NSIndexPath*)indexPath
+{
+    _cellImage = (groupFeedImageCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+    GroupFeedModal * modal = [_finalFeedArray objectAtIndex:indexPath.row];
+    NSString *postId=modal.postId;
+    NSDictionary * DictMarklist=@{@"access_token" :_accessToken, @"post_id": postId };
+    
+    if([_cellImage.btnLike isSelected])
+    {
+        [self UnLikePostImage :DictMarklist:indexPath];
+    }
+    
+    else if (![_cellImage.btnLike isSelected])
+    {
+        [self likePostImage :DictMarklist :indexPath];
+    }
+    
+}
 
 
 -(void)UnLikePost :(NSDictionary*)DictMarklist :(NSIndexPath*)indexPath
@@ -272,7 +349,42 @@
     [_values replaceObjectAtIndex:indexPath.row withObject:@"NO"];
     [cell.btnLike setImage:[UIImage imageNamed:@"ic_like_inactive"] forState:UIControlStateSelected];
     [cell.btnLike setSelected:NO];
+    [self UnlikeApi:DictMarklist :indexPath];
     
+}
+
+-(void)likePost :(NSDictionary*)DictMarklist :(NSIndexPath*)indexPath
+{
+    [_values replaceObjectAtIndex:indexPath.row withObject:@"YES"];
+    [cell.btnLike setImage:[UIImage imageNamed:@"ic_like_active"] forState:UIControlStateSelected];
+    [cell.btnLike setSelected:YES];
+    [self likeApi:DictMarklist :indexPath];
+    
+    
+}
+
+-(void)UnLikePostImage :(NSDictionary*)DictMarklist :(NSIndexPath*)indexPath
+{
+    [_values replaceObjectAtIndex:indexPath.row withObject:@"NO"];
+    [_cellImage.btnLike setImage:[UIImage imageNamed:@"ic_like_inactive"] forState:UIControlStateSelected];
+    [_cellImage.btnLike setSelected:NO];
+    [self UnlikeApi:DictMarklist :indexPath];
+    
+}
+
+-(void)likePostImage :(NSDictionary*)DictMarklist :(NSIndexPath*)indexPath
+{
+    [_values replaceObjectAtIndex:indexPath.row withObject:@"YES"];
+    [_cellImage.btnLike setImage:[UIImage imageNamed:@"ic_like_active"] forState:UIControlStateSelected];
+    [_cellImage.btnLike setSelected:YES];
+    [self likeApi:DictMarklist :indexPath];
+    
+    
+}
+
+
+-(void)UnlikeApi :(NSDictionary*)DictMarklist :(NSIndexPath*)indexPath
+{
     [iOSRequest postData:UrlUnlikePost :DictMarklist :^(NSDictionary *response_success)
      {
          GroupFeedModal * modal = [_finalFeedArray objectAtIndex:indexPath.row];
@@ -288,7 +400,7 @@
          likeCount-=1;
          
          NSString *ValueChanged=[NSString stringWithFormat:@"%li",(long)Value];
-          NSString *ValueLikeCount=[NSString stringWithFormat:@"%li",(long)likeCount];
+         NSString *ValueLikeCount=[NSString stringWithFormat:@"%li",(long)likeCount];
          modal.is_liked=ValueChanged;
          modal.like_count=ValueLikeCount;
          
@@ -305,20 +417,16 @@
 
 }
 
--(void)likePost :(NSDictionary*)DictMarklist :(NSIndexPath*)indexPath
+
+-(void)likeApi:(NSDictionary*)DictMarklist :(NSIndexPath*)indexPath
 {
-    [_values replaceObjectAtIndex:indexPath.row withObject:@"YES"];
-    [cell.btnLike setImage:[UIImage imageNamed:@"ic_like_active"] forState:UIControlStateSelected];
-    [cell.btnLike setSelected:YES];
-    
-    
     [iOSRequest postData:UrlLikePost :DictMarklist :^(NSDictionary *response_success)
      {
          GroupFeedModal * modal = [_finalFeedArray objectAtIndex:indexPath.row];
          NSInteger likeCount=[modal.like_count intValue];
          
          
-        
+         
          NSInteger Value=[modal.is_liked intValue];
          if (Value==1)
              Value=0;
@@ -328,20 +436,36 @@
          likeCount+=1;
          NSString *ValueChanged=[NSString stringWithFormat:@"%li",(long)Value];
          NSString *ValueLikeCount=[NSString stringWithFormat:@"%li",(long)likeCount];
-        modal.like_count=ValueLikeCount;
+         modal.like_count=ValueLikeCount;
          modal.is_liked=ValueChanged;
          [_finalFeedArray replaceObjectAtIndex:indexPath.row withObject:modal];
          
          [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:indexPath.row inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
      }
-                :^(NSError *response_error)
+                        :^(NSError *response_error)
      {
-        [[SharedClass SharedManager]AlertErrors:@"Error !!" :response_error.localizedDescription :@"OK"];
+         [[SharedClass SharedManager]AlertErrors:@"Error !!" :response_error.localizedDescription :@"OK"];
          NSLog(@"%@",response_error);
      }];
 
 }
+
 - (IBAction)btnBack:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)btnAddPost:(id)sender
+{
+    [self performSegueWithIdentifier:@"NewPostVC" sender:self];
+}
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NewPostVC *vc = segue.destinationViewController;
+    vc.transitioningDelegate = self;
+    vc.delegate=self;
+    vc.group_Id=self.Group_Id;
+    vc.modalPresentationStyle = UIModalPresentationCustom;
 }
 @end

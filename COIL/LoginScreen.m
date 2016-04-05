@@ -184,7 +184,13 @@
                      NSDictionary *DictionaryLastAccessed=@{@"access_token":[[response_success valueForKey:@"user"]valueForKey:@"access_token"]};
                      
                      [[NSUserDefaults standardUserDefaults] setObject:DictionaryLastAccessed forKey:@"AccessToken"];
-                     [self performSegueWithIdentifier:@"SegueTabBar" sender:self];
+                     
+                     if ([[[response_success valueForKey:@"user"]valueForKey:@"profile_complete"] isEqualToString:@"0"]) {
+                         [self performSegueWithIdentifier:@"SignUp2Screen" sender:self];
+                     }
+                     else
+                         [self performSegueWithIdentifier:@"SegueTabBar" sender:self];
+
                  }
                 else
                 {

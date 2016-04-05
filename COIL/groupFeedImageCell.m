@@ -1,18 +1,18 @@
 //
-//  groupFeedCell.m
+//  groupFeedImageCell.m
 //  COIL
 //
-//  Created by Aseem 9 on 22/03/16.
+//  Created by Aseem 9 on 05/04/16.
 //  Copyright © 2016 Aseem 9. All rights reserved.
 //
 
-#import "groupFeedCell.h"
+#import "groupFeedImageCell.h"
 
-@implementation groupFeedCell
+@implementation groupFeedImageCell
 
 - (void)awakeFromNib {
     // Initialization code
-      [self.lblPost setPreferredMaxLayoutWidth:250];
+    [self.lblPost setPreferredMaxLayoutWidth:250];
 }
 
 -(void)layoutSubviews
@@ -35,7 +35,25 @@
     }
     else
         self.imageUser.image=[UIImage imageNamed:@"img_placeholder_user"];
-
+    
+    
+    if (modal.media)
+    {
+        
+        if ([modal.media_ext isEqualToString:@""])
+        {
+            _btnPlay.hidden=NO;
+        }
+        else
+        {
+            NSURL *URLImage=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@/400/400",ImagePath,modal.media]];
+            _btnPlay.hidden=YES;
+            [self.imagePosted sd_setImageWithURL:URLImage placeholderImage:[UIImage imageNamed:@"img_placeholder_group"]];
+        }
+       
+    }
+    else
+        self.imagePosted.image=[UIImage imageNamed:@"img_placeholder_group"];
     
     
     
@@ -86,10 +104,10 @@
         }
         else
             if (minutes>0) {
-                 TimeString=[NSString stringWithFormat:@"%ld m",(long)minutes];
+                TimeString=[NSString stringWithFormat:@"%ld m",(long)minutes];
             }
-        else
-             TimeString=[NSString stringWithFormat:@"%ld s",(long)seconds];
+            else
+                TimeString=[NSString stringWithFormat:@"%ld s",(long)seconds];
     }
     else if (day==1)
     {
@@ -130,9 +148,10 @@
 
 
 - (IBAction)btnLikePressed:(id)sender {
-    [_delegate btnLikePressed:_indexPath];
+    [_delegate btnLikePressedImage:_indexPath];
 }
 
 - (IBAction)btnCommentPressed:(id)sender {
 }
+
 @end

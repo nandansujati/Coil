@@ -24,12 +24,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ntY-43-gUC">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_placeholder_user" translatesAutoresizingMaskIntoConstraints="NO" id="ntY-43-gUC">
                         <rect key="frame" x="16" y="16" width="40" height="40"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="40" id="myx-4C-A7M"/>
-                            <constraint firstAttribute="height" constant="40" id="nG7-ya-Sfh"/>
-                        </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9C6-o9-IYW">
                         <rect key="frame" x="75" y="25" width="44" height="21"/>
@@ -79,5 +75,6 @@
     </objects>
     <resources>
         <image name="ic_check_off" width="24" height="24"/>
+        <image name="img_placeholder_user" width="40" height="40"/>
     </resources>
 </document>

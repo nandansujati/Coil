@@ -11,12 +11,14 @@
 #import "Header.h"
 @protocol  bntClicked
 -(void)BtnCheckboxClicked:(NSIndexPath *)indexpath;
+-(void)BtnInvite:(NSIndexPath *)indexpath;
 @end
 @interface AddPeopleCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (nonatomic,strong)NSIndexPath * indexPath;
 @property (weak, nonatomic) IBOutlet UILabel *labelName;
 -(void)configureForCellWithCountry:(ContactModal *)item ;
+-(void)configureForCellWithModal:(MyGroupsModal *)item ;
 @property(nonatomic,strong)NSURL *URLImage;
 @property (nonatomic, weak) id <bntClicked> delegate;
 @property (weak, nonatomic) IBOutlet UIButton *btnCheckbox;

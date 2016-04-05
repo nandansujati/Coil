@@ -27,14 +27,14 @@
     }];
 }
 
-+(void)postMutliPartData : (NSString *)urlStr : (NSDictionary *)parameters : (NSData *)data : (void(^)(NSDictionary * response_success))success : (void(^)(NSError * response_error))failure {
++(void)postMutliPartData : (NSString *)urlStr : (NSString *)keyName : (NSDictionary *)parameters : (NSData *)data : (void(^)(NSDictionary * response_success))success : (void(^)(NSError * response_error))failure {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer =  [AFHTTPResponseSerializer serializer];
     [manager POST:urlStr parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
      {
          if (data) {
-             [formData appendPartWithFileData:data name:@"image" fileName:@"temp.jpeg" mimeType:@"image/jpeg"];
+             [formData appendPartWithFileData:data name:keyName fileName:@"temp.jpg" mimeType:@"image/jpg"];
          }
         
 
@@ -73,7 +73,7 @@
     
     [manager POST:urlStr parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
      {
-        
+         
          for (int i = 0; i < [imageArr count]; i++)
          {
              

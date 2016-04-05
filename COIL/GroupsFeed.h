@@ -22,4 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblNoPosts;
 
 @property (weak, nonatomic) IBOutlet UILabel *groupName;
+@property (weak, nonatomic) IBOutlet UIButton *btnAddPost;
+
+- (IBAction)btnAddPost:(id)sender;
 @end

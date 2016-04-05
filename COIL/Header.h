@@ -25,13 +25,20 @@
 #define UrlLikePost [NSString stringWithFormat:@"%@%@",BasePath,@"likePost"]
 #define UrlUnlikePost [NSString stringWithFormat:@"%@%@",BasePath,@"unlikePost"]
 #define UrlUpdateGroup [NSString stringWithFormat:@"%@%@",BasePath,@"updateGroup"]
-
+#define UrlCreatePost [NSString stringWithFormat:@"%@%@",BasePath,@"createPost"]
+#define UrlMakeAdmin [NSString stringWithFormat:@"%@%@",BasePath,@"makeAdmin"]
+#define UrlAddNewMembers [NSString stringWithFormat:@"%@%@",BasePath,@"addUserToGroup"]
 
 
 #define ImagePath [NSString stringWithFormat:@"%@%@",BasePath,@"photo/"]
 #import "AppDelegate.h"
 #import "SignUp1Screen.h"
+#import "PostVideoCell.h"
+#import "PostImagesCell.h"
+#import "groupFeedImageCell.h"
+#import "VCFloatingActionButton.h"
 #import "SignUp2Screen.h"
+#import "NewPostVC.h"
 #import "UINavigationController+PushPopAnimation.h"
 #import "TLAlertView.h"
 #import "ViewHeaderGroupDetail.h"
