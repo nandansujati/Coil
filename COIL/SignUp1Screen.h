@@ -22,6 +22,5 @@
 
 @property(strong,nonatomic)UITextField *activeField;
 - (IBAction)btnBack:(id)sender;
-
 - (IBAction)btnContinue:(id)sender;
 @end

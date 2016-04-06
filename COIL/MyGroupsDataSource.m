@@ -33,6 +33,7 @@ configureDelegateBlock:(CollectionViewCellDelegateConfigureBlock)aConfigureCellD
         self.cellIdentifier = aCellIdentifier;
         self.configureCellBlock = [aConfigureCellBlock copy];
         self.configureCellDelegateBlock=[aConfigureCellDelegateBlock copy];
+        
     }
     return self;
 }

@@ -1,14 +1,14 @@
 //
-//  GroupFeedModal.h
+//  CommentsModal.h
 //  COIL
 //
-//  Created by Aseem 9 on 22/03/16.
+//  Created by Aseem 9 on 06/04/16.
 //  Copyright © 2016 Aseem 9. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface GroupFeedModal : NSObject
+@interface CommentsModal : NSObject
 @property (nonatomic, strong) NSString *postId;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *post_type;
@@ -27,4 +27,5 @@
 -(id)ListAttributes :(NSDictionary*)Dict;
 -(NSMutableArray*)ListmethodCall:(NSMutableArray*)arrayFromServer;
 @property(strong, nonatomic)NSMutableArray *FinalArray;
+
 @end

@@ -369,20 +369,43 @@
     {
         [self loadParameters];
         
-        [iOSRequest postMutliPartData:UrlCreatePost :@"image" :_dictParameters :_dataMedia :^(NSDictionary *response_success) {
-            [[SharedClass SharedManager]removeLoader];
-            NSInteger value=[[response_success valueForKey:@"success"]integerValue];
-            if (value==1)
-            {
-                [_delegate ReloadFeeds];
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }
-            
-        } :^(NSError *response_error)
+        if (_VideoData==nil)
         {
-            [[SharedClass SharedManager]removeLoader];
-            [[SharedClass SharedManager]AlertErrors:@"Error !!" :response_error.localizedDescription :@"OK"];
-        }];
+            [iOSRequest postMutliPartData:UrlCreatePost :@"image" :_dictParameters :_dataMedia :^(NSDictionary *response_success) {
+                [[SharedClass SharedManager]removeLoader];
+                NSInteger value=[[response_success valueForKey:@"success"]integerValue];
+                if (value==1)
+                {
+                    [_delegate ReloadFeeds];
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }
+                
+            } :^(NSError *response_error)
+             {
+                 [[SharedClass SharedManager]removeLoader];
+                 [[SharedClass SharedManager]AlertErrors:@"Error !!" :response_error.localizedDescription :@"OK"];
+                 [self.view endEditing:YES];
+             }];
+        }
+        else
+        {
+            [iOSRequest postMutliPartVideoData:UrlCreatePost :@"video" :_dictParameters :_dataMedia :^(NSDictionary *response_success) {
+                [[SharedClass SharedManager]removeLoader];
+                NSInteger value=[[response_success valueForKey:@"success"]integerValue];
+                if (value==1)
+                {
+                    [_delegate ReloadFeeds];
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }
+                
+            } :^(NSError *response_error)
+             {
+                 [[SharedClass SharedManager]removeLoader];
+                 [[SharedClass SharedManager]AlertErrors:@"Error !!" :response_error.localizedDescription :@"OK"];
+                 [self.view endEditing:YES];
+             }];
+        }
+        
     }
     else
     {
@@ -526,6 +549,8 @@
 
 - (IBAction)btnPost:(id)sender
 {
+    [self.view endEditing:YES];
+    [[SharedClass SharedManager]Loader:self.view];
     if (![_txtView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length==0 && ![_txtView.text isEqualToString:@"Type here"])
     {
       [self loadData];  

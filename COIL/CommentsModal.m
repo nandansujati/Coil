@@ -1,17 +1,17 @@
 //
-//  GroupFeedModal.m
+//  CommentsModal.m
 //  COIL
 //
-//  Created by Aseem 9 on 22/03/16.
+//  Created by Aseem 9 on 06/04/16.
 //  Copyright © 2016 Aseem 9. All rights reserved.
 //
 
-#import "GroupFeedModal.h"
+#import "CommentsModal.h"
 
-@implementation GroupFeedModal
+@implementation CommentsModal
 -(id)ListAttributes :(NSDictionary*)Dict
 {
-    GroupFeedModal *data=[[GroupFeedModal alloc]init];
+    CommentsModal *data=[[CommentsModal alloc]init];
     
     data.postId = [Dict valueForKey:@"id"];
     data.title = [Dict valueForKey:@"title"];
@@ -30,19 +30,17 @@
     
 }
 
-
-
 -(NSMutableArray*)ListmethodCall:(NSMutableArray*)arrayFromServer
 {
     _FinalArray=[[NSMutableArray alloc]init];
     
     for(NSDictionary *eachPlace in arrayFromServer)
     {
-        GroupFeedModal *obj = [[GroupFeedModal alloc] ListAttributes:eachPlace];
+        CommentsModal *obj = [[CommentsModal alloc] ListAttributes:eachPlace];
         
         [_FinalArray addObject:obj];
-        
     }
     return _FinalArray;
 }
+
 @end

@@ -8,6 +8,7 @@
 
 #import "GroupDetailVC.h"
 #define CellIdentifierMemberCell @"groupDetailMemberCell"
+#define CellidentifierFilesCell @"FilesCollection"
 @interface GroupDetailVC ()<buttonPressedDelegate,menuPressed,SendPeopleIdsDetail>
 {
     RNBlurModalView *modalView;
@@ -16,6 +17,7 @@
 @property(nonatomic,strong)AppDelegate *appDelegate;
 @property(nonatomic,strong)GroupSettingMenu *GroupsMenu;
 @property(nonatomic,strong)ViewHeaderGroupDetail *HeaderView;
+
 @end
 
 @implementation GroupDetailVC
@@ -34,11 +36,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 -(void)setupUI
 {
     _MemberArray=[[NSMutableArray alloc]init];
     _arrayImage=[[NSMutableArray alloc]init];
-   // _collectionView.dataSource = _datasource;
+   
     NSDictionary *Dictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"AccessToken"];
     _Access_Token=[Dictionary valueForKey:@"access_token"];
     notificationTrue=YES;
@@ -96,13 +99,16 @@
         if (_appDelegate.PushFromGroupDetail==NO) {
             _labelGroupName=modal.name;
             
-            _UrlImage = [NSString stringWithFormat:@"%@%@/300/%f",ImagePath,modal.image,self.view.frame.size.width];
+            if (modal.image.length>0) {
+                  _UrlImage = [NSString stringWithFormat:@"%@%@/300/%f",ImagePath,modal.image,self.view.frame.size.width];
+            }
+          
             [self getActiveMembersCount :modal];
             [self setDiscoverability:modal];
             _notificationFromModal=modal.notification;
             _filesCount=modal.file_count;
             [self setMemberTable:modal];
-            [self setFilesData ];
+            [self setFilesData :modal];
         }
         else
         {
@@ -115,23 +121,27 @@
 }
 
 
--(void)setFilesData
+-(void)setFilesData:(GroupDetailsModal*)modal
 {
     
     
     
-//    if ([_filesCount integerValue]==0)
-//    {
+    if ([_filesCount integerValue]==0)
+    {
         _HeaderView = [[ViewHeaderGroupDetail alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 368)];
         _HeaderView.filesCount.hidden=YES;
         _HeaderView.ConstraintFilesHeight.constant = 0;
-//    }
-//    else
-//    {
-//        _HeaderView = [[ViewHeaderGroupDetail alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 458)];
-//        _HeaderView.filesCount.text=[NSString stringWithFormat:@"%@",_filesCount];
-//        _HeaderView.filesCount.hidden=NO;
-//    }
+    }
+    else
+    {
+        _HeaderView = [[ViewHeaderGroupDetail alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 458)];
+        _HeaderView.filesCount.text=[NSString stringWithFormat:@"%@",_filesCount];
+        _HeaderView.filesCount.hidden=NO;
+        
+        _FilesArray =[[NSMutableArray alloc]init];
+        [_FilesArray addObjectsFromArray: modal.FilesArray];
+        [_HeaderView  setFilesData:_FilesArray];
+    }
 
     _HeaderView.lblGroupName.text=_labelGroupName;
     [self setGroupImage];
@@ -158,7 +168,7 @@
 
 
 
--(void)setData
+-(void)setMemberData
 {
 
     self.tableView.dataSource = self;
@@ -174,6 +184,38 @@
     
     
 }
+//-(void)setFilesData
+//{
+//    
+//    
+//    if (!(_FilesArray.count==0) )
+//    {
+//        CollectionViewCellConfigureBlock configureCell = ^(FilesCollection *cell,id item)
+//        {
+//            
+//            [cell configureForCellWithCountry:item ];
+//        };
+//        
+////        CollectionViewCellDelegateConfigureBlock configureDelegateCell=^(id item)
+////        {
+////            
+////            [self CallGroupDetail:item];
+////            
+////        };
+//        
+//        
+//        _HeaderView.datasource = [[MyGroupsDataSource alloc] initWithItems:_FilesArray
+//                                                     cellIdentifier:CellidentifierFilesCell
+//                                                 configureCellBlock:configureCell configureDelegateBlock:nil];
+//        _HeaderView.collectionViewFiles.dataSource =  _HeaderView.datasource;
+////        self.collectionView.delegate= _datasource;
+//        [_HeaderView.collectionViewFiles reloadData];
+//    }
+//    else
+//        _HeaderView.collectionViewFiles.hidden=YES;
+//    
+//    
+//}
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -219,7 +261,12 @@
          modalView = [[RNBlurModalView alloc] initWithViewController:self view:_GroupsMenu];
     }
         [modalView show];
-    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [modalView hide];
 }
 
 
@@ -255,7 +302,7 @@
     _memberCount=[NSString stringWithFormat:@"%ld",(long)[modal.member_count integerValue]];
     _MemberArray =[[NSMutableArray alloc]init];
     [_MemberArray addObjectsFromArray: modal.MembersArray];
-    [self  setData];
+    [self  setMemberData];
     
 }
 
@@ -550,6 +597,7 @@
     }];
 
 }
+
 - (void)btnBackPressed
 {
     
@@ -588,10 +636,7 @@
             NSInteger value=[[response_success valueForKey:@"success"]integerValue];
             if (value==1)
             {
-                // _GroupsArray = [modal ListmethodCall:response_success];
-                // [self viewSetUp];
-                //   [self CallDataSource];
-                //[_collectionView reloadData];
+              
             }
 
         } :^(NSError *response_error) {

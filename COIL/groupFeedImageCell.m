@@ -7,7 +7,7 @@
 //
 
 #import "groupFeedImageCell.h"
-
+#import <AVFoundation/AVFoundation.h>
 @implementation groupFeedImageCell
 
 - (void)awakeFromNib {
@@ -40,9 +40,12 @@
     if (modal.media)
     {
         
-        if ([modal.media_ext isEqualToString:@""])
+        if (![modal.media_type isEqualToString:@"jpg"])
         {
+             NSURL *URLImage=[NSURL URLWithString:[NSString stringWithFormat:@"%@14551754592wzF4B3o5ytN0vBw1ADFoQeBy3T4hj.JPG/400/400",ImagePath]];
             _btnPlay.hidden=NO;
+          [  self.imagePosted sd_setImageWithURL:URLImage placeholderImage:[UIImage imageNamed:@"img_placeholder_group"]];
+            
         }
         else
         {
@@ -70,6 +73,22 @@
     
     _lblTimeAdded.text=[self GetTimePeriodLeft:modal];
     
+}
+
+-(UIImage*)loadimage :(NSURL*)url
+{
+   
+    AVAsset *asset = [AVAsset assetWithURL:url];
+    AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc]initWithAsset:asset];
+    CMTime time = [asset duration];
+    time.value = 0;
+    CGImageRef imageRef = [imageGenerator copyCGImageAtTime:time actualTime:NULL error:NULL];
+    UIImage *thumbnail = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);
+    
+    return thumbnail;
+
+
 }
 
 
@@ -152,6 +171,12 @@
 }
 
 - (IBAction)btnCommentPressed:(id)sender {
+    [_delegate btnCommentClickedImage:_indexPath];
+}
+
+- (IBAction)btnPlayVideo:(id)sender
+{
+    [_delegate btnPlayVideoPressed:_indexPath];
 }
 
 @end

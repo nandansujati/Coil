@@ -1,20 +1,15 @@
 //
-//  groupFeedImageCell.h
+//  CommentsVC.h
 //  COIL
 //
-//  Created by Aseem 9 on 05/04/16.
+//  Created by Aseem 9 on 06/04/16.
 //  Copyright © 2016 Aseem 9. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "GroupFeedModal.h"
 #import "Header.h"
-@protocol BtnFeedImageCellPressed
--(void)btnLikePressedImage :(NSIndexPath*)indexPath;
--(void)btnPlayVideoPressed :(NSIndexPath*)indexPath;
--(void)btnCommentClickedImage:(NSIndexPath*)indexPath;
-@end
-@interface groupFeedImageCell : UITableViewCell
+#import "GroupFeedModal.h"
+@interface CommentsVC : UIViewController
 {
     // NSString *month;
     NSInteger minutes;
@@ -23,13 +18,20 @@
     NSInteger seconds;
     NSString *Time;
     NSString *Date;
+    CGRect previousRect ;
+    CGSize keyboardSize;
 }
-@property (weak, nonatomic) IBOutlet UIButton *btnPlay;
-@property(nonatomic,strong)id<BtnFeedImageCellPressed>delegate;
 @property(nonatomic,strong)NSIndexPath *indexPath;
-@property (weak, nonatomic) IBOutlet UIImageView *imageUser;
--(void)configureForCellWithCountry:(GroupFeedModal *)modal;
-@property (weak, nonatomic) IBOutlet UIImageView *imagePosted;
+@property(nonatomic,strong) GroupFeedModal *FeedModal;
+@property (weak, nonatomic) IBOutlet UIImageView *imagePost;
+@property (weak, nonatomic) IBOutlet UIView *viewBottom;
+@property (weak, nonatomic) IBOutlet UITextView *txtViewComment;
+- (IBAction)btnSend:(id)sender;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *BottomTableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBottomView;
+- (IBAction)btnBack:(id)sender;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintBottomViewHeight;
 @property (weak, nonatomic) IBOutlet UILabel *lblUserName;
 @property (weak, nonatomic) IBOutlet UILabel *lblPost;
 @property (weak, nonatomic) IBOutlet UIButton *btnLike;
@@ -38,5 +40,4 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblTimeAdded;
 - (IBAction)btnLikePressed:(id)sender;
 - (IBAction)btnCommentPressed:(id)sender;
-- (IBAction)btnPlayVideo:(id)sender;
 @end

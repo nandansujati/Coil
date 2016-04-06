@@ -8,7 +8,8 @@
 
 #import "GroupsFeed.h"
 #import "YPBubbleTransition.h"
-
+#import <MediaPlayer/MediaPlayer.h>
+#import <AVFoundation/AVFoundation.h>
 #define CellIdentifierGroupFeedCell @"GroupFeedCell"
 #define CellIdentifierGroupFeedImageCell @"GroupFeedImageCell"
 @interface GroupsFeed ()<BtnFeedCellPressed,UIViewControllerAnimatedTransitioning,GroupsFeedReload,floatMenuDelegate,settingGroupChanged,BtnFeedImageCellPressed>
@@ -126,7 +127,7 @@
                             :^(NSError *response_error) {
                                 [[SharedClass SharedManager]removeLoader];
                                 [[SharedClass SharedManager]AlertErrors:@"Error !!" :response_error.localizedDescription :@"OK"];
-                                [[SharedClass SharedManager]removeLoader];
+                                [self.view endEditing:YES];
                             }];
     }
     else
@@ -305,6 +306,48 @@
 }
 
 
+
+-(void)btnPlayVideoPressed:(NSIndexPath *)indexPath
+{
+    _cellImage = (groupFeedImageCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+    GroupFeedModal * modal = [_finalFeedArray objectAtIndex:indexPath.row];
+    //    NSString *postId=modal.postId;
+    NSURL *fileURL = [NSURL URLWithString:@"https://s3-us-west-2.amazonaws.com/cbdevs3/uploads/1459945851yCfsRNiBecaCedo39hqZOE4D73M4vE.mp4"];
+    AVPlayer *avPlayer = [AVPlayer playerWithURL:fileURL];
+    
+    AVPlayerLayer *layer = [AVPlayerLayer playerLayerWithPlayer:avPlayer];
+    avPlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+    layer.frame = CGRectMake(0, 0,self.view.frame.size.width,self.view.frame.size.height);
+  
+  [self.view.layer addSublayer: layer];
+   
+   [avPlayer play];
+
+}
+-(void)btnCommentClicked:(NSIndexPath *)indexPath
+{
+    cell = (groupFeedCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+    GroupFeedModal * modal = [_finalFeedArray objectAtIndex:indexPath.row];
+//    NSString *postId=modal.postId;
+    CommentsVC *commentsVC=[self.storyboard instantiateViewControllerWithIdentifier:@"CommentsVC"];
+    commentsVC.FeedModal=modal;
+    [self.navigationController pushViewController:commentsVC animated:YES];
+    
+}
+
+
+-(void)btnCommentClickedImage:(NSIndexPath *)indexPath
+{
+    _cellImage = (groupFeedImageCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+    GroupFeedModal * modal = [_finalFeedArray objectAtIndex:indexPath.row];
+    //    NSString *postId=modal.postId;
+    CommentsVC *commentsVC=[self.storyboard instantiateViewControllerWithIdentifier:@"CommentsVC"];
+    commentsVC.FeedModal=modal;
+    [self.navigationController pushViewController:commentsVC animated:YES];
+}
+
+
+
 -(void)btnLikePressed :(NSIndexPath*)indexPath
 {
     cell = (groupFeedCell*)[self.tableView cellForRowAtIndexPath:indexPath];
@@ -413,6 +456,7 @@
          
          [[SharedClass SharedManager]AlertErrors:@"Error !!" :response_error.localizedDescription :@"OK"];
          NSLog(@"%@",response_error.localizedDescription);
+         [self.view endEditing:YES];
      }];
 
 }
@@ -446,6 +490,7 @@
      {
          [[SharedClass SharedManager]AlertErrors:@"Error !!" :response_error.localizedDescription :@"OK"];
          NSLog(@"%@",response_error);
+         [self.view endEditing:YES];
      }];
 
 }
@@ -462,10 +507,17 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NewPostVC *vc = segue.destinationViewController;
-    vc.transitioningDelegate = self;
-    vc.delegate=self;
-    vc.group_Id=self.Group_Id;
-    vc.modalPresentationStyle = UIModalPresentationCustom;
-}
+    if ([segue.identifier isEqualToString:@"NewPostVC"])
+    {
+        NewPostVC *vc = segue.destinationViewController;
+        vc.transitioningDelegate = self;
+        vc.delegate=self;
+        vc.group_Id=self.Group_Id;
+        vc.modalPresentationStyle = UIModalPresentationCustom;
+
+    }
+    
+    
+    
+   }
 @end

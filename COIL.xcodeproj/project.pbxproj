@@ -86,6 +86,10 @@
 		ACBF63F61C6F819600315BAA /* AddPeopleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACBF63F41C6F819600315BAA /* AddPeopleCell.xib */; };
 		ACC244CF1C9A932000A955AE /* GroupDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC244CE1C9A932000A955AE /* GroupDetailVC.m */; };
 		ACC244D31C9A9A5E00A955AE /* GroupDetailsModal.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC244D21C9A9A5E00A955AE /* GroupDetailsModal.m */; };
+		ACC5C9101CB4FE9900D29585 /* FilesCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC5C90F1CB4FE9900D29585 /* FilesCollection.m */; };
+		ACC5C9121CB5193A00D29585 /* FilesCollection.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC5C9111CB5193A00D29585 /* FilesCollection.xib */; };
+		ACC5C9161CB52F5F00D29585 /* CommentsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC5C9151CB52F5F00D29585 /* CommentsVC.m */; };
+		ACC5C91A1CB547B100D29585 /* CommentsModal.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC5C9191CB547B100D29585 /* CommentsModal.m */; };
 		ACD3D1BD1CAE60E400D57F12 /* PostImagesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD3D1BC1CAE60E400D57F12 /* PostImagesCell.m */; };
 		ACD3D1C01CAE8B9F00D57F12 /* VCFloatingActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD3D1BF1CAE8B9F00D57F12 /* VCFloatingActionButton.m */; };
 		ACD3D1C41CAE8BC400D57F12 /* floatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD3D1C21CAE8BC400D57F12 /* floatTableViewCell.m */; };
@@ -246,6 +250,13 @@
 		ACC244CE1C9A932000A955AE /* GroupDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupDetailVC.m; sourceTree = "<group>"; };
 		ACC244D11C9A9A5E00A955AE /* GroupDetailsModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupDetailsModal.h; sourceTree = "<group>"; };
 		ACC244D21C9A9A5E00A955AE /* GroupDetailsModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupDetailsModal.m; sourceTree = "<group>"; };
+		ACC5C90E1CB4FE9900D29585 /* FilesCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilesCollection.h; sourceTree = "<group>"; };
+		ACC5C90F1CB4FE9900D29585 /* FilesCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilesCollection.m; sourceTree = "<group>"; };
+		ACC5C9111CB5193A00D29585 /* FilesCollection.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilesCollection.xib; sourceTree = "<group>"; };
+		ACC5C9141CB52F5F00D29585 /* CommentsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsVC.h; sourceTree = "<group>"; };
+		ACC5C9151CB52F5F00D29585 /* CommentsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsVC.m; sourceTree = "<group>"; };
+		ACC5C9181CB547B100D29585 /* CommentsModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsModal.h; sourceTree = "<group>"; };
+		ACC5C9191CB547B100D29585 /* CommentsModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsModal.m; sourceTree = "<group>"; };
 		ACD3D1BB1CAE60E400D57F12 /* PostImagesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostImagesCell.h; sourceTree = "<group>"; };
 		ACD3D1BC1CAE60E400D57F12 /* PostImagesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostImagesCell.m; sourceTree = "<group>"; };
 		ACD3D1BE1CAE8B9F00D57F12 /* VCFloatingActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCFloatingActionButton.h; sourceTree = "<group>"; };
@@ -625,6 +636,7 @@
 		AC88B65D1C75806D009A4260 /* CollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				ACC5C90D1CB4FE7700D29585 /* FilesCollection */,
 				AC97BBCF1CB23CD4001120E6 /* PostVideoCell */,
 				ACD3D1BA1CAE60BB00D57F12 /* PostImagesCell */,
 				AC88B65E1C758076009A4260 /* Groups Collection */,
@@ -780,6 +792,34 @@
 			name = GroupDetailsModal;
 			sourceTree = "<group>";
 		};
+		ACC5C90D1CB4FE7700D29585 /* FilesCollection */ = {
+			isa = PBXGroup;
+			children = (
+				ACC5C90E1CB4FE9900D29585 /* FilesCollection.h */,
+				ACC5C90F1CB4FE9900D29585 /* FilesCollection.m */,
+				ACC5C9111CB5193A00D29585 /* FilesCollection.xib */,
+			);
+			name = FilesCollection;
+			sourceTree = "<group>";
+		};
+		ACC5C9131CB52F4000D29585 /* CommentsVC */ = {
+			isa = PBXGroup;
+			children = (
+				ACC5C9141CB52F5F00D29585 /* CommentsVC.h */,
+				ACC5C9151CB52F5F00D29585 /* CommentsVC.m */,
+			);
+			name = CommentsVC;
+			sourceTree = "<group>";
+		};
+		ACC5C9171CB5479000D29585 /* CommentsModal */ = {
+			isa = PBXGroup;
+			children = (
+				ACC5C9181CB547B100D29585 /* CommentsModal.h */,
+				ACC5C9191CB547B100D29585 /* CommentsModal.m */,
+			);
+			name = CommentsModal;
+			sourceTree = "<group>";
+		};
 		ACD3D1BA1CAE60BB00D57F12 /* PostImagesCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -923,6 +963,7 @@
 		ACD95DE81C69CA370044B5EC /* Modals */ = {
 			isa = PBXGroup;
 			children = (
+				ACC5C9171CB5479000D29585 /* CommentsModal */,
 				AC805EFF1CA10BA40083BE00 /* GroupFeedModal */,
 				ACC244D01C9A9A4000A955AE /* GroupDetailsModal */,
 				AC88B6691C758F41009A4260 /* MyGroupsModal */,
@@ -946,6 +987,7 @@
 		ACD95DEA1C69CA480044B5EC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				ACC5C9131CB52F4000D29585 /* CommentsVC */,
 				AC0C3E5E1CAD59FA000C157C /* NewPost */,
 				AC0C3E551CAD27C1000C157C /* SelectGroupsBroadcast */,
 				AC0D874F1CAC001700A317D1 /* NewBroadcast */,
@@ -1161,6 +1203,7 @@
 				AC805F231CA11C130083BE00 /* SF-UI-Display-Semibold.otf in Resources */,
 				ACD95DBD1C69C9940044B5EC /* Main.storyboard in Resources */,
 				ACA48BA71C9FC1E200C91802 /* GroupDetailMembersCell.xib in Resources */,
+				ACC5C9121CB5193A00D29585 /* FilesCollection.xib in Resources */,
 				AC805F211CA11C130083BE00 /* SF-UI-Display-Medium.otf in Resources */,
 				AC41A7381C6DC2D500DBD1FA /* SearchUsersCell.xib in Resources */,
 				AC805F2B1CA11C130083BE00 /* SF-UI-Text-LightItalic.otf in Resources */,
@@ -1252,6 +1295,8 @@
 				ACA7EE301C6F021600B06158 /* SearchUserExplore.m in Sources */,
 				AC41A73D1C6DC37D00DBD1FA /* SearchGroupCell.m in Sources */,
 				AC0C3E641CAD5C8D000C157C /* YPBubbleTransition.m in Sources */,
+				ACC5C9161CB52F5F00D29585 /* CommentsVC.m in Sources */,
+				ACC5C9101CB4FE9900D29585 /* FilesCollection.m in Sources */,
 				ACA7EE341C6F376800B06158 /* ContactModal.m in Sources */,
 				ACD95DFC1C6A17CD0044B5EC /* CustomButton.m in Sources */,
 				ACE3741B1CA15F6B000920F5 /* ViewHeaderGroupDetail.m in Sources */,
@@ -1286,6 +1331,7 @@
 				ACC244D31C9A9A5E00A955AE /* GroupDetailsModal.m in Sources */,
 				ACD3D1C41CAE8BC400D57F12 /* floatTableViewCell.m in Sources */,
 				AC805F021CA10BC30083BE00 /* GroupFeedModal.m in Sources */,
+				ACC5C91A1CB547B100D29585 /* CommentsModal.m in Sources */,
 				ACD3D1BD1CAE60E400D57F12 /* PostImagesCell.m in Sources */,
 				AC0C3E611CAD5A14000C157C /* NewPostVC.m in Sources */,
 				AC41A7241C6DAC4B00DBD1FA /* ViewSearch.m in Sources */,
@@ -1368,8 +1414,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Eco Science Solutions, Inc. (94L4UQ837G)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eco Science Solutions, Inc. (94L4UQ837G)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Gannon Giguiere (M9PCAQ3273)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gannon Giguiere (M9PCAQ3273)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1412,8 +1458,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Eco Science Solutions, Inc. (94L4UQ837G)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eco Science Solutions, Inc. (94L4UQ837G)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Gannon Giguiere (M9PCAQ3273)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gannon Giguiere (M9PCAQ3273)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1438,14 +1484,14 @@
 			baseConfigurationReference = 5C5633346452E1ECCEA418FB /* Pods-COIL.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Eco Science Solutions, Inc. (94L4UQ837G)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eco Science Solutions, Inc. (94L4UQ837G)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Gannon Giguiere (M9PCAQ3273)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gannon Giguiere (M9PCAQ3273)";
 				INFOPLIST_FILE = COIL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.useherbo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d55bee74-baaa-4355-82e2-b6349c5305d5";
+				PROVISIONING_PROFILE = "482811fc-1ee9-4a0f-9234-506216dde4c5";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1455,14 +1501,14 @@
 			baseConfigurationReference = 4661FB8D67BB581F45D485AE /* Pods-COIL.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Eco Science Solutions, Inc. (94L4UQ837G)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eco Science Solutions, Inc. (94L4UQ837G)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Gannon Giguiere (M9PCAQ3273)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gannon Giguiere (M9PCAQ3273)";
 				INFOPLIST_FILE = COIL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.useherbo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d55bee74-baaa-4355-82e2-b6349c5305d5";
+				PROVISIONING_PROFILE = "482811fc-1ee9-4a0f-9234-506216dde4c5";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

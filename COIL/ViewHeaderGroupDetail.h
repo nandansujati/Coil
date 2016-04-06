@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Header.h"
+#import "MyGroupsDataSource.h"
 @protocol buttonPressedDelegate
 -(void)btnBackPressed;
 -(void)btnEditPressed;
@@ -21,10 +22,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageGroup;
 @property (weak, nonatomic) IBOutlet UILabel *lblGroupName;
 @property (weak, nonatomic) IBOutlet UIButton *btnDiscoverability;
-
-
+@property(nonatomic,strong)NSArray *filesArray;
+-(void)setFilesData :(NSArray *)FilesArray;
 - (IBAction)btnDiscoverabilty:(id)sender;
-
+@property MyGroupsDataSource *datasource;
 @property (weak, nonatomic) IBOutlet UILabel *labelActiveMembers;
 @property (weak, nonatomic) IBOutlet UILabel *memberCount;
 - (IBAction)btnNotifications:(id)sender;

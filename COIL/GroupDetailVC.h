@@ -19,6 +19,7 @@
     BOOL notificationTrue;
     NSIndexPath *currentIndexPath;
 }
+
 @property(nonatomic,strong)id<settingGroupChanged>delegate;
 @property(nonatomic,strong)NSString *Access_Token;
 @property(nonatomic,strong)NSString *Group_Id;
@@ -36,7 +37,8 @@
 @property (strong, nonatomic)  NSString *textDiscoverability;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong) NSMutableArray *MemberArray;
-@property (strong, nonatomic)  UICollectionView *collectionViewFiles;
+@property (nonatomic,strong) NSMutableArray *FilesArray;
+//@property (strong, nonatomic)  UICollectionView *collectionViewFiles;
 @property (strong, nonatomic)  NSString *filesCount;
 
 @end

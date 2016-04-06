@@ -67,25 +67,21 @@
     }];
 }
 
-//-(void)CheckSelected
-//{
-//    if (_ArrayUserEmails.count ==0 &&_ArrayUserIds.count==0)
-//    {
-//        [_btnDone setTitle:@"Skip" forState:UIControlStateNormal];
-//    }
-//    else
-//        [_btnDone setTitle:@"Done" forState:UIControlStateNormal];
-//}
+
 #pragma mark- API Methods
 -(void)loadParameters
 {
-      _DictContactsParameters=@{@"access_token":_Access_token,@"contact":_AddressBook};
-    
-    if (DoneClicked==YES)
+    if (_Access_token!=nil)
     {
-        _DictAddPeopleParameters=@{@"access_token":_Access_token,@"name":_GroupName,@"users":_UserIds,@"emails":_UserEmails};
+        _DictContactsParameters=@{@"access_token":_Access_token,@"contact":_AddressBook};
+        
+        if (DoneClicked==YES)
+        {
+            _DictAddPeopleParameters=@{@"access_token":_Access_token,@"name":_GroupName,@"users":_UserIds,@"emails":_UserEmails};
+        }
+       
     }
-
+   
     
 }
 
@@ -102,7 +98,22 @@
             {
                NSMutableArray *ContactsArray=[[NSMutableArray alloc]init];
                 ContactsArray=[response_success valueForKey:@"users"];
-                _FinalContactArray = [_Modal ListmethodCall:ContactsArray];
+                NSArray *arrayContact = [_Modal ListmethodCall:ContactsArray];
+                
+                
+                NSDictionary *Dictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"AccessToken"];
+                NSString *userId=[Dictionary valueForKey:@"user_Id"];
+                
+                for (ContactModal *modal in arrayContact) {
+                    NSLog(@"%@",modal.UserId);
+                    if ([userId integerValue]!= [modal.UserId integerValue])
+                    {
+                        [_FinalContactArray addObject: modal];
+                    }
+                }
+                
+               
+                
                 _NewFinalArray=_FinalContactArray;
                 
                 for (ContactModal *modal in _FinalContactArray) {

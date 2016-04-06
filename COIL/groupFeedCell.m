@@ -133,6 +133,8 @@
     [_delegate btnLikePressed:_indexPath];
 }
 
-- (IBAction)btnCommentPressed:(id)sender {
+- (IBAction)btnCommentPressed:(id)sender
+{
+    [_delegate btnCommentClicked:_indexPath];
 }
 @end

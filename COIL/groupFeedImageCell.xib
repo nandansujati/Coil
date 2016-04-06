@@ -84,8 +84,15 @@
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keF-YR-Xte">
-                        <rect key="frame" x="172" y="120" width="24" height="24"/>
+                        <rect key="frame" x="159" y="107" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="Bwz-Mq-ZG5"/>
+                            <constraint firstAttribute="width" constant="50" id="pcI-dh-uXa"/>
+                        </constraints>
                         <state key="normal" image="ic_play"/>
+                        <connections>
+                            <action selector="btnPlayVideo:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="VWd-Le-gfd"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>

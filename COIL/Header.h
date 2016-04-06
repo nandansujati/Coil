@@ -31,11 +31,15 @@
 
 
 #define ImagePath [NSString stringWithFormat:@"%@%@",BasePath,@"photo/"]
+
+
 #import "AppDelegate.h"
 #import "SignUp1Screen.h"
 #import "PostVideoCell.h"
+#import "CommentsVC.h"
 #import "PostImagesCell.h"
 #import "groupFeedImageCell.h"
+#import "FilesCollection.h"
 #import "VCFloatingActionButton.h"
 #import "SignUp2Screen.h"
 #import "NewPostVC.h"

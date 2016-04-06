@@ -22,14 +22,17 @@
 }
 -(void)configureForCellWithCountry:(ContactModal *)item ;
 {
-    self.labelName.text=item.fullName;
-    if (item.Image)
-    {
-        _URLImage=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@/40/40",ImagePath,item.Image]];
-         [self.image sd_setImageWithURL:_URLImage placeholderImage:[UIImage imageNamed:@"img_placeholder_user"]];
-    }
-    else
-        self.image.image=[UIImage imageNamed:@"img_placeholder_user"];
+   
+        self.labelName.text=item.fullName;
+        if (item.Image)
+        {
+            _URLImage=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@/40/40",ImagePath,item.Image]];
+            [self.image sd_setImageWithURL:_URLImage placeholderImage:[UIImage imageNamed:@"img_placeholder_user"]];
+        }
+        else
+            self.image.image=[UIImage imageNamed:@"img_placeholder_user"];
+    
+    
 }
 
 

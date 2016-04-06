@@ -155,10 +155,12 @@
 #pragma mark- Button Actions
 - (IBAction)btnBack:(id)sender
 {
+    [self.view endEditing:YES];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)btnSignUp:(id)sender {
+    [self.view endEditing:YES];
     SignUp1Screen *SgnUp=[self.storyboard instantiateViewControllerWithIdentifier:@"SignUp1Screen"];
     [self.navigationController pushViewController:SgnUp animated:YES];
 }
@@ -166,7 +168,7 @@
 - (IBAction)btnLoginContinue:(id)sender {
     
    
-    
+    [self.view endEditing:YES];
     NSInteger Value=[self TextFieldValidations];
     if (Value==0)
     {
@@ -181,7 +183,7 @@
                  NSInteger value=[[response_success valueForKey:@"success"]integerValue];
                  if (value==1)
                  {
-                     NSDictionary *DictionaryLastAccessed=@{@"access_token":[[response_success valueForKey:@"user"]valueForKey:@"access_token"]};
+                     NSDictionary *DictionaryLastAccessed=@{@"access_token":[[response_success valueForKey:@"user"]valueForKey:@"access_token"],@"user_Id":[[response_success valueForKey:@"user"]valueForKey:@"id"]};
                      
                      [[NSUserDefaults standardUserDefaults] setObject:DictionaryLastAccessed forKey:@"AccessToken"];
                      

@@ -48,6 +48,28 @@
      }];
 }
 
++(void)postMutliPartVideoData : (NSString *)urlStr : (NSString *)keyName : (NSDictionary *)parameters : (NSData *)data : (void(^)(NSDictionary * response_success))success : (void(^)(NSError * response_error))failure {
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer =  [AFHTTPResponseSerializer serializer];
+    [manager POST:urlStr parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
+     {
+         if (data) {
+             [formData appendPartWithFileData:data name:keyName fileName:@"temp.mp4" mimeType:@"image/mp4"];
+         }
+         
+         
+     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+         
+         success([NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil]);
+         
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         
+         failure(error);
+     }];
+}
+
+
 +(void)postData : (NSString *)urlStr : (NSDictionary *)parameters : (void(^)(NSDictionary * response_success))success : (void(^)(NSError * response_error))failure {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];

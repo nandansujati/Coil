@@ -15,6 +15,8 @@
 @property (nonatomic,strong) NSString *AdminId;
 @property (nonatomic,strong) NSString *Privacy;
 @property (nonatomic, strong) NSArray *FilesArray;
+@property(nonatomic,strong) NSString *fileMedia;
+@property(nonatomic,strong) NSString *fileMediaType;
 @property (nonatomic, strong) NSArray *MembersArray;
 
 @property(nonatomic,strong)NSString *MemberId;

@@ -74,7 +74,7 @@
             NSString *str=[response_success valueForKey:@"success"];
             NSString *msg=[response_success valueForKey:@"msg"];
             _Access_token=[[response_success valueForKey:@"user"]valueForKey:@"access_token"];
-            NSDictionary *DictionaryLastAccessed=@{@"access_token":[[response_success valueForKey:@"user"]valueForKey:@"access_token"]};
+             NSDictionary *DictionaryLastAccessed=@{@"access_token":[[response_success valueForKey:@"user"]valueForKey:@"access_token"],@"user_Id":[[response_success valueForKey:@"user"]valueForKey:@"id"]};
             
             [[NSUserDefaults standardUserDefaults] setObject:DictionaryLastAccessed forKey:@"AccessToken"];
             int successValue=[str intValue];
@@ -248,11 +248,13 @@
 #pragma mark- Button Actions
 - (IBAction)btnBack:(id)sender
 {
+    [self.view endEditing:YES];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)btnContinue:(id)sender
 {
+    [self.view endEditing:YES];
     [[SharedClass SharedManager]Loader:self.view];
     if ([_txtFieldEmail.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length==0 &&[_txtFieldPassword.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length==0)
     {

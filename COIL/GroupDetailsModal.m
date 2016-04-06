@@ -19,8 +19,8 @@
     data.member_count = [Dict valueForKey:@"member_count"];
     data.AdminId=[[Dict valueForKey:@"group"]valueForKey:@"owner_id"];
     data.Privacy=[[Dict valueForKey:@"group"]valueForKey:@"privacy"];
-    data.FilesArray=[Dict valueForKey:@"files"];
     data.MembersArray=[GroupDetailsModal parserArray:[Dict valueForKey:@"members"]];
+    data.FilesArray=[GroupDetailsModal parserFileArray:[Dict valueForKey:@"files"]];
     data.is_admin=[Dict valueForKey:@"is_admin"];
     data.file_count=[Dict valueForKey:@"file_count"];
     data.notification=[Dict valueForKey:@"notification"];
@@ -32,15 +32,11 @@
 
 -(NSMutableArray*)ListmethodCall:(NSDictionary*)DictFromServer
 {
-    _FinalArray=[[NSMutableArray alloc]init];
     
-//    for(NSDictionary *eachPlace in arrayFromServer)
-//    {
-        GroupDetailsModal *obj = [[GroupDetailsModal alloc] ListAttributes:DictFromServer];
-        
-        [_FinalArray addObject:obj];
-        
-//    }
+    _FinalArray=[[NSMutableArray alloc]init];
+    GroupDetailsModal *obj = [[GroupDetailsModal alloc] ListAttributes:DictFromServer];
+    [_FinalArray addObject:obj];
+    
     return _FinalArray;
 }
 
@@ -72,6 +68,29 @@
     data.MemberLastSeen=[dict valueForKey:@"last_seen"];
     data.MemberStatus=[dict valueForKey:@"status"];
     
+    return data;
+    
+}
++(NSArray*)parserFileArray:(NSArray*)arr
+{
+    NSMutableArray *temparr=[[NSMutableArray alloc]init];
+    for(NSDictionary *dict in arr)
+    {
+        
+        GroupDetailsModal * obj=[[GroupDetailsModal alloc]init];
+        obj=[GroupDetailsModal parserFileDict:dict];
+        [temparr addObject:obj];
+    }
+    return temparr;
+}
+
++(GroupDetailsModal*)parserFileDict:(NSDictionary*)dict
+{
+    GroupDetailsModal* data=[[GroupDetailsModal alloc]init];
+    
+    data.fileMedia=[dict valueForKey:@"media"];
+    data.fileMediaType=[dict valueForKey:@"media_type"];
+       
     return data;
     
 }

@@ -347,11 +347,12 @@
 #pragma mark- ButtonActions
 - (IBAction)btnBack:(id)sender
 {
+    [self.view endEditing:YES];
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)btnFinishSignUp:(id)sender
 {
-    
+    [self.view endEditing:YES];
     NSData *data = UIImageJPEGRepresentation(self.image.image, 0.5);
     
     NSInteger Value=[self TextFieldValidations];
@@ -368,7 +369,8 @@
                  NSInteger value=[[response_success valueForKey:@"success"]integerValue];
                  if (value==1)
                  {
-                     NSDictionary *DictionaryLastAccessed=@{@"access_token":[[response_success valueForKey:@"user"]valueForKey:@"access_token"]};
+                  
+                      NSDictionary *DictionaryLastAccessed=@{@"access_token":[[response_success valueForKey:@"user"]valueForKey:@"access_token"],@"user_Id":[[response_success valueForKey:@"user"]valueForKey:@"id"]};
                      
                      [[NSUserDefaults standardUserDefaults] setObject:DictionaryLastAccessed forKey:@"AccessToken"];
                      

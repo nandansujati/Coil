@@ -11,6 +11,7 @@
 #import "Header.h"
 @protocol BtnFeedCellPressed
 -(void)btnLikePressed :(NSIndexPath*)indexPath;
+-(void)btnCommentClicked:(NSIndexPath*)indexPath;
 @end
 
 @interface groupFeedCell : UITableViewCell

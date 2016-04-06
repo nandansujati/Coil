@@ -21,6 +21,8 @@
 //
 //+(void)postEmoticons : (NSString *)url parameters:(NSDictionary *)dparameters  success: (void (^) (NSDictionary *responseStr))success failure: (void (^) (NSError *error))failure;
 
++(void)postMutliPartVideoData : (NSString *)urlStr : (NSString *)keyName : (NSDictionary *)parameters : (NSData *)data : (void(^)(NSDictionary * response_success))success : (void(^)(NSError * response_error))failure;
+
 +(void)postData : (NSString *)urlStr : (NSDictionary *)parameters : (void(^)(NSDictionary * response_success))success : (void(^)(NSError * response_error))failure;
 
 +(void)postImages : (NSDictionary *)parameters imageData:(NSArray *)imageArr url:(NSString *)urlStr success : (void (^)(NSDictionary *responseDict))success failure:(void(^)(NSError* error))failure;
