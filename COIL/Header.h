@@ -28,11 +28,17 @@
 #define UrlCreatePost [NSString stringWithFormat:@"%@%@",BasePath,@"createPost"]
 #define UrlMakeAdmin [NSString stringWithFormat:@"%@%@",BasePath,@"makeAdmin"]
 #define UrlAddNewMembers [NSString stringWithFormat:@"%@%@",BasePath,@"addUserToGroup"]
+#define UrlCommentOnPost [NSString stringWithFormat:@"%@%@",BasePath,@"commentPost"]
+#define UrlgetCommentsOnPost [NSString stringWithFormat:@"%@%@",BasePath,@"getComments"]
+
+
 
 
 #define ImagePath [NSString stringWithFormat:@"%@%@",BasePath,@"photo/"]
 
-
+#import "CommentCell.h"
+#import "CommentsModal.h"
+#import "CommentsVC.h"
 #import "AppDelegate.h"
 #import "SignUp1Screen.h"
 #import "PostVideoCell.h"

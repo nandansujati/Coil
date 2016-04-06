@@ -13,7 +13,9 @@
 #define CellIdentifierGroupFeedCell @"GroupFeedCell"
 #define CellIdentifierGroupFeedImageCell @"GroupFeedImageCell"
 @interface GroupsFeed ()<BtnFeedCellPressed,UIViewControllerAnimatedTransitioning,GroupsFeedReload,floatMenuDelegate,settingGroupChanged,BtnFeedImageCellPressed>
-
+{
+    NSIndexPath *currentIndexpath;
+}
 
 @property(nonatomic,strong)YPBubbleTransition * transition;
 @property DataSourceClass *datasource;
@@ -324,13 +326,16 @@
    [avPlayer play];
 
 }
+
 -(void)btnCommentClicked:(NSIndexPath *)indexPath
 {
     cell = (groupFeedCell*)[self.tableView cellForRowAtIndexPath:indexPath];
     GroupFeedModal * modal = [_finalFeedArray objectAtIndex:indexPath.row];
 //    NSString *postId=modal.postId;
+    currentIndexpath=indexPath;
     CommentsVC *commentsVC=[self.storyboard instantiateViewControllerWithIdentifier:@"CommentsVC"];
     commentsVC.FeedModal=modal;
+    commentsVC.delegate=self;
     [self.navigationController pushViewController:commentsVC animated:YES];
     
 }
@@ -341,8 +346,10 @@
     _cellImage = (groupFeedImageCell*)[self.tableView cellForRowAtIndexPath:indexPath];
     GroupFeedModal * modal = [_finalFeedArray objectAtIndex:indexPath.row];
     //    NSString *postId=modal.postId;
+    currentIndexpath=indexPath;
     CommentsVC *commentsVC=[self.storyboard instantiateViewControllerWithIdentifier:@"CommentsVC"];
     commentsVC.FeedModal=modal;
+     commentsVC.delegate=self;
     [self.navigationController pushViewController:commentsVC animated:YES];
 }
 
@@ -495,6 +502,25 @@
 
 }
 
+
+-(void)commentPosted
+{
+    GroupFeedModal * modal = [_finalFeedArray objectAtIndex:currentIndexpath.row];
+    
+   
+    NSInteger commentCount=[modal.comment_count intValue];
+    
+    commentCount+=1;
+    
+   
+    NSString *ValuecommentCount=[NSString stringWithFormat:@"%li",(long)commentCount];
+   
+    modal.comment_count=ValuecommentCount;
+    
+    [_finalFeedArray replaceObjectAtIndex:currentIndexpath.row withObject:modal];
+    
+    [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:currentIndexpath.row inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+}
 - (IBAction)btnBack:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }

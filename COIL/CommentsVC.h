@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Header.h"
 #import "GroupFeedModal.h"
+@protocol CommentPostedDelegate
+-(void)commentPosted;
+@end
 @interface CommentsVC : UIViewController
 {
     // NSString *month;
@@ -21,6 +24,13 @@
     CGRect previousRect ;
     CGSize keyboardSize;
 }
+@property(nonatomic,strong)id<CommentPostedDelegate>delegate;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property(nonatomic,strong)NSMutableArray *arrayComments;
+@property(nonatomic,strong)NSDictionary*DictParameters;
+@property(nonatomic,strong)NSString *Access_token;
+@property(nonatomic,strong)NSString *postId;
 @property(nonatomic,strong)NSIndexPath *indexPath;
 @property(nonatomic,strong) GroupFeedModal *FeedModal;
 @property (weak, nonatomic) IBOutlet UIImageView *imagePost;

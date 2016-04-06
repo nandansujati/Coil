@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0081C6B3930E31DE1A9CAA78 /* libPods-COIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 669F70D83A5523973C9EC617 /* libPods-COIL.a */; };
+		87F2661A1CB590B70022FE63 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F266181CB590B70022FE63 /* CommentCell.m */; };
+		87F2661B1CB590B70022FE63 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87F266191CB590B70022FE63 /* CommentCell.xib */; };
 		AC0C3E581CAD27E1000C157C /* SelectGroupsBroadcast.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0C3E571CAD27E1000C157C /* SelectGroupsBroadcast.m */; };
 		AC0C3E611CAD5A14000C157C /* NewPostVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0C3E601CAD5A14000C157C /* NewPostVC.m */; };
 		AC0C3E641CAD5C8D000C157C /* YPBubbleTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = AC0C3E631CAD5C8D000C157C /* YPBubbleTransition.m */; };
@@ -129,6 +131,9 @@
 		4661FB8D67BB581F45D485AE /* Pods-COIL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COIL.release.xcconfig"; path = "Pods/Target Support Files/Pods-COIL/Pods-COIL.release.xcconfig"; sourceTree = "<group>"; };
 		5C5633346452E1ECCEA418FB /* Pods-COIL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COIL.debug.xcconfig"; path = "Pods/Target Support Files/Pods-COIL/Pods-COIL.debug.xcconfig"; sourceTree = "<group>"; };
 		669F70D83A5523973C9EC617 /* libPods-COIL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-COIL.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		87F266171CB590B70022FE63 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
+		87F266181CB590B70022FE63 /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
+		87F266191CB590B70022FE63 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		AC0C3E561CAD27E1000C157C /* SelectGroupsBroadcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectGroupsBroadcast.h; sourceTree = "<group>"; };
 		AC0C3E571CAD27E1000C157C /* SelectGroupsBroadcast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectGroupsBroadcast.m; sourceTree = "<group>"; };
 		AC0C3E5F1CAD5A14000C157C /* NewPostVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPostVC.h; sourceTree = "<group>"; };
@@ -337,6 +342,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		87F266161CB5909D0022FE63 /* CommentCell */ = {
+			isa = PBXGroup;
+			children = (
+				87F266171CB590B70022FE63 /* CommentCell.h */,
+				87F266181CB590B70022FE63 /* CommentCell.m */,
+				87F266191CB590B70022FE63 /* CommentCell.xib */,
+			);
+			name = CommentCell;
+			sourceTree = "<group>";
+		};
 		AC0C3E551CAD27C1000C157C /* SelectGroupsBroadcast */ = {
 			isa = PBXGroup;
 			children = (
@@ -498,6 +513,7 @@
 		AC53142C1C6CADA600F3F302 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				87F266161CB5909D0022FE63 /* CommentCell */,
 				AC606DD01CB3D60500F43D44 /* GroupFeedImageCell */,
 				AC805EF91CA109B10083BE00 /* groupFeedCell */,
 				ACA48BB21C9FF27300C91802 /* GroupSettingsCell */,
@@ -1184,6 +1200,7 @@
 				AC5314321C6CADF800F3F302 /* GroupsMenuCell.xib in Resources */,
 				ACBF63F61C6F819600315BAA /* AddPeopleCell.xib in Resources */,
 				AC805F241CA11C130083BE00 /* SF-UI-Display-Thin.otf in Resources */,
+				87F2661B1CB590B70022FE63 /* CommentCell.xib in Resources */,
 				AC805EFE1CA109ED0083BE00 /* groupFeedCell.xib in Resources */,
 				AC805F2A1CA11C130083BE00 /* SF-UI-Text-Light.otf in Resources */,
 				AC805F2C1CA11C130083BE00 /* SF-UI-Text-Medium.otf in Resources */,
@@ -1321,6 +1338,7 @@
 				AC799E601C6B5873002983BD /* LoginScreen.m in Sources */,
 				ACD95DF41C6A11DC0044B5EC /* SharedClass.m in Sources */,
 				AC799E4E1C6B020F002983BD /* UINavigationController+PushPopAnimation.m in Sources */,
+				87F2661A1CB590B70022FE63 /* CommentCell.m in Sources */,
 				AC41A7371C6DC2D500DBD1FA /* SearchUsersCell.m in Sources */,
 				AC88B6681C75848F009A4260 /* MyGroupsDataSource.m in Sources */,
 				AC0D87521CAC003300A317D1 /* NewBroadcast.m in Sources */,

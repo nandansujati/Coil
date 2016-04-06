@@ -7,9 +7,9 @@
 //
 
 #import "CommentsVC.h"
-
+#define CellIdentifierCommentsCell @"CommentsCell"
 @interface CommentsVC ()
-
+@property DataSourceClass *datasource;
 @end
 
 @implementation CommentsVC
@@ -25,16 +25,105 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    
+    if (self)
+    {
+        self.datasource = [[DataSourceClass alloc] init];
+    }
+    return self;
+}
 -(void)setupUI
 {
+    self.tableView.dataSource = self.datasource;
     previousRect = CGRectZero;
+    _arrayComments=[[NSMutableArray alloc]init];
     [self registerForKeyboardNotifications];
-  //  self.tableView.estimatedRowHeight=50;
+    self.tableView.estimatedRowHeight=50;
     
+    NSDictionary *Dictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"AccessToken"];
+    _Access_token=[Dictionary valueForKey:@"access_token"];
     [self configurePost:_FeedModal];
+    [self loadData];
 }
 
+
+
+-(void)loadParameters
+{
+    _DictParameters=@{@"access_token":_Access_token,@"post_id":_postId};
+}
+
+
+-(void)loadData
+{
+    CommentsModal *modal=[[CommentsModal alloc]init];
+    
+    NSInteger valueNetwork=[[SharedClass SharedManager]NetworkCheck];
+    if (valueNetwork==0)
+    {
+        [self loadParameters];
+        [iOSRequest postData:UrlgetCommentsOnPost :_DictParameters :^(NSDictionary *response_success) {
+            [[SharedClass SharedManager]removeLoader];
+            NSInteger value=[[response_success valueForKey:@"success"]integerValue];
+            if (value==1)
+            {
+                NSMutableArray *Usersarray=[[NSMutableArray alloc]init];
+                Usersarray=[response_success valueForKey:@"comments"];
+                _arrayComments =[[NSMutableArray alloc]init];
+                _arrayComments = [modal ListmethodCall:Usersarray];
+                if (_arrayComments.count>0)
+                {
+                   // _labelNoData.hidden=YES;
+                    [self CallDataSource];
+                }
+//                else
+//                    _labelNoData.hidden=NO;
+            }
+            
+        }
+                            :^(NSError *response_error) {
+                                
+                                [[SharedClass SharedManager]AlertErrors:@"Error !!" :response_error.localizedDescription :@"OK"];
+                                [[SharedClass SharedManager]removeLoader];
+                            }];
+    }
+
+}
+
+-(void)CallDataSource
+{
+    
+    
+    TableViewCellConfigureBlock configureCell = ^(CommentCell *cell,id item,id imageItems)
+    {
+        
+        [cell configureForCellWithCountry:item];
+    };
+    
+    
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CommentCell class]) bundle:nil] forCellReuseIdentifier:CellIdentifierCommentsCell];
+    
+    
+    
+    self.datasource = [[DataSourceClass alloc] initWithItems:_arrayComments
+                                                  imageItems:nil
+                                              cellIdentifier:CellIdentifierCommentsCell
+                                          configureCellBlock:configureCell];
+    self.tableView.dataSource = _datasource;
+    [self.tableView reloadData];
+    
+}
+
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewAutomaticDimension ;
+    
+}
 
 
 - (void)registerForKeyboardNotifications
@@ -153,7 +242,7 @@
     else
         self.imagePost.image=[UIImage imageNamed:@"img_placeholder_user"];
     
-    
+    _postId=modal.postId;
     
     
     NSString *labelText = modal.title;
@@ -246,6 +335,43 @@
 }
 
 
+-(void)SendCommentApi
+{
+    NSDictionary *DictComment=@{@"access_token":_Access_token,@"post_id":_postId,@"comment":_txtViewComment.text};
+    
+    NSInteger valueNetwork=[[SharedClass SharedManager]NetworkCheck];
+    if (valueNetwork==0)
+    {
+        [self loadParameters];
+        [iOSRequest postData:UrlCommentOnPost :DictComment :^(NSDictionary *response_success) {
+            [[SharedClass SharedManager]removeLoader];
+            NSInteger value=[[response_success valueForKey:@"success"]integerValue];
+            if (value==1)
+            {
+//                NSMutableArray *Usersarray=[[NSMutableArray alloc]init];
+//                Usersarray=[response_success valueForKey:@"groups"];
+//                _arrayComments = [modal ListmethodCall:Usersarray];
+//                if (_arrayComments.count>0) {
+//                    // _labelNoData.hidden=YES;
+//                    [self CallDataSource];
+//                }
+                //                else
+                //                    _labelNoData.hidden=NO;
+                
+                [_delegate commentPosted];
+                [self loadData];
+            }
+            
+        }
+                            :^(NSError *response_error) {
+                                
+                                [[SharedClass SharedManager]AlertErrors:@"Error !!" :response_error.localizedDescription :@"OK"];
+                                [[SharedClass SharedManager]removeLoader];
+                            }];
+    }
+
+}
+
 - (IBAction)btnLikePressed:(id)sender
 {
    
@@ -257,10 +383,12 @@
 }
 
 - (IBAction)btnSend:(id)sender {
+    [self SendCommentApi];
     self.txtViewComment.text=@"";
     [self.txtViewComment resignFirstResponder];
     _constraintBottomView.constant = 0 ;
     _constraintBottomViewHeight.constant=70;
+    
 
 }
 - (IBAction)btnBack:(id)sender {

@@ -13,19 +13,12 @@
 {
     CommentsModal *data=[[CommentsModal alloc]init];
     
-    data.postId = [Dict valueForKey:@"id"];
-    data.title = [Dict valueForKey:@"title"];
-    data.post_type = [Dict valueForKey:@"post_type"];
-    data.media = [Dict valueForKey:@"media"];
-    data.media_type=[Dict valueForKey:@"media_type"];
+    data.user_id = [Dict valueForKey:@"user_id"];
+    data.comment = [Dict valueForKey:@"comment"];
+    data.Username = [Dict valueForKey:@"name"];
+    data.image = [Dict valueForKey:@"image"];
     data.created_at=[Dict valueForKey:@"created_at"];
-    data.MemberName=[Dict valueForKey:@"name"];
-    data.MemberImage=[Dict valueForKey:@"image"];
-    data.like_count=[Dict valueForKey:@"like_count"];
-    data.comment_count=[Dict valueForKey:@"comment_count"];
-    data.is_liked=[Dict valueForKey:@"i_liked"];
-    data.groupName = [[Dict valueForKey:@"group"] valueForKey:@"name"];
-    data.activeMemberCount = [Dict valueForKey:@"member_count"];
+    
     return data;
     
 }
