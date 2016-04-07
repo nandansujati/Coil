@@ -12,11 +12,12 @@
 #import <AVFoundation/AVFoundation.h>
 #define CellIdentifierGroupFeedCell @"GroupFeedCell"
 #define CellIdentifierGroupFeedImageCell @"GroupFeedImageCell"
-@interface GroupsFeed ()<BtnFeedCellPressed,UIViewControllerAnimatedTransitioning,GroupsFeedReload,floatMenuDelegate,settingGroupChanged,BtnFeedImageCellPressed>
+@interface GroupsFeed ()<BtnFeedCellPressed,UIViewControllerAnimatedTransitioning,GroupsFeedReload,floatMenuDelegate,settingGroupChanged,BtnFeedImageCellPressed,CommentPostedDelegate>
 {
     NSIndexPath *currentIndexpath;
+    
 }
-
+@property(nonatomic,strong)AVPlayer *avPlayer;
 @property(nonatomic,strong)YPBubbleTransition * transition;
 @property DataSourceClass *datasource;
 
@@ -315,15 +316,27 @@
     GroupFeedModal * modal = [_finalFeedArray objectAtIndex:indexPath.row];
     //    NSString *postId=modal.postId;
     NSURL *fileURL = [NSURL URLWithString:@"https://s3-us-west-2.amazonaws.com/cbdevs3/uploads/1459945851yCfsRNiBecaCedo39hqZOE4D73M4vE.mp4"];
-    AVPlayer *avPlayer = [AVPlayer playerWithURL:fileURL];
+//    AVPlayer *avPlayer = [AVPlayer playerWithURL:fileURL];
+//    
+//    AVPlayerLayer *layer = [AVPlayerLayer playerLayerWithPlayer:avPlayer];
+//    avPlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+//    layer.frame = CGRectMake(0, 0,self.view.frame.size.width,self.view.frame.size.height);
+//  
+//  [self.view.layer addSublayer: layer];
+//   
+//   [avPlayer play];
     
-    AVPlayerLayer *layer = [AVPlayerLayer playerLayerWithPlayer:avPlayer];
-    avPlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-    layer.frame = CGRectMake(0, 0,self.view.frame.size.width,self.view.frame.size.height);
-  
-  [self.view.layer addSublayer: layer];
-   
-   [avPlayer play];
+    AVAsset *asset = [AVAsset assetWithURL:fileURL];
+    AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:asset];
+    self.avPlayer = [AVPlayer playerWithPlayerItem:playerItem];
+    AVPlayerLayer *avPlayerLayer = [AVPlayerLayer playerLayerWithPlayer:self.avPlayer];
+    
+    avPlayerLayer.frame = self.view.bounds;
+    [self.view.layer addSublayer:avPlayerLayer];
+    
+    
+    avPlayerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    [self.avPlayer play];
 
 }
 
