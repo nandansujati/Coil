@@ -83,28 +83,29 @@
                             <constraint firstAttribute="height" constant="128" id="l42-MV-DXI"/>
                         </constraints>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keF-YR-Xte">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4R1-hp-MVT">
                         <rect key="frame" x="159" y="107" width="50" height="50"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="Bwz-Mq-ZG5"/>
-                            <constraint firstAttribute="width" constant="50" id="pcI-dh-uXa"/>
+                            <constraint firstAttribute="height" constant="50" id="thd-er-EVp"/>
+                            <constraint firstAttribute="width" constant="50" id="xjo-p1-6WX"/>
                         </constraints>
                         <state key="normal" image="ic_play"/>
                         <connections>
-                            <action selector="btnPlayVideo:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="VWd-Le-gfd"/>
+                            <action selector="btnPlayVideo:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="5tC-HK-cKe"/>
                         </connections>
                     </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="tgB-iX-2pH" firstAttribute="leading" secondItem="b13-Tg-aGH" secondAttribute="trailing" constant="16" id="4k2-8g-q1y"/>
+                    <constraint firstItem="FRg-jR-COS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="56" id="58Y-6t-GdM"/>
                     <constraint firstItem="gav-gi-8og" firstAttribute="top" secondItem="FRg-jR-COS" secondAttribute="bottom" constant="14" id="5Gg-pS-wyb"/>
-                    <constraint firstItem="keF-YR-Xte" firstAttribute="centerX" secondItem="FRg-jR-COS" secondAttribute="centerX" id="5fm-rC-HeN"/>
                     <constraint firstItem="OlK-GC-edI" firstAttribute="centerY" secondItem="e6v-An-kD4" secondAttribute="centerY" id="7wb-Ml-oHq"/>
                     <constraint firstItem="A5u-JP-JBb" firstAttribute="trailing" secondItem="OlK-GC-edI" secondAttribute="trailing" id="9lg-pY-1qe"/>
-                    <constraint firstItem="keF-YR-Xte" firstAttribute="centerY" secondItem="FRg-jR-COS" secondAttribute="centerY" id="Aaq-zy-hRh"/>
                     <constraint firstAttribute="bottomMargin" secondItem="gav-gi-8og" secondAttribute="bottom" constant="6" id="I1Y-Nv-hwp"/>
                     <constraint firstItem="e6v-An-kD4" firstAttribute="top" secondItem="gav-gi-8og" secondAttribute="top" id="L90-za-PXx"/>
+                    <constraint firstItem="4R1-hp-MVT" firstAttribute="centerX" secondItem="FRg-jR-COS" secondAttribute="centerX" id="PhV-41-spe"/>
                     <constraint firstItem="tgB-iX-2pH" firstAttribute="top" secondItem="b13-Tg-aGH" secondAttribute="top" constant="2" id="R2L-9a-1oC"/>
+                    <constraint firstItem="4R1-hp-MVT" firstAttribute="centerY" secondItem="FRg-jR-COS" secondAttribute="centerY" id="UR1-SX-YPo"/>
                     <constraint firstItem="A5u-JP-JBb" firstAttribute="bottom" secondItem="tgB-iX-2pH" secondAttribute="bottom" id="Z2c-yN-uC5"/>
                     <constraint firstAttribute="trailingMargin" secondItem="A5u-JP-JBb" secondAttribute="trailing" constant="15" id="dRo-dj-S2N"/>
                     <constraint firstItem="gav-gi-8og" firstAttribute="leading" secondItem="yyT-wS-WwC" secondAttribute="leading" constant="-8" id="fie-Lj-eO6"/>
@@ -117,13 +118,12 @@
                     <constraint firstAttribute="trailingMargin" secondItem="FRg-jR-COS" secondAttribute="trailing" constant="8" id="u3u-kO-AB4"/>
                     <constraint firstItem="b13-Tg-aGH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="xFl-gA-ahd"/>
                     <constraint firstAttribute="leadingMargin" secondItem="b13-Tg-aGH" secondAttribute="leading" id="yZc-V5-tsC"/>
-                    <constraint firstItem="FRg-jR-COS" firstAttribute="leading" secondItem="yyT-wS-WwC" secondAttribute="leading" id="yjX-so-k35"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="btnComment" destination="e6v-An-kD4" id="I71-ku-YOE"/>
                 <outlet property="btnLike" destination="gav-gi-8og" id="zYr-BK-7qJ"/>
-                <outlet property="btnPlay" destination="keF-YR-Xte" id="hFr-VB-QWu"/>
+                <outlet property="btnPlay" destination="4R1-hp-MVT" id="s7O-ya-V9b"/>
                 <outlet property="imagePosted" destination="FRg-jR-COS" id="TdU-Qa-EqD"/>
                 <outlet property="imageUser" destination="b13-Tg-aGH" id="7Rv-fQ-Qwr"/>
                 <outlet property="lblComment_Likes" destination="OlK-GC-edI" id="oWC-ln-h2e"/>

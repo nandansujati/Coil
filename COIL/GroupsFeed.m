@@ -7,19 +7,19 @@
 //
 
 #import "GroupsFeed.h"
-#import "YPBubbleTransition.h"
-#import <MediaPlayer/MediaPlayer.h>
-#import <AVFoundation/AVFoundation.h>
+
 #define CellIdentifierGroupFeedCell @"GroupFeedCell"
 #define CellIdentifierGroupFeedImageCell @"GroupFeedImageCell"
 @interface GroupsFeed ()<BtnFeedCellPressed,UIViewControllerAnimatedTransitioning,GroupsFeedReload,floatMenuDelegate,settingGroupChanged,BtnFeedImageCellPressed,CommentPostedDelegate>
 {
     NSIndexPath *currentIndexpath;
-    
+     NSIndexPath *IndexpathUpdate;
 }
 @property(nonatomic,strong)AVPlayer *avPlayer;
 @property(nonatomic,strong)YPBubbleTransition * transition;
 @property DataSourceClass *datasource;
+@property (nonatomic, strong) CYViewControllerTransitioningDelegate *viewControllerTransitionDelegate;
+@property (nonatomic, strong) CYNavigationControllerDelegate *navDelegate;
 
 @property(nonatomic,strong)GroupDetailVC *groupDetailsVC;
 @property(nonatomic,strong)groupFeedCell *cell;
@@ -69,7 +69,7 @@
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
-    self.transition.transitionMode = YPBubbleTransitionModePresent;
+    self.transition.transitionMode = YPBubbleTransitionModeDismiss;
     self.transition.startPoint = self.btnAddPost.center;
     self.transition.bubbleColor = [UIColor colorWithRed:255.0/255.0f green:153.0/255.0f blue:120.0/255.0f alpha:1.0f];
     return self.transition;
@@ -84,6 +84,10 @@
 
 -(void)setUp
 {
+
+    self.viewControllerTransitionDelegate = [CYViewControllerTransitioningDelegate new];
+    self.navDelegate = [CYNavigationControllerDelegate new];
+    [self.navigationController enableRadialSwipe];
     _lblNoPosts.hidden=YES;
     _values = [[NSMutableArray alloc]init];
     _finalFeedArray=[[NSMutableArray alloc]init];
@@ -124,7 +128,10 @@
 
             }
             else
+            {
                 [[SharedClass SharedManager]removeLoader];
+                [[SharedClass SharedManager]AlertErrors:@"Error !!" :[response_success valueForKey:@"msg"] :@"OK"];
+            }
             
         }
                             :^(NSError *response_error) {
@@ -344,12 +351,25 @@
 {
     cell = (groupFeedCell*)[self.tableView cellForRowAtIndexPath:indexPath];
     GroupFeedModal * modal = [_finalFeedArray objectAtIndex:indexPath.row];
-//    NSString *postId=modal.postId;
+
     currentIndexpath=indexPath;
     CommentsVC *commentsVC=[self.storyboard instantiateViewControllerWithIdentifier:@"CommentsVC"];
     commentsVC.FeedModal=modal;
     commentsVC.delegate=self;
-    [self.navigationController pushViewController:commentsVC animated:YES];
+//    [self.navigationController pushViewController:commentsVC animated:YES];
+//    [self.navigationController radialPushViewController:commentsVC withDuration:0.3 comlititionBlock:^{
+//        
+//    }];
+   
+        commentsVC.modalPresentationStyle = UIModalPresentationCustom;
+        self.viewControllerTransitionDelegate.viewController = commentsVC;
+    
+        [self presentPortalTransitionViewController:commentsVC completion:nil];
+    
+    
+    
+
+
     
 }
 
@@ -358,12 +378,20 @@
 {
     _cellImage = (groupFeedImageCell*)[self.tableView cellForRowAtIndexPath:indexPath];
     GroupFeedModal * modal = [_finalFeedArray objectAtIndex:indexPath.row];
-    //    NSString *postId=modal.postId;
+   
     currentIndexpath=indexPath;
     CommentsVC *commentsVC=[self.storyboard instantiateViewControllerWithIdentifier:@"CommentsVC"];
     commentsVC.FeedModal=modal;
      commentsVC.delegate=self;
-    [self.navigationController pushViewController:commentsVC animated:YES];
+//    [self.navigationController radialPushViewController:commentsVC withDuration:0.3 comlititionBlock:^{
+//        
+//    }];
+    //[self.navigationController pushViewController:commentsVC animated:YES];
+    
+    commentsVC.modalPresentationStyle = UIModalPresentationCustom;
+    self.viewControllerTransitionDelegate.viewController = commentsVC;
+    
+    [self presentPortalTransitionViewController:commentsVC completion:nil];
 }
 
 
@@ -373,16 +401,17 @@
     cell = (groupFeedCell*)[self.tableView cellForRowAtIndexPath:indexPath];
     GroupFeedModal * modal = [_finalFeedArray objectAtIndex:indexPath.row];
    NSString *postId=modal.postId;
+    currentIndexpath=indexPath;
   NSDictionary * DictMarklist=@{@"access_token" :_accessToken, @"post_id": postId };
     
     if([cell.btnLike isSelected])
     {
-        [self UnLikePost :DictMarklist:indexPath];
+        [self UnLikePost :DictMarklist];
     }
     
     else if (![cell.btnLike isSelected])
     {
-        [self likePost:DictMarklist :indexPath];
+        [self likePost:DictMarklist ];
     }
 
 }
@@ -392,84 +421,66 @@
     _cellImage = (groupFeedImageCell*)[self.tableView cellForRowAtIndexPath:indexPath];
     GroupFeedModal * modal = [_finalFeedArray objectAtIndex:indexPath.row];
     NSString *postId=modal.postId;
+    currentIndexpath=indexPath;
     NSDictionary * DictMarklist=@{@"access_token" :_accessToken, @"post_id": postId };
     
     if([_cellImage.btnLike isSelected])
     {
-        [self UnLikePostImage :DictMarklist:indexPath];
+        [self UnLikePostImage :DictMarklist];
     }
     
     else if (![_cellImage.btnLike isSelected])
     {
-        [self likePostImage :DictMarklist :indexPath];
+        [self likePostImage :DictMarklist ];
     }
     
 }
 
 
--(void)UnLikePost :(NSDictionary*)DictMarklist :(NSIndexPath*)indexPath
+-(void)UnLikePost :(NSDictionary*)DictMarklist
 {
-    [_values replaceObjectAtIndex:indexPath.row withObject:@"NO"];
+    [_values replaceObjectAtIndex:currentIndexpath.row withObject:@"NO"];
     [cell.btnLike setImage:[UIImage imageNamed:@"ic_like_inactive"] forState:UIControlStateSelected];
     [cell.btnLike setSelected:NO];
-    [self UnlikeApi:DictMarklist :indexPath];
+    [self UnlikeApi:DictMarklist ];
     
 }
 
--(void)likePost :(NSDictionary*)DictMarklist :(NSIndexPath*)indexPath
+-(void)likePost :(NSDictionary*)DictMarklist
 {
-    [_values replaceObjectAtIndex:indexPath.row withObject:@"YES"];
+    [_values replaceObjectAtIndex:currentIndexpath.row withObject:@"YES"];
     [cell.btnLike setImage:[UIImage imageNamed:@"ic_like_active"] forState:UIControlStateSelected];
     [cell.btnLike setSelected:YES];
-    [self likeApi:DictMarklist :indexPath];
+    [self likeApi:DictMarklist ];
     
     
 }
 
--(void)UnLikePostImage :(NSDictionary*)DictMarklist :(NSIndexPath*)indexPath
+-(void)UnLikePostImage :(NSDictionary*)DictMarklist
 {
-    [_values replaceObjectAtIndex:indexPath.row withObject:@"NO"];
+    [_values replaceObjectAtIndex:currentIndexpath.row withObject:@"NO"];
     [_cellImage.btnLike setImage:[UIImage imageNamed:@"ic_like_inactive"] forState:UIControlStateSelected];
     [_cellImage.btnLike setSelected:NO];
-    [self UnlikeApi:DictMarklist :indexPath];
+    [self UnlikeApi:DictMarklist ];
     
 }
 
--(void)likePostImage :(NSDictionary*)DictMarklist :(NSIndexPath*)indexPath
+-(void)likePostImage :(NSDictionary*)DictMarklist
 {
-    [_values replaceObjectAtIndex:indexPath.row withObject:@"YES"];
+    [_values replaceObjectAtIndex:currentIndexpath.row withObject:@"YES"];
     [_cellImage.btnLike setImage:[UIImage imageNamed:@"ic_like_active"] forState:UIControlStateSelected];
     [_cellImage.btnLike setSelected:YES];
-    [self likeApi:DictMarklist :indexPath];
+    [self likeApi:DictMarklist ];
     
     
 }
 
 
--(void)UnlikeApi :(NSDictionary*)DictMarklist :(NSIndexPath*)indexPath
+-(void)UnlikeApi :(NSDictionary*)DictMarklist
 {
     [iOSRequest postData:UrlUnlikePost :DictMarklist :^(NSDictionary *response_success)
      {
-         GroupFeedModal * modal = [_finalFeedArray objectAtIndex:indexPath.row];
-         
-         NSInteger Value=[modal.is_liked intValue];
-         NSInteger likeCount=[modal.like_count intValue];
-         
-         if (Value==1)
-             Value=0;
-         else
-             Value=1;
-         
-         likeCount-=1;
-         
-         NSString *ValueChanged=[NSString stringWithFormat:@"%li",(long)Value];
-         NSString *ValueLikeCount=[NSString stringWithFormat:@"%li",(long)likeCount];
-         modal.is_liked=ValueChanged;
-         modal.like_count=ValueLikeCount;
-         
-         [_finalFeedArray replaceObjectAtIndex:indexPath.row withObject:modal];
-         
-         [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:indexPath.row inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+         [self updateModal:NO ];
      }
                         :^(NSError *response_error)
      {
@@ -482,29 +493,11 @@
 }
 
 
--(void)likeApi:(NSDictionary*)DictMarklist :(NSIndexPath*)indexPath
+-(void)likeApi:(NSDictionary*)DictMarklist
 {
     [iOSRequest postData:UrlLikePost :DictMarklist :^(NSDictionary *response_success)
      {
-         GroupFeedModal * modal = [_finalFeedArray objectAtIndex:indexPath.row];
-         NSInteger likeCount=[modal.like_count intValue];
-         
-         
-         
-         NSInteger Value=[modal.is_liked intValue];
-         if (Value==1)
-             Value=0;
-         else
-             Value=1;
-         
-         likeCount+=1;
-         NSString *ValueChanged=[NSString stringWithFormat:@"%li",(long)Value];
-         NSString *ValueLikeCount=[NSString stringWithFormat:@"%li",(long)likeCount];
-         modal.like_count=ValueLikeCount;
-         modal.is_liked=ValueChanged;
-         [_finalFeedArray replaceObjectAtIndex:indexPath.row withObject:modal];
-         
-         [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:indexPath.row inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+         [self updateModal :YES];
      }
                         :^(NSError *response_error)
      {
@@ -515,6 +508,45 @@
 
 }
 
+
+
+-(void)updateModal :(BOOL)Liked
+{
+    GroupFeedModal * modal = [_finalFeedArray objectAtIndex:currentIndexpath.row];
+    NSInteger likeCount=[modal.like_count intValue];
+    
+    NSInteger Value=[modal.is_liked intValue];
+    if (Value==1)
+        Value=0;
+    else
+        Value=1;
+    
+    if (Liked==YES) {
+         likeCount+=1;
+    }
+   else
+   {
+        likeCount-=1;
+   }
+    
+    NSString *ValueChanged=[NSString stringWithFormat:@"%li",(long)Value];
+    NSString *ValueLikeCount=[NSString stringWithFormat:@"%li",(long)likeCount];
+    modal.like_count=ValueLikeCount;
+    modal.is_liked=ValueChanged;
+    [_finalFeedArray replaceObjectAtIndex:currentIndexpath.row withObject:modal];
+    
+    [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:currentIndexpath.row inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+-(void)likeClicked :(BOOL)liked
+{
+    if (liked==YES) {
+        [self updateModal :YES];
+    }
+    else
+        [self updateModal:NO];
+    
+}
 
 -(void)commentPosted
 {
@@ -534,8 +566,12 @@
     
     [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:currentIndexpath.row inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
 }
-- (IBAction)btnBack:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+- (IBAction)btnBack:(id)sender
+{
+//    [self.navigationController popViewControllerAnimated:YES];
+        [self.navigationController radialPopViewControllerWithDuration:0.5 comlititionBlock:^{
+    
+        }];
 }
 
 - (IBAction)btnAddPost:(id)sender

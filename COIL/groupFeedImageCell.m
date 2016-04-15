@@ -40,9 +40,9 @@
     if (modal.media)
     {
         
-        if (![modal.media_type isEqualToString:@"jpg"])
+        if (![modal.thumb isEqualToString:@""])
         {
-             NSURL *URLImage=[NSURL URLWithString:[NSString stringWithFormat:@"%@14551754592wzF4B3o5ytN0vBw1ADFoQeBy3T4hj.JPG/400/400",ImagePath]];
+             NSURL *URLImage=[NSURL URLWithString:modal.thumb];
             _btnPlay.hidden=NO;
           [  self.imagePosted sd_setImageWithURL:URLImage placeholderImage:[UIImage imageNamed:@"img_placeholder_group"]];
             
@@ -69,101 +69,12 @@
     
     _lblPost.attributedText=attributedString;
     _lblUserName.text=modal.MemberName;
-    _lblComment_Likes.text=[NSString stringWithFormat:@"%@ comments . %@ likes",modal.comment_count,modal.like_count];
+    _lblComment_Likes.text=[NSString stringWithFormat:@"%@ comments • %@ likes",modal.comment_count,modal.like_count];
     
-    _lblTimeAdded.text=[self GetTimePeriodLeft:modal];
-    
-}
-
--(UIImage*)loadimage :(NSURL*)url
-{
-   
-    AVAsset *asset = [AVAsset assetWithURL:url];
-    AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc]initWithAsset:asset];
-    CMTime time = [asset duration];
-    time.value = 0;
-    CGImageRef imageRef = [imageGenerator copyCGImageAtTime:time actualTime:NULL error:NULL];
-    UIImage *thumbnail = [UIImage imageWithCGImage:imageRef];
-    CGImageRelease(imageRef);
-    
-    return thumbnail;
-
-
-}
-
-
-
--(NSString*)GetTimePeriodLeft:(GroupFeedModal*)modal
-{
-    NSString *start = modal.created_at;
-    //  NSString *end = modal.subscription_end_at;
-    [self getDateAndTime :modal];
-    NSDateFormatter *f = [[NSDateFormatter alloc] init];
-    [f setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSDate *startDate = [f dateFromString:start];
-    NSDate *endDate = [NSDate date];
-    
-    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSUInteger units =  NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitHour |NSCalendarUnitMinute |NSCalendarUnitSecond;
-    NSDateComponents *components = [gregorianCalendar components:units
-                                                        fromDate:startDate
-                                                          toDate:endDate
-                                                         options:NSCalendarWrapComponents];
-    
-    seconds=[components second];
-    day=[components day];
-    hour = [components hour];
-    minutes = [components minute];
-    NSString *TimeString;
-    if (day==0)
-    {
-        
-        if (hour >0) {
-            TimeString=[NSString stringWithFormat:@"%ld h",(long)hour];
-        }
-        else
-            if (minutes>0) {
-                TimeString=[NSString stringWithFormat:@"%ld m",(long)minutes];
-            }
-            else
-                TimeString=[NSString stringWithFormat:@"%ld s",(long)seconds];
-    }
-    else if (day==1)
-    {
-        TimeString=[NSString stringWithFormat:@"yesterday at: %@ ",Time];
-    }
-    else if (day>1)
-    {
-        TimeString=[NSString stringWithFormat:@"%@ ",Date];
-    }
-    return TimeString;
+    _lblTimeAdded.text=[[SharedClass SharedManager] GetTimePeriodLeft:modal];
     
 }
 
-
-
--(void)getDateAndTime:(GroupFeedModal*)modal
-{
-    NSArray *array=[modal.created_at componentsSeparatedByString:@" "];
-    NSString *str=[array objectAtIndex:1];
-    NSArray *arrayTime=[str componentsSeparatedByString:@":"];
-    
-    if ( [[arrayTime objectAtIndex:0]integerValue] >12)
-    {
-        NSInteger st=[[arrayTime objectAtIndex:0]integerValue] -12;
-        Time=[NSString stringWithFormat:@"%ld:%@ PM",(long)st,[arrayTime objectAtIndex:1]];
-    }
-    else
-    {
-        Time=[NSString stringWithFormat:@"%@:%@ AM",[arrayTime objectAtIndex:0],[arrayTime objectAtIndex:1]];
-    }
-    
-    NSString *strDate=[array objectAtIndex:0];
-    NSArray *arrayDate=[strDate componentsSeparatedByString:@"-"];
-    
-    Date=[NSString stringWithFormat:@"%@/%@/%@",[arrayDate objectAtIndex:2],[arrayDate objectAtIndex:1],[arrayDate objectAtIndex:0]];
-    
-}
 
 
 - (IBAction)btnLikePressed:(id)sender {
@@ -174,8 +85,7 @@
     [_delegate btnCommentClickedImage:_indexPath];
 }
 
-- (IBAction)btnPlayVideo:(id)sender
-{
+- (IBAction)btnPlayVideo:(id)sender{
     [_delegate btnPlayVideoPressed:_indexPath];
 }
 

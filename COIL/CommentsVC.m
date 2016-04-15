@@ -76,11 +76,9 @@
                 _arrayComments = [modal ListmethodCall:Usersarray];
                 if (_arrayComments.count>0)
                 {
-                   // _labelNoData.hidden=YES;
                     [self CallDataSource];
                 }
-//                else
-//                    _labelNoData.hidden=NO;
+
             }
             
         }
@@ -256,83 +254,27 @@
     _lblUserName.text=modal.MemberName;
     _lblComment_Likes.text=[NSString stringWithFormat:@"%@ comments . %@ likes",modal.comment_count,modal.like_count];
     
-    _lblTimeAdded.text=[self GetTimePeriodLeft:modal];
+    _lblTimeAdded.text=[[SharedClass SharedManager] GetTimePeriodLeft:modal];
     
-}
-
-
-
--(NSString*)GetTimePeriodLeft:(GroupFeedModal*)modal
-{
-    NSString *start = modal.created_at;
-    //  NSString *end = modal.subscription_end_at;
-    [self getDateAndTime :modal];
-    NSDateFormatter *f = [[NSDateFormatter alloc] init];
-    [f setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSDate *startDate = [f dateFromString:start];
-    NSDate *endDate = [NSDate date];
     
-    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSUInteger units =  NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitHour |NSCalendarUnitMinute |NSCalendarUnitSecond;
-    NSDateComponents *components = [gregorianCalendar components:units
-                                                        fromDate:startDate
-                                                          toDate:endDate
-                                                         options:NSCalendarWrapComponents];
+    NSInteger IsFavourite=[modal.is_liked intValue];
     
-    seconds=[components second];
-    day=[components day];
-    hour = [components hour];
-    minutes = [components minute];
-    NSString *TimeString;
-    if (day==0)
+    if (IsFavourite ==1)
     {
         
-        if (hour >0) {
-            TimeString=[NSString stringWithFormat:@"%ld h",(long)hour];
-        }
-        else
-            if (minutes>0) {
-                TimeString=[NSString stringWithFormat:@"%ld m",(long)minutes];
-            }
-            else
-                TimeString=[NSString stringWithFormat:@"%ld s",(long)seconds];
-    }
-    else if (day==1)
-    {
-        TimeString=[NSString stringWithFormat:@"yesterday at: %@ ",Time];
-    }
-    else if (day>1)
-    {
-        TimeString=[NSString stringWithFormat:@"%@ ",Date];
-    }
-    return TimeString;
-    
-}
-
-
-
--(void)getDateAndTime:(GroupFeedModal*)modal
-{
-    NSArray *array=[modal.created_at componentsSeparatedByString:@" "];
-    NSString *str=[array objectAtIndex:1];
-    NSArray *arrayTime=[str componentsSeparatedByString:@":"];
-    
-    if ( [[arrayTime objectAtIndex:0]integerValue] >12)
-    {
-        NSInteger st=[[arrayTime objectAtIndex:0]integerValue] -12;
-        Time=[NSString stringWithFormat:@"%ld:%@ PM",(long)st,[arrayTime objectAtIndex:1]];
+        [self.btnLike setImage:[UIImage imageNamed:@"ic_like_active"] forState:UIControlStateSelected];
+        [self.btnLike setSelected:YES];
     }
     else
     {
-        Time=[NSString stringWithFormat:@"%@:%@ AM",[arrayTime objectAtIndex:0],[arrayTime objectAtIndex:1]];
+        
+        [self.btnLike setImage:[UIImage imageNamed:@"ic_like_inactive"] forState:UIControlStateSelected];
+        [self.btnLike setSelected:NO];
     }
-    
-    NSString *strDate=[array objectAtIndex:0];
-    NSArray *arrayDate=[strDate componentsSeparatedByString:@"-"];
-    
-    Date=[NSString stringWithFormat:@"%@/%@/%@",[arrayDate objectAtIndex:2],[arrayDate objectAtIndex:1],[arrayDate objectAtIndex:0]];
-    
+
 }
+
+
 
 
 -(void)SendCommentApi
@@ -342,23 +284,14 @@
     NSInteger valueNetwork=[[SharedClass SharedManager]NetworkCheck];
     if (valueNetwork==0)
     {
-        [self loadParameters];
-        [iOSRequest postData:UrlCommentOnPost :DictComment :^(NSDictionary *response_success) {
+            [self loadParameters];
+            [iOSRequest postData:UrlCommentOnPost :DictComment :^(NSDictionary *response_success) {
             [[SharedClass SharedManager]removeLoader];
-            NSInteger value=[[response_success valueForKey:@"success"]integerValue];
+             NSInteger value=[[response_success valueForKey:@"success"]integerValue];
             if (value==1)
             {
-//                NSMutableArray *Usersarray=[[NSMutableArray alloc]init];
-//                Usersarray=[response_success valueForKey:@"groups"];
-//                _arrayComments = [modal ListmethodCall:Usersarray];
-//                if (_arrayComments.count>0) {
-//                    // _labelNoData.hidden=YES;
-//                    [self CallDataSource];
-//                }
-                //                else
-                //                    _labelNoData.hidden=NO;
-                
                 [_delegate commentPosted];
+                [self updateModal];
                 [self loadData];
             }
             
@@ -375,7 +308,89 @@
 - (IBAction)btnLikePressed:(id)sender
 {
    
+    NSString *postId=_FeedModal.postId;
+    NSDictionary * DictMarklist=@{@"access_token" :_Access_token, @"post_id": postId };
+    
+    if([self.btnLike isSelected])
+    {
+        [self UnLikePost :DictMarklist];
+    }
+    
+    else if (![self.btnLike isSelected])
+    {
+        [self likePost:DictMarklist ];
+    }
+
 }
+
+
+-(void)UnLikePost :(NSDictionary*)DictMarklist
+{
+   
+    [self.btnLike setImage:[UIImage imageNamed:@"ic_like_inactive"] forState:UIControlStateSelected];
+    [self.btnLike setSelected:NO];
+    [self UnlikeApi:DictMarklist ];
+    
+}
+
+-(void)likePost :(NSDictionary*)DictMarklist
+{
+   
+    [self.btnLike setImage:[UIImage imageNamed:@"ic_like_active"] forState:UIControlStateSelected];
+    [self.btnLike setSelected:YES];
+    [self likeApi:DictMarklist ];
+    
+    
+}
+-(void)UnlikeApi :(NSDictionary*)DictMarklist
+{
+    [iOSRequest postData:UrlUnlikePost :DictMarklist :^(NSDictionary *response_success)
+     {
+           [_delegate likeClicked :NO];
+         [self updateModal];
+       
+
+     }
+                        :^(NSError *response_error)
+     {
+         
+         [[SharedClass SharedManager]AlertErrors:@"Error !!" :response_error.localizedDescription :@"OK"];
+         NSLog(@"%@",response_error.localizedDescription);
+         [self.view endEditing:YES];
+     }];
+    
+}
+
+
+-(void)likeApi:(NSDictionary*)DictMarklist
+{
+    [iOSRequest postData:UrlLikePost :DictMarklist :^(NSDictionary *response_success)
+     {
+         [_delegate likeClicked:YES];
+         [self updateModal];
+         
+
+     }
+            :^(NSError *response_error)
+     {
+         [[SharedClass SharedManager]AlertErrors:@"Error !!" :response_error.localizedDescription :@"OK"];
+         NSLog(@"%@",response_error);
+         [self.view endEditing:YES];
+     }];
+    
+}
+
+
+-(void)updateModal
+{
+    _lblComment_Likes.text=[NSString stringWithFormat:@"%@ comments • %@ likes",_FeedModal.comment_count,_FeedModal.like_count];
+
+}
+
+
+
+
+
 
 - (IBAction)btnCommentPressed:(id)sender
 {
@@ -391,7 +406,12 @@
     
 
 }
-- (IBAction)btnBack:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+- (IBAction)btnBack:(id)sender
+{
+//    [self.navigationController popViewControllerAnimated:YES];
+//    [self.navigationController radialPopViewControllerWithDuration:0.5 comlititionBlock:^{
+//        
+//    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

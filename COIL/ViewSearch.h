@@ -11,6 +11,7 @@
 @protocol PushFromSearchDelegate<NSObject>
 @optional
 -(void)PushFromUserSearch:(NSInteger)IndexPathRow :(NSArray*)UsersArray;
+-(void)PushFromGroupSearch :(NSString*)GroupId;
 
 @end
 @interface ViewSearch : UIView<UITextFieldDelegate>

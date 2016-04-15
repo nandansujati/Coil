@@ -123,9 +123,7 @@
 
 -(void)setFilesData:(GroupDetailsModal*)modal
 {
-    
-    
-    
+     
     if ([_filesCount integerValue]==0)
     {
         _HeaderView = [[ViewHeaderGroupDetail alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 368)];

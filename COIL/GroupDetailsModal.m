@@ -90,7 +90,7 @@
     
     data.fileMedia=[dict valueForKey:@"media"];
     data.fileMediaType=[dict valueForKey:@"media_type"];
-       
+    data.fileThumb=[dict valueForKey:@"thumb"];
     return data;
     
 }

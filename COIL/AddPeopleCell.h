@@ -10,6 +10,7 @@
 #import "ContactModal.h"
 #import "Header.h"
 @protocol  bntClicked
+@optional
 -(void)BtnCheckboxClicked:(NSIndexPath *)indexpath;
 -(void)BtnInvite:(NSIndexPath *)indexpath;
 @end

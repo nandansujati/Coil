@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ImageView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C4B-tt-5Tk">
+                    <rect key="frame" x="0.0" y="175" width="600" height="250"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="250" id="sGY-el-D78"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UWb-pI-nEG">
+                    <rect key="frame" x="542" y="117" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="LQv-Wy-qAH"/>
+                        <constraint firstAttribute="width" constant="50" id="UIY-h3-gV7"/>
+                    </constraints>
+                    <state key="normal" image="ic_cross_orange"/>
+                    <connections>
+                        <action selector="btnCross:" destination="iN0-l3-epB" eventType="touchUpInside" id="cD0-Zj-Pji"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1f-GL-rUb">
+                    <rect key="frame" x="275" y="275" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="dHb-R8-Mej"/>
+                        <constraint firstAttribute="height" constant="50" id="qSh-sP-wsX"/>
+                    </constraints>
+                    <state key="normal" image="ic_play"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="C4B-tt-5Tk" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="GQf-5j-8BF"/>
+                <constraint firstAttribute="trailing" secondItem="UWb-pI-nEG" secondAttribute="trailing" constant="8" id="QRj-lg-v6Q"/>
+                <constraint firstItem="C4B-tt-5Tk" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="XYQ-1p-3Z0"/>
+                <constraint firstItem="C4B-tt-5Tk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="eHH-kM-Mfn"/>
+                <constraint firstItem="p1f-GL-rUb" firstAttribute="centerY" secondItem="C4B-tt-5Tk" secondAttribute="centerY" id="heD-D6-XaM"/>
+                <constraint firstItem="C4B-tt-5Tk" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="hpM-BL-S1F"/>
+                <constraint firstItem="C4B-tt-5Tk" firstAttribute="top" secondItem="UWb-pI-nEG" secondAttribute="bottom" constant="8" symbolic="YES" id="jFA-WT-4kd"/>
+                <constraint firstAttribute="trailing" secondItem="C4B-tt-5Tk" secondAttribute="trailing" id="s3H-ng-zK9"/>
+                <constraint firstItem="p1f-GL-rUb" firstAttribute="centerX" secondItem="C4B-tt-5Tk" secondAttribute="centerX" id="xtJ-h0-IlU"/>
+            </constraints>
+            <connections>
+                <outlet property="btnPlay" destination="p1f-GL-rUb" id="xS2-7o-KQQ"/>
+                <outlet property="imageFile" destination="C4B-tt-5Tk" id="vR7-Uz-1BJ"/>
+            </connections>
+            <point key="canvasLocation" x="348" y="294"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_cross_orange" width="12" height="12"/>
+        <image name="ic_play" width="24" height="24"/>
+    </resources>
+</document>

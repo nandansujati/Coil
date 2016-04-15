@@ -16,7 +16,7 @@
     data.name = [Dict valueForKey:@"name"];
     data.image = [Dict valueForKey:@"image"];
     data.email = [Dict valueForKey:@"email"];
-
+    data.Group_Id=[Dict valueForKey:@"id"];
     return data;
     
 }

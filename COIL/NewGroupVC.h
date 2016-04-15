@@ -18,10 +18,15 @@
 @property(nonatomic,strong)NSDictionary *DictParameters;
 @property (weak, nonatomic) IBOutlet UIImageView *imagePlus;
 @property (weak, nonatomic) IBOutlet UITextField *txtGroupName;
+@property (weak, nonatomic) IBOutlet UILabel *lblDiscoverablity;
 @property (weak, nonatomic) IBOutlet UIImageView *ImageStretched;
 @property (weak, nonatomic) IBOutlet UILabel *labelOnImage;
 @property (weak, nonatomic) IBOutlet UIImageView *ImageBubble;
+- (IBAction)btnDiscoverabilityDD:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UILabel *lblDisOptions;
 - (IBAction)btnBack:(id)sender;
 - (IBAction)btnNext:(id)sender;
+- (IBAction)btnCanvasIntegration:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btnCanvasInt;
 @end

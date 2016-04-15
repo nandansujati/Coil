@@ -11,6 +11,7 @@
 @interface SelectGroupsBroadcast ()<bntClicked>
 @property(nonatomic,strong)AddPeopleCell *Addcell;
 @property(nonatomic,strong)MyGroupsModal *modal;
+@property DataSourceClass *datasource;
 @end
 
 @implementation SelectGroupsBroadcast
@@ -218,4 +219,72 @@
 - (IBAction)btnBack:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+- (IBAction)btnPost:(id)sender {
+    [self loadDataForPost];
+}
+
+-(void)loadParametersForPost
+{
+    NSString *StringGroupIds=[_ArrayGroupIds componentsJoinedByString:@","];
+    _DictParametersForPost= @{@"access_token":_Access_Token,@"group_id":StringGroupIds,@"post_type":@"1", @"title":_TextViewPost};
+}
+
+
+-(void)loadDataForPost
+{
+    
+    NSInteger valueNetwork=[[SharedClass SharedManager]NetworkCheck];
+    if (valueNetwork==0)
+    {
+        [self loadParametersForPost];
+        
+        if (_VideoData==NO)
+        {
+            [iOSRequest postMutliPartData:UrlCreatePost :@"image" :_DictParametersForPost :_dataMedia :^(NSDictionary *response_success) {
+                [[SharedClass SharedManager]removeLoader];
+                NSInteger value=[[response_success valueForKey:@"success"]integerValue];
+                if (value==1)
+                {
+                   // [_delegate ReloadFeeds];
+                   [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:2] animated:YES];
+                }
+                
+            } :^(NSError *response_error)
+             {
+                 [[SharedClass SharedManager]removeLoader];
+                 [[SharedClass SharedManager]AlertErrors:@"Error !!" :response_error.localizedDescription :@"OK"];
+                 [self.view endEditing:YES];
+             }];
+        }
+        else
+        {
+            [iOSRequest postMutliPartVideoData:UrlCreatePost :@"video" :_DictParametersForPost :_dataMedia :^(NSDictionary *response_success) {
+                [[SharedClass SharedManager]removeLoader];
+                NSInteger value=[[response_success valueForKey:@"success"]integerValue];
+                if (value==1)
+                {
+                   // [_delegate ReloadFeeds];
+                   [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:2] animated:YES];
+                    //[self dismissViewControllerAnimated:YES completion:nil];
+                }
+                
+            } :^(NSError *response_error)
+             {
+                 [[SharedClass SharedManager]removeLoader];
+                 [[SharedClass SharedManager]AlertErrors:@"Error !!" :response_error.localizedDescription :@"OK"];
+                 [self.view endEditing:YES];
+             }];
+        }
+        
+    }
+    else
+    {
+        [[SharedClass SharedManager]removeLoader];
+    }
+    
+}
+
+
+
+
 @end

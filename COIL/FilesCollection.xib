@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -17,19 +17,29 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zVK-ir-s7D">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USn-Kb-Bqr">
+                        <rect key="frame" x="13" y="13" width="24" height="24"/>
+                        <state key="normal" image="ic_play"/>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
+                <constraint firstItem="USn-Kb-Bqr" firstAttribute="centerX" secondItem="heb-tk-zW7" secondAttribute="centerX" id="2kN-GF-m4S"/>
+                <constraint firstItem="USn-Kb-Bqr" firstAttribute="centerY" secondItem="heb-tk-zW7" secondAttribute="centerY" id="3LQ-Nu-xeR"/>
                 <constraint firstAttribute="bottom" secondItem="zVK-ir-s7D" secondAttribute="bottom" id="Fgm-Bk-qyp"/>
                 <constraint firstItem="zVK-ir-s7D" firstAttribute="top" secondItem="heb-tk-zW7" secondAttribute="top" id="QeT-IA-AKx"/>
                 <constraint firstAttribute="trailing" secondItem="zVK-ir-s7D" secondAttribute="trailing" id="mL3-gI-b0f"/>
                 <constraint firstItem="zVK-ir-s7D" firstAttribute="leading" secondItem="heb-tk-zW7" secondAttribute="leading" id="qdZ-SZ-UUl"/>
             </constraints>
             <connections>
+                <outlet property="btnPlay" destination="USn-Kb-Bqr" id="2LN-Zf-vr7"/>
                 <outlet property="imageFile" destination="zVK-ir-s7D" id="QRa-EP-9Xf"/>
             </connections>
-            <point key="canvasLocation" x="535" y="169"/>
+            <point key="canvasLocation" x="247" y="204"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="ic_play" width="24" height="24"/>
+    </resources>
 </document>

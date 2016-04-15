@@ -18,7 +18,11 @@
 -(void)btnAddPeoplePressed;
 @end
 @interface ViewHeaderGroupDetail : UIView
+{
+    BOOL VideoIsDere;
+}
 @property(nonatomic,strong)id<buttonPressedDelegate>delegate;
+@property(nonatomic,strong) NSURL *ImageFromFile;
 @property (weak, nonatomic) IBOutlet UIImageView *imageGroup;
 @property (weak, nonatomic) IBOutlet UILabel *lblGroupName;
 @property (weak, nonatomic) IBOutlet UIButton *btnDiscoverability;

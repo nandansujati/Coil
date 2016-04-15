@@ -23,6 +23,7 @@
 @property(nonatomic,strong)NSString *comment_count;
 @property(nonatomic,strong)NSString *is_liked;
 @property(nonatomic,strong)NSString *MemberStatus;
+@property(nonatomic,strong)NSString *thumb;
 
 -(id)ListAttributes :(NSDictionary*)Dict;
 -(NSMutableArray*)ListmethodCall:(NSMutableArray*)arrayFromServer;

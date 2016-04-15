@@ -12,6 +12,7 @@
 @property(strong, nonatomic) NSString *name;
 @property(strong, nonatomic) NSString *image;
 @property(strong, nonatomic) NSString *email;
+@property(strong, nonatomic) NSString * Group_Id;
 -(id)ListAttributes :(NSDictionary*)Dict;
 
 

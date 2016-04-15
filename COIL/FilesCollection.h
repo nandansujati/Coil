@@ -16,4 +16,5 @@
 
 @property(nonatomic,strong)NSURL *URLImage;
 -(void)configureForCellWithCountry:(GroupDetailsModal *)item ;
+@property (weak, nonatomic) IBOutlet UIButton *btnPlay;
 @end

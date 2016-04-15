@@ -87,6 +87,25 @@
     }];
 }
 
+
++(void)getData : (NSString *)urlStr : (NSDictionary *)parameters : (void(^)(NSArray * response_success))success : (void(^)(NSError * response_error))failure
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer =  [AFHTTPResponseSerializer serializer];
+    
+    [manager POST:urlStr parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
+     {}
+          success:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         success([NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil]);
+     }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         failure(error);
+     }];
+}
+
+
 +(void)postImages : (NSDictionary *)parameters imageData:(NSArray *)imageArr url:(NSString *)urlStr success : (void (^)(NSDictionary *responseDict))success failure:(void(^)(NSError* error))failure
 {
     

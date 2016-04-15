@@ -9,12 +9,19 @@
 #import "ViewHeaderGroupDetail.h"
 #define CellidentifierFilesCell @"FilesCollection"
 @interface ViewHeaderGroupDetail()
-
+@property(nonatomic,strong)ImageView *imageView;
 @end
 @implementation ViewHeaderGroupDetail
 
 
-
+-(id)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if(self) {
+        self = [[[NSBundle mainBundle] loadNibNamed:@"ViewHeaderGroupDetail" owner:self options:nil] lastObject];
+        [self setFrame:frame];
+    }
+    return self;
+}
 
 -(void)awakeFromNib
 {
@@ -37,6 +44,7 @@
    // gesture.delegate = self;
     self.imageGroup.userInteractionEnabled=YES;
     self.imageGroup.clipsToBounds = YES;
+    
      UINib *nib = [UINib nibWithNibName:@"FilesCollection" bundle: nil];
     [self.collectionViewFiles registerNib:nib  forCellWithReuseIdentifier:CellidentifierFilesCell];
 
@@ -44,16 +52,6 @@
 //
 }
 
-//- (id)initWithCoder:(NSCoder *)aDecoder
-//{
-//    self = [super initWithCoder:aDecoder];
-//    
-//    if (self)
-//    {
-//        _datasource = [[MyGroupsDataSource alloc] init];
-//    }
-//    return self;
-//}
 
 -(void)setFilesData :(NSArray *)FilesArray
 {
@@ -108,23 +106,39 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    id item = [self itemAtIndexPath:indexPath];
-//    _configureCellDelegateBlock(item);
+    GroupDetailsModal *modal=[_filesArray objectAtIndex:indexPath.row];
+    
+    if (![modal.fileThumb isEqualToString:@""])
+    {
+
+        _ImageFromFile=[NSURL URLWithString:modal.fileThumb];
+        VideoIsDere=YES;
+    }
+    else
+    {
+        _ImageFromFile=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@/400/400",ImagePath,modal.fileMedia]];
+        VideoIsDere=NO;
+    }
+    
+    [self imageTapped];
 }
 
+
+-(void)imageTapped
+{
+    
+    _imageView = (ImageView *)[[[NSBundle mainBundle] loadNibNamed:@"ImageView" owner:self options:nil] objectAtIndex:0];
+    _imageView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+    [_imageView getImage:_ImageFromFile :VideoIsDere];
+    [self addSubview:_imageView];
+    
+}
 
 -(void)handleTap:(UITapGestureRecognizer*)gesure
 {
     [_delegate imagePressed];
 }
--(id)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if(self) {
-        self = [[[NSBundle mainBundle] loadNibNamed:@"ViewHeaderGroupDetail" owner:self options:nil] lastObject];
-        [self setFrame:frame];
-    }
-    return self;
-}
+
 
 - (IBAction)btnBack:(id)sender;
 {

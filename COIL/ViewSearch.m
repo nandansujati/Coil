@@ -42,7 +42,8 @@
 
 -(void)GetGroupsAndUsers:(NSString*)newString
 {
-    if (!newString.length>0) {
+    _MoreGroupClicked=NO;
+    if (!(newString.length>0)) {
         _tableView.hidden=YES;
     }
     else
@@ -198,9 +199,8 @@
 {
     _MoreGroupClicked=NO;
     [self endEditing:YES];
-  if (indexPath.section==1)
+    if (indexPath.section==1)
     {
-
         if (indexPath.row==3)
         {
             [_delegate PushFromUserSearch:indexPath.row : _FinalUserArray];
@@ -210,23 +210,38 @@
     {
         if (indexPath.row==2)
         {
-            _MoreGroupClicked=YES;
-             [self getSplittedArray];
-            
-            [_tableView reloadData];
+            NSString *str=[_SplittedGroupArray objectAtIndex:indexPath.row];
+            if ([str containsString:@"more"]) {
+                _MoreGroupClicked=YES;
+                [self getSplittedArray];
+                
+                [_tableView reloadData];
+            }
+            else
+                [self getgroupId:indexPath];
+           
         }
-
+        else
+        {
+            [self getgroupId : indexPath];
+        }
     }
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
 }
 
+
+-(void)getgroupId:(NSIndexPath*)indexPath
+{
+    SearchModal *modal=[_FinalGroupArray objectAtIndex:indexPath.row];
+    NSString *str=modal.Group_Id;
+    [_delegate PushFromGroupSearch:str];
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
     return 40;
 }
-
-
 
 
 -(void)getSplittedArray
@@ -238,7 +253,7 @@
     else
     {
         _SplittedGroupArray=_ArrayAllGroups;
-//        _MoreGroupClicked=NO;
+        
     }
     
     _SplittedUserArray=[self SplitUserSearchArray:_FinalUserArray];
@@ -268,7 +283,6 @@
     return _SplittedArray;
 }
 
-
 -(NSArray*)SplitGroupSearchArray:(NSArray*)GroupArray
 {
     _SplittedArray=[[NSMutableArray alloc]init];
@@ -286,6 +300,7 @@
         }
          [_ArrayAllGroups addObject:modal.name];
     }
+    
     if (UserSearchCountMore>0) {
         [_SplittedArray addObject:[NSString stringWithFormat:@"+ %lu more",(long)UserSearchCountMore]];
     }

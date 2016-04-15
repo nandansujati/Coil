@@ -11,6 +11,7 @@
 #import "GroupFeedModal.h"
 @protocol CommentPostedDelegate
 -(void)commentPosted;
+-(void)likeClicked :(BOOL)liked;
 @end
 @interface CommentsVC : UIViewController
 {

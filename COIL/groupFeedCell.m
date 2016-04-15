@@ -48,85 +48,14 @@
     
     _lblPost.attributedText=attributedString;
     _lblUserName.text=modal.MemberName;
-    _lblComment_Likes.text=[NSString stringWithFormat:@"%@ comments . %@ likes",modal.comment_count,modal.like_count];
+    _lblComment_Likes.text=[NSString stringWithFormat:@"%@ comments • %@ likes",modal.comment_count,modal.like_count];
     
-    _lblTimeAdded.text=[self GetTimePeriodLeft:modal];
-    
-}
-
-
-
--(NSString*)GetTimePeriodLeft:(GroupFeedModal*)modal
-{
-    NSString *start = modal.created_at;
-    //  NSString *end = modal.subscription_end_at;
-    [self getDateAndTime :modal];
-    NSDateFormatter *f = [[NSDateFormatter alloc] init];
-    [f setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSDate *startDate = [f dateFromString:start];
-    NSDate *endDate = [NSDate date];
-    
-    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSUInteger units =  NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitHour |NSCalendarUnitMinute |NSCalendarUnitSecond;
-    NSDateComponents *components = [gregorianCalendar components:units
-                                                        fromDate:startDate
-                                                          toDate:endDate
-                                                         options:NSCalendarWrapComponents];
-    
-    seconds=[components second];
-    day=[components day];
-    hour = [components hour];
-    minutes = [components minute];
-    NSString *TimeString;
-    if (day==0)
-    {
-        
-        if (hour >0) {
-            TimeString=[NSString stringWithFormat:@"%ld h",(long)hour];
-        }
-        else
-            if (minutes>0) {
-                 TimeString=[NSString stringWithFormat:@"%ld m",(long)minutes];
-            }
-        else
-             TimeString=[NSString stringWithFormat:@"%ld s",(long)seconds];
-    }
-    else if (day==1)
-    {
-        TimeString=[NSString stringWithFormat:@"yesterday at: %@ ",Time];
-    }
-    else if (day>1)
-    {
-        TimeString=[NSString stringWithFormat:@"%@ ",Date];
-    }
-    return TimeString;
+    _lblTimeAdded.text=[[SharedClass SharedManager] GetTimePeriodLeft:modal];
     
 }
 
 
 
--(void)getDateAndTime:(GroupFeedModal*)modal
-{
-    NSArray *array=[modal.created_at componentsSeparatedByString:@" "];
-    NSString *str=[array objectAtIndex:1];
-    NSArray *arrayTime=[str componentsSeparatedByString:@":"];
-    
-    if ( [[arrayTime objectAtIndex:0]integerValue] >12)
-    {
-        NSInteger st=[[arrayTime objectAtIndex:0]integerValue] -12;
-        Time=[NSString stringWithFormat:@"%ld:%@ PM",(long)st,[arrayTime objectAtIndex:1]];
-    }
-    else
-    {
-        Time=[NSString stringWithFormat:@"%@:%@ AM",[arrayTime objectAtIndex:0],[arrayTime objectAtIndex:1]];
-    }
-    
-    NSString *strDate=[array objectAtIndex:0];
-    NSArray *arrayDate=[strDate componentsSeparatedByString:@"-"];
-    
-    Date=[NSString stringWithFormat:@"%@/%@/%@",[arrayDate objectAtIndex:2],[arrayDate objectAtIndex:1],[arrayDate objectAtIndex:0]];
-    
-}
 
 
 - (IBAction)btnLikePressed:(id)sender {

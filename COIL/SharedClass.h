@@ -13,6 +13,12 @@
 {
     BOOL grant;
     UIView *View1;
+    NSInteger minutes;
+    NSInteger hour;
+    NSInteger day;
+    NSInteger seconds;
+    NSString *Time;
+    NSString *Date;
     
 }
 @property(nonatomic,retain)NSString *str;
@@ -23,7 +29,9 @@
 -(NSMutableArray*)AddressBookFetch;
 @property(nonatomic,strong)CNContactStore *store;
 @property(nonatomic,strong)NSMutableArray *arrayAllContactList;
+-(NSString*)GetTimePeriodLeft:(GroupFeedModal*)modal;
 
+-(NSString*)getMonth:(NSString*)Month;
 -(void)Loader:(UIView*)view;
 -(void)LoaderWhiteOverlay:(UIView*)view;
 -(void)removeLoader;

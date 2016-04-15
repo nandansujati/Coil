@@ -113,7 +113,8 @@
     NSString *strDate=[array objectAtIndex:0];
     NSArray *arrayDate=[strDate componentsSeparatedByString:@"-"];
     
-    Date=[NSString stringWithFormat:@"%@/%@/%@",[arrayDate objectAtIndex:2],[arrayDate objectAtIndex:1],[arrayDate objectAtIndex:0]];
+    NSString *Month=[[SharedClass SharedManager] getMonth:[arrayDate objectAtIndex:1]];
+    Date=[NSString stringWithFormat:@"%@ %@,%@",Month,[arrayDate objectAtIndex:2],[arrayDate objectAtIndex:0]];
     
 }
 

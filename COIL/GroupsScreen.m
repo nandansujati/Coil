@@ -133,7 +133,10 @@
     NSLog(@"%@",modal.GroupId);
     _GroupsFeedController=[self.storyboard instantiateViewControllerWithIdentifier:@"GroupsFeedController"];
     _GroupsFeedController.Group_Id=modal.GroupId;
-    [self.navigationController pushViewController:_GroupsFeedController animated:YES];
+    //[self.navigationController pushViewController:_GroupsFeedController animated:YES];
+    [self.navigationController radialPushViewController:_GroupsFeedController withDuration:0.3 comlititionBlock:^{
+        
+    }];
     
 
 }

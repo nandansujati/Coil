@@ -550,9 +550,10 @@
 - (IBAction)btnPost:(id)sender
 {
     [self.view endEditing:YES];
-    [[SharedClass SharedManager]Loader:self.view];
-    if (![_txtView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length==0 && ![_txtView.text isEqualToString:@"Type here"])
+   
+    if (!([_txtView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length==0) && ![_txtView.text isEqualToString:@"Type here"])
     {
+      [[SharedClass SharedManager]Loader:self.view];
       [self loadData];  
     }
     

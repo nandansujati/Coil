@@ -17,6 +17,7 @@
     data.title = [Dict valueForKey:@"title"];
     data.post_type = [Dict valueForKey:@"post_type"];
     data.media = [Dict valueForKey:@"media"];
+    data.thumb=[Dict valueForKey:@"thumb"];
     data.media_type=[Dict valueForKey:@"media_type"];
     data.created_at=[Dict valueForKey:@"created_at"];
     data.MemberName=[Dict valueForKey:@"name"];

@@ -110,6 +110,16 @@
 }
 
 
+
+-(void)PushFromGroupSearch:(NSString *)GroupId
+{
+   GroupsFeed *GroupsFeedController=[self.storyboard instantiateViewControllerWithIdentifier:@"GroupsFeedController"];
+    GroupsFeedController.Group_Id=GroupId;
+    [self.navigationController radialPushViewController:GroupsFeedController withDuration:0.3 comlititionBlock:^{
+    
+        }];
+
+}
 -(void)setData
 {
     TableViewCellConfigureBlock configureCell = ^(UserExploreCell *cell,id item,id imageItems)

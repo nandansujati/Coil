@@ -15,15 +15,7 @@
 @end
 
 @interface groupFeedCell : UITableViewCell
-{
-    // NSString *month;
-    NSInteger minutes;
-    NSInteger hour;
-    NSInteger day;
-    NSInteger seconds;
-    NSString *Time;
-    NSString *Date;
-}
+
 @property(nonatomic,strong)id<BtnFeedCellPressed>delegate;
 @property(nonatomic,strong)NSIndexPath *indexPath;
 @property (weak, nonatomic) IBOutlet UIImageView *imageUser;

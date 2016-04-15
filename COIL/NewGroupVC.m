@@ -8,8 +8,13 @@
 
 #import "NewGroupVC.h"
 
-@interface NewGroupVC ()
+@interface NewGroupVC ()<btnPressedfromCanvasView>
+{
+    BOOL notificationTrue;
+    RNBlurModalView *modalView;
+}
 @property(nonatomic,strong)AddPeopleVC *AddPeople;
+@property(nonatomic,strong)ViewCanvasIntegration *ViewCanvas;
 @end
 
 @implementation NewGroupVC
@@ -53,6 +58,7 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self.view endEditing:YES];
+    [self btnCrossPressed];
 }
 
 
@@ -186,7 +192,59 @@
 
 
 
+#pragma mark- ActionSheet Delegate Methods
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
+    
+    if  ([buttonTitle isEqualToString:@"Open"]) {
+       
+        _lblDiscoverablity.text=@"Open";
+        _lblDisOptions.text=@"Visible to all coil app users";
+      
+    }
+    
+    
+    if  ([buttonTitle isEqualToString:@"Close"]) {
+        
+        _lblDiscoverablity.text=@"Close";
+        _lblDisOptions.text=@"Visible to group Members only";
+       
+    }
+    if  ([buttonTitle isEqualToString:@"Secret"]) {
+      
+        _lblDiscoverablity.text=@"Secret";
+        _lblDisOptions.text=@"Invisible for every user";
+        
+    }
+    
+//    if ([buttonTitle isEqualToString:@"CANCEL"])
+//    {
+//        NSLog(@"Done");
+//    }
+    
+}
+
+
 #pragma mark- Button Actions
+
+- (IBAction)btnDiscoverabilityDD:(id)sender
+{
+    NSString *actionSheetTitle = @"Select Group Discoverability"; //Action Sheet Title
+    NSString *destructiveTitle = @"CANCEL"; //Action Sheet Button Titles
+    NSString*btn1=@"Open";
+    NSString *btn2=@"Close";
+    NSString *btn3=@"Secret";
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                  initWithTitle:actionSheetTitle
+                                  delegate:self
+                                  cancelButtonTitle:destructiveTitle
+                                  destructiveButtonTitle:nil
+                                  otherButtonTitles:btn1, btn2,btn3, nil];
+    
+    [actionSheet showInView:self.view];
+}
 
 - (IBAction)btnBack:(id)sender
 {
@@ -206,4 +264,43 @@
         }
 
 }
+
+- (IBAction)btnCanvasIntegration:(id)sender {
+    if (notificationTrue==YES) {
+        notificationTrue=NO;
+      
+        [self.btnCanvasInt setImage:[UIImage imageNamed:@"switch_normal"] forState:UIControlStateNormal];
+    }
+    else if (notificationTrue==NO) {
+        notificationTrue=YES;
+        
+        [self.btnCanvasInt setImage:[UIImage imageNamed:@"switch_pressed"] forState:UIControlStateNormal];
+        [self showView];
+    }
+}
+
+-(void)showView
+{
+    _ViewCanvas = (ViewCanvasIntegration *)[[[NSBundle mainBundle] loadNibNamed:@"ViewCanvasIntegration" owner:self options:nil] objectAtIndex:0];
+    _ViewCanvas.frame = CGRectMake(20, self.view.frame.size.height/2-_ViewCanvas.frame.size.height/2, self.view.frame.size.width-40, _ViewCanvas.frame.size.height);
+    _ViewCanvas.layer.cornerRadius = 10.f;
+    _ViewCanvas.layer.borderColor = [UIColor clearColor].CGColor;
+    _ViewCanvas.layer.borderWidth = 3.f;
+    _ViewCanvas.delegate=self;
+//    currentIndexPath=indexPath;
+    modalView = [[RNBlurModalView alloc] initWithViewController:self view:_ViewCanvas];
+    [modalView show];
+}
+
+
+-(void)btnCrossPressed
+{
+    [modalView hide];
+    notificationTrue=NO;
+    
+    [self.btnCanvasInt setImage:[UIImage imageNamed:@"switch_normal"] forState:UIControlStateNormal];
+}
+
+
+
 @end

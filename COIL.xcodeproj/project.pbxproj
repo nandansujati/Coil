@@ -82,6 +82,20 @@
 		ACA48BB11C9FF10700C91802 /* GroupSettingMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA48BB01C9FF10700C91802 /* GroupSettingMenu.xib */; };
 		ACA48BB61C9FF2A900C91802 /* GroupSettingsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA48BB41C9FF2A900C91802 /* GroupSettingsCell.m */; };
 		ACA48BB71C9FF2A900C91802 /* GroupSettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA48BB51C9FF2A900C91802 /* GroupSettingsCell.xib */; };
+		ACA7C5641CB77AB20045E4B5 /* AAPTransitionDirector.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA7C55F1CB77AB20045E4B5 /* AAPTransitionDirector.m */; };
+		ACA7C5651CB77AB20045E4B5 /* UINavigationController+RadialTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA7C5611CB77AB20045E4B5 /* UINavigationController+RadialTransaction.m */; };
+		ACA7C5661CB77AB20045E4B5 /* UIView+Radial.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA7C5631CB77AB20045E4B5 /* UIView+Radial.m */; };
+		ACA7C5741CB78EDF0045E4B5 /* CYPortalTransitionContext.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA7C5691CB78EDF0045E4B5 /* CYPortalTransitionContext.m */; };
+		ACA7C5751CB78EDF0045E4B5 /* CYPortalTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA7C56B1CB78EDF0045E4B5 /* CYPortalTransitionAnimator.m */; };
+		ACA7C5761CB78EDF0045E4B5 /* UIViewController+PortalTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA7C56D1CB78EDF0045E4B5 /* UIViewController+PortalTransition.m */; };
+		ACA7C5771CB78EDF0045E4B5 /* UINavigationController+PortalTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA7C56F1CB78EDF0045E4B5 /* UINavigationController+PortalTransition.m */; };
+		ACA7C5781CB78EDF0045E4B5 /* CYNavigationControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA7C5711CB78EDF0045E4B5 /* CYNavigationControllerDelegate.m */; };
+		ACA7C5791CB78EDF0045E4B5 /* CYViewControllerTransitioningDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA7C5731CB78EDF0045E4B5 /* CYViewControllerTransitioningDelegate.m */; };
+		ACA7C58E1CB7C9E80045E4B5 /* ViewCanvasIntegration.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA7C58D1CB7C9E80045E4B5 /* ViewCanvasIntegration.xib */; };
+		ACA7C5911CB7C9FC0045E4B5 /* ViewCanvasIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA7C5901CB7C9FC0045E4B5 /* ViewCanvasIntegration.m */; };
+		ACA7C5951CB7CC480045E4B5 /* CanvasGroupsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA7C5931CB7CC480045E4B5 /* CanvasGroupsCell.m */; };
+		ACA7C5961CB7CC480045E4B5 /* CanvasGroupsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA7C5941CB7CC480045E4B5 /* CanvasGroupsCell.xib */; };
+		ACA7C59B1CB7CD970045E4B5 /* CanvasGroupsModal.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA7C59A1CB7CD970045E4B5 /* CanvasGroupsModal.m */; };
 		ACA7EE301C6F021600B06158 /* SearchUserExplore.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA7EE2F1C6F021600B06158 /* SearchUserExplore.m */; };
 		ACA7EE341C6F376800B06158 /* ContactModal.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA7EE331C6F376800B06158 /* ContactModal.m */; };
 		ACBF63F51C6F819600315BAA /* AddPeopleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACBF63F31C6F819600315BAA /* AddPeopleCell.m */; };
@@ -101,31 +115,14 @@
 		ACD95DBD1C69C9940044B5EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACD95DBB1C69C9940044B5EC /* Main.storyboard */; };
 		ACD95DBF1C69C9940044B5EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACD95DBE1C69C9940044B5EC /* Assets.xcassets */; };
 		ACD95DC21C69C9940044B5EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACD95DC01C69C9940044B5EC /* LaunchScreen.storyboard */; };
-		ACD95DCD1C69C9940044B5EC /* COILTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD95DCC1C69C9940044B5EC /* COILTests.m */; };
-		ACD95DD81C69C9940044B5EC /* COILUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD95DD71C69C9940044B5EC /* COILUITests.m */; };
 		ACD95DEE1C69CC4A0044B5EC /* SplashVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD95DED1C69CC4A0044B5EC /* SplashVC.m */; };
 		ACD95DF41C6A11DC0044B5EC /* SharedClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD95DF31C6A11DC0044B5EC /* SharedClass.m */; };
 		ACD95DFC1C6A17CD0044B5EC /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD95DFB1C6A17CD0044B5EC /* CustomButton.m */; };
 		ACE3741B1CA15F6B000920F5 /* ViewHeaderGroupDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE3741A1CA15F6B000920F5 /* ViewHeaderGroupDetail.m */; };
 		ACE3741D1CA15F7C000920F5 /* ViewHeaderGroupDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACE3741C1CA15F7C000920F5 /* ViewHeaderGroupDetail.xib */; };
+		E1E242B11CC11B0A00150034 /* ImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E242B01CC11B0A00150034 /* ImageView.m */; };
+		E1E242B31CC11B1800150034 /* ImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E242B21CC11B1800150034 /* ImageView.xib */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		ACD95DC91C69C9940044B5EC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = ACD95DA71C69C9940044B5EC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = ACD95DAE1C69C9940044B5EC;
-			remoteInfo = COIL;
-		};
-		ACD95DD41C69C9940044B5EC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = ACD95DA71C69C9940044B5EC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = ACD95DAE1C69C9940044B5EC;
-			remoteInfo = COIL;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4661FB8D67BB581F45D485AE /* Pods-COIL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COIL.release.xcconfig"; path = "Pods/Target Support Files/Pods-COIL/Pods-COIL.release.xcconfig"; sourceTree = "<group>"; };
@@ -244,6 +241,32 @@
 		ACA48BB31C9FF2A900C91802 /* GroupSettingsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupSettingsCell.h; sourceTree = "<group>"; };
 		ACA48BB41C9FF2A900C91802 /* GroupSettingsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupSettingsCell.m; sourceTree = "<group>"; };
 		ACA48BB51C9FF2A900C91802 /* GroupSettingsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupSettingsCell.xib; sourceTree = "<group>"; };
+		ACA7C55E1CB77AB20045E4B5 /* AAPTransitionDirector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPTransitionDirector.h; sourceTree = "<group>"; };
+		ACA7C55F1CB77AB20045E4B5 /* AAPTransitionDirector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPTransitionDirector.m; sourceTree = "<group>"; };
+		ACA7C5601CB77AB20045E4B5 /* UINavigationController+RadialTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+RadialTransaction.h"; sourceTree = "<group>"; };
+		ACA7C5611CB77AB20045E4B5 /* UINavigationController+RadialTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+RadialTransaction.m"; sourceTree = "<group>"; };
+		ACA7C5621CB77AB20045E4B5 /* UIView+Radial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Radial.h"; sourceTree = "<group>"; };
+		ACA7C5631CB77AB20045E4B5 /* UIView+Radial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Radial.m"; sourceTree = "<group>"; };
+		ACA7C5681CB78EDF0045E4B5 /* CYPortalTransitionContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYPortalTransitionContext.h; sourceTree = "<group>"; };
+		ACA7C5691CB78EDF0045E4B5 /* CYPortalTransitionContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYPortalTransitionContext.m; sourceTree = "<group>"; };
+		ACA7C56A1CB78EDF0045E4B5 /* CYPortalTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYPortalTransitionAnimator.h; sourceTree = "<group>"; };
+		ACA7C56B1CB78EDF0045E4B5 /* CYPortalTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYPortalTransitionAnimator.m; sourceTree = "<group>"; };
+		ACA7C56C1CB78EDF0045E4B5 /* UIViewController+PortalTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PortalTransition.h"; sourceTree = "<group>"; };
+		ACA7C56D1CB78EDF0045E4B5 /* UIViewController+PortalTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PortalTransition.m"; sourceTree = "<group>"; };
+		ACA7C56E1CB78EDF0045E4B5 /* UINavigationController+PortalTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+PortalTransition.h"; sourceTree = "<group>"; };
+		ACA7C56F1CB78EDF0045E4B5 /* UINavigationController+PortalTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+PortalTransition.m"; sourceTree = "<group>"; };
+		ACA7C5701CB78EDF0045E4B5 /* CYNavigationControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYNavigationControllerDelegate.h; sourceTree = "<group>"; };
+		ACA7C5711CB78EDF0045E4B5 /* CYNavigationControllerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYNavigationControllerDelegate.m; sourceTree = "<group>"; };
+		ACA7C5721CB78EDF0045E4B5 /* CYViewControllerTransitioningDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYViewControllerTransitioningDelegate.h; sourceTree = "<group>"; };
+		ACA7C5731CB78EDF0045E4B5 /* CYViewControllerTransitioningDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYViewControllerTransitioningDelegate.m; sourceTree = "<group>"; };
+		ACA7C58D1CB7C9E80045E4B5 /* ViewCanvasIntegration.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewCanvasIntegration.xib; sourceTree = "<group>"; };
+		ACA7C58F1CB7C9FC0045E4B5 /* ViewCanvasIntegration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewCanvasIntegration.h; sourceTree = "<group>"; };
+		ACA7C5901CB7C9FC0045E4B5 /* ViewCanvasIntegration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewCanvasIntegration.m; sourceTree = "<group>"; };
+		ACA7C5921CB7CC480045E4B5 /* CanvasGroupsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasGroupsCell.h; sourceTree = "<group>"; };
+		ACA7C5931CB7CC480045E4B5 /* CanvasGroupsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanvasGroupsCell.m; sourceTree = "<group>"; };
+		ACA7C5941CB7CC480045E4B5 /* CanvasGroupsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CanvasGroupsCell.xib; sourceTree = "<group>"; };
+		ACA7C5991CB7CD970045E4B5 /* CanvasGroupsModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasGroupsModal.h; sourceTree = "<group>"; };
+		ACA7C59A1CB7CD970045E4B5 /* CanvasGroupsModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanvasGroupsModal.m; sourceTree = "<group>"; };
 		ACA7EE2E1C6F021600B06158 /* SearchUserExplore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchUserExplore.h; sourceTree = "<group>"; };
 		ACA7EE2F1C6F021600B06158 /* SearchUserExplore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchUserExplore.m; sourceTree = "<group>"; };
 		ACA7EE321C6F376800B06158 /* ContactModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactModal.h; sourceTree = "<group>"; };
@@ -277,10 +300,8 @@
 		ACD95DBE1C69C9940044B5EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACD95DC11C69C9940044B5EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ACD95DC31C69C9940044B5EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ACD95DC81C69C9940044B5EC /* COILTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = COILTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD95DCC1C69C9940044B5EC /* COILTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = COILTests.m; sourceTree = "<group>"; };
 		ACD95DCE1C69C9940044B5EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ACD95DD31C69C9940044B5EC /* COILUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = COILUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD95DD71C69C9940044B5EC /* COILUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = COILUITests.m; sourceTree = "<group>"; };
 		ACD95DD91C69C9940044B5EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACD95DEC1C69CC4A0044B5EC /* SplashVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashVC.h; sourceTree = "<group>"; };
@@ -293,6 +314,9 @@
 		ACE374191CA15F6B000920F5 /* ViewHeaderGroupDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewHeaderGroupDetail.h; sourceTree = "<group>"; };
 		ACE3741A1CA15F6B000920F5 /* ViewHeaderGroupDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewHeaderGroupDetail.m; sourceTree = "<group>"; };
 		ACE3741C1CA15F7C000920F5 /* ViewHeaderGroupDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewHeaderGroupDetail.xib; sourceTree = "<group>"; };
+		E1E242AF1CC11B0A00150034 /* ImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageView.h; sourceTree = "<group>"; };
+		E1E242B01CC11B0A00150034 /* ImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageView.m; sourceTree = "<group>"; };
+		E1E242B21CC11B1800150034 /* ImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,20 +327,6 @@
 				AC5314361C6CBEA800F3F302 /* QuartzCore.framework in Frameworks */,
 				AC5314341C6CBEA100F3F302 /* Accelerate.framework in Frameworks */,
 				0081C6B3930E31DE1A9CAA78 /* libPods-COIL.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ACD95DC51C69C9940044B5EC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ACD95DD01C69C9940044B5EC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +467,8 @@
 		AC5314111C6C5A6F00F3F302 /* 3rdParties */ = {
 			isa = PBXGroup;
 			children = (
+				ACA7C5671CB78ECB0045E4B5 /* Transition */,
+				ACA7C55D1CB77A9A0045E4B5 /* PushTransition */,
 				ACD3D1C61CAE8BC600D57F12 /* FloatingButton */,
 				ACD3D1C81CAE8BE100D57F12 /* KeyboardScroll */,
 				ACD3D1C71CAE8BD300D57F12 /* Bubble Transition */,
@@ -513,6 +525,7 @@
 		AC53142C1C6CADA600F3F302 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				ACA7C5971CB7CC4E0045E4B5 /* CanvasGroupsCell */,
 				87F266161CB5909D0022FE63 /* CommentCell */,
 				AC606DD01CB3D60500F43D44 /* GroupFeedImageCell */,
 				AC805EF91CA109B10083BE00 /* groupFeedCell */,
@@ -762,6 +775,67 @@
 			name = GroupSettingsCell;
 			sourceTree = "<group>";
 		};
+		ACA7C55D1CB77A9A0045E4B5 /* PushTransition */ = {
+			isa = PBXGroup;
+			children = (
+				ACA7C55E1CB77AB20045E4B5 /* AAPTransitionDirector.h */,
+				ACA7C55F1CB77AB20045E4B5 /* AAPTransitionDirector.m */,
+				ACA7C5601CB77AB20045E4B5 /* UINavigationController+RadialTransaction.h */,
+				ACA7C5611CB77AB20045E4B5 /* UINavigationController+RadialTransaction.m */,
+				ACA7C5621CB77AB20045E4B5 /* UIView+Radial.h */,
+				ACA7C5631CB77AB20045E4B5 /* UIView+Radial.m */,
+			);
+			name = PushTransition;
+			sourceTree = "<group>";
+		};
+		ACA7C5671CB78ECB0045E4B5 /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				ACA7C5681CB78EDF0045E4B5 /* CYPortalTransitionContext.h */,
+				ACA7C5691CB78EDF0045E4B5 /* CYPortalTransitionContext.m */,
+				ACA7C56A1CB78EDF0045E4B5 /* CYPortalTransitionAnimator.h */,
+				ACA7C56B1CB78EDF0045E4B5 /* CYPortalTransitionAnimator.m */,
+				ACA7C56C1CB78EDF0045E4B5 /* UIViewController+PortalTransition.h */,
+				ACA7C56D1CB78EDF0045E4B5 /* UIViewController+PortalTransition.m */,
+				ACA7C56E1CB78EDF0045E4B5 /* UINavigationController+PortalTransition.h */,
+				ACA7C56F1CB78EDF0045E4B5 /* UINavigationController+PortalTransition.m */,
+				ACA7C5701CB78EDF0045E4B5 /* CYNavigationControllerDelegate.h */,
+				ACA7C5711CB78EDF0045E4B5 /* CYNavigationControllerDelegate.m */,
+				ACA7C5721CB78EDF0045E4B5 /* CYViewControllerTransitioningDelegate.h */,
+				ACA7C5731CB78EDF0045E4B5 /* CYViewControllerTransitioningDelegate.m */,
+			);
+			name = Transition;
+			sourceTree = "<group>";
+		};
+		ACA7C58C1CB7C9C40045E4B5 /* ViewCanvasIntegration */ = {
+			isa = PBXGroup;
+			children = (
+				ACA7C58F1CB7C9FC0045E4B5 /* ViewCanvasIntegration.h */,
+				ACA7C5901CB7C9FC0045E4B5 /* ViewCanvasIntegration.m */,
+				ACA7C58D1CB7C9E80045E4B5 /* ViewCanvasIntegration.xib */,
+			);
+			name = ViewCanvasIntegration;
+			sourceTree = "<group>";
+		};
+		ACA7C5971CB7CC4E0045E4B5 /* CanvasGroupsCell */ = {
+			isa = PBXGroup;
+			children = (
+				ACA7C5921CB7CC480045E4B5 /* CanvasGroupsCell.h */,
+				ACA7C5931CB7CC480045E4B5 /* CanvasGroupsCell.m */,
+				ACA7C5941CB7CC480045E4B5 /* CanvasGroupsCell.xib */,
+			);
+			name = CanvasGroupsCell;
+			sourceTree = "<group>";
+		};
+		ACA7C5981CB7CD7D0045E4B5 /* CanvasGroupsModal */ = {
+			isa = PBXGroup;
+			children = (
+				ACA7C5991CB7CD970045E4B5 /* CanvasGroupsModal.h */,
+				ACA7C59A1CB7CD970045E4B5 /* CanvasGroupsModal.m */,
+			);
+			name = CanvasGroupsModal;
+			sourceTree = "<group>";
+		};
 		ACA7EE2D1C6F01FE00B06158 /* SearchUserExplore */ = {
 			isa = PBXGroup;
 			children = (
@@ -894,8 +968,6 @@
 			isa = PBXGroup;
 			children = (
 				ACD95DAF1C69C9940044B5EC /* COIL.app */,
-				ACD95DC81C69C9940044B5EC /* COILTests.xctest */,
-				ACD95DD31C69C9940044B5EC /* COILUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -979,6 +1051,7 @@
 		ACD95DE81C69CA370044B5EC /* Modals */ = {
 			isa = PBXGroup;
 			children = (
+				ACA7C5981CB7CD7D0045E4B5 /* CanvasGroupsModal */,
 				ACC5C9171CB5479000D29585 /* CommentsModal */,
 				AC805EFF1CA10BA40083BE00 /* GroupFeedModal */,
 				ACC244D01C9A9A4000A955AE /* GroupDetailsModal */,
@@ -992,6 +1065,8 @@
 		ACD95DE91C69CA420044B5EC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E1E242AE1CC11AF400150034 /* ImageView */,
+				ACA7C58C1CB7C9C40045E4B5 /* ViewCanvasIntegration */,
 				ACE374181CA15F49000920F5 /* ViewHeaderGroupDetail */,
 				ACA48BAC1C9FF0C300C91802 /* GroupSettingMenu */,
 				AC41A7211C6DAC3000DBD1FA /* ViewSearchExplore */,
@@ -1085,6 +1160,16 @@
 			name = ViewHeaderGroupDetail;
 			sourceTree = "<group>";
 		};
+		E1E242AE1CC11AF400150034 /* ImageView */ = {
+			isa = PBXGroup;
+			children = (
+				E1E242AF1CC11B0A00150034 /* ImageView.h */,
+				E1E242B01CC11B0A00150034 /* ImageView.m */,
+				E1E242B21CC11B1800150034 /* ImageView.xib */,
+			);
+			name = ImageView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1108,42 +1193,6 @@
 			productReference = ACD95DAF1C69C9940044B5EC /* COIL.app */;
 			productType = "com.apple.product-type.application";
 		};
-		ACD95DC71C69C9940044B5EC /* COILTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = ACD95DDF1C69C9940044B5EC /* Build configuration list for PBXNativeTarget "COILTests" */;
-			buildPhases = (
-				ACD95DC41C69C9940044B5EC /* Sources */,
-				ACD95DC51C69C9940044B5EC /* Frameworks */,
-				ACD95DC61C69C9940044B5EC /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				ACD95DCA1C69C9940044B5EC /* PBXTargetDependency */,
-			);
-			name = COILTests;
-			productName = COILTests;
-			productReference = ACD95DC81C69C9940044B5EC /* COILTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		ACD95DD21C69C9940044B5EC /* COILUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = ACD95DE21C69C9940044B5EC /* Build configuration list for PBXNativeTarget "COILUITests" */;
-			buildPhases = (
-				ACD95DCF1C69C9940044B5EC /* Sources */,
-				ACD95DD01C69C9940044B5EC /* Frameworks */,
-				ACD95DD11C69C9940044B5EC /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				ACD95DD51C69C9940044B5EC /* PBXTargetDependency */,
-			);
-			name = COILUITests;
-			productName = COILUITests;
-			productReference = ACD95DD31C69C9940044B5EC /* COILUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1155,15 +1204,7 @@
 				TargetAttributes = {
 					ACD95DAE1C69C9940044B5EC = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = 94L4UQ837G;
-					};
-					ACD95DC71C69C9940044B5EC = {
-						CreatedOnToolsVersion = 7.1;
-						TestTargetID = ACD95DAE1C69C9940044B5EC;
-					};
-					ACD95DD21C69C9940044B5EC = {
-						CreatedOnToolsVersion = 7.1;
-						TestTargetID = ACD95DAE1C69C9940044B5EC;
+						DevelopmentTeam = Z2TB6G4VCE;
 					};
 				};
 			};
@@ -1181,8 +1222,6 @@
 			projectRoot = "";
 			targets = (
 				ACD95DAE1C69C9940044B5EC /* COIL */,
-				ACD95DC71C69C9940044B5EC /* COILTests */,
-				ACD95DD21C69C9940044B5EC /* COILUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -1211,6 +1250,7 @@
 				ACD3D1C51CAE8BC400D57F12 /* floatTableViewCell.xib in Resources */,
 				ACD95DBF1C69C9940044B5EC /* Assets.xcassets in Resources */,
 				AC805F301CA11C130083BE00 /* SF-UI-Text-Semibold.otf in Resources */,
+				ACA7C58E1CB7C9E80045E4B5 /* ViewCanvasIntegration.xib in Resources */,
 				AC805F2E1CA11C130083BE00 /* SF-UI-Text-Regular.otf in Resources */,
 				AC805F291CA11C130083BE00 /* SF-UI-Text-HeavyItalic.otf in Resources */,
 				AC805F271CA11C130083BE00 /* SF-UI-Text-BoldItalic.otf in Resources */,
@@ -1228,25 +1268,13 @@
 				AC805F1F1CA11C130083BE00 /* SF-UI-Display-Heavy.otf in Resources */,
 				AC805F201CA11C130083BE00 /* SF-UI-Display-Light.otf in Resources */,
 				AC805F1E1CA11C130083BE00 /* SF-UI-Display-Bold.otf in Resources */,
+				ACA7C5961CB7CC480045E4B5 /* CanvasGroupsCell.xib in Resources */,
 				AC805F2F1CA11C130083BE00 /* SF-UI-Text-RegularItalic.otf in Resources */,
 				AC88B6741C75FB4E009A4260 /* UserExploreCell.xib in Resources */,
+				E1E242B31CC11B1800150034 /* ImageView.xib in Resources */,
 				AC41A73E1C6DC37D00DBD1FA /* SearchGroupCell.xib in Resources */,
 				ACE3741D1CA15F7C000920F5 /* ViewHeaderGroupDetail.xib in Resources */,
 				AC805F1D1CA11C130083BE00 /* SF-UI-Display-Black.otf in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ACD95DC61C69C9940044B5EC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ACD95DD11C69C9940044B5EC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1305,6 +1333,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1E242B11CC11B0A00150034 /* ImageView.m in Sources */,
 				AC5314311C6CADF800F3F302 /* GroupsMenuCell.m in Sources */,
 				AC0D87581CAC0B7500A317D1 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				ACA48BAF1C9FF0F400C91802 /* GroupSettingMenu.m in Sources */,
@@ -1323,39 +1352,51 @@
 				ACBF63F51C6F819600315BAA /* AddPeopleCell.m in Sources */,
 				AC88B66C1C758F5B009A4260 /* MyGroupsModal.m in Sources */,
 				AC805EFD1CA109ED0083BE00 /* groupFeedCell.m in Sources */,
+				ACA7C5781CB78EDF0045E4B5 /* CYNavigationControllerDelegate.m in Sources */,
 				AC5314181C6C6DC200F3F302 /* TLAlertView.m in Sources */,
+				ACA7C5641CB77AB20045E4B5 /* AAPTransitionDirector.m in Sources */,
 				AC5314251C6CA94900F3F302 /* GroupsMenu.m in Sources */,
 				AC799E4A1C6AFF20002983BD /* SignUp1Screen.m in Sources */,
 				ACA48BAB1C9FE35800C91802 /* GroupsFeed.m in Sources */,
 				AC41A7201C6DA1DA00DBD1FA /* AddPeopleVC.m in Sources */,
+				ACA7C5771CB78EDF0045E4B5 /* UINavigationController+PortalTransition.m in Sources */,
 				AC41A7321C6DBFDA00DBD1FA /* SearchModal.m in Sources */,
 				AC799E5A1C6B1FFB002983BD /* SignUp2Screen.m in Sources */,
 				ACD95DB71C69C9940044B5EC /* AppDelegate.m in Sources */,
 				AC0D87551CAC09C500A317D1 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				AC53143A1C6CCADE00F3F302 /* NewGroupVC.m in Sources */,
+				ACA7C5661CB77AB20045E4B5 /* UIView+Radial.m in Sources */,
 				AC88B6621C758096009A4260 /* CollectionGroups.m in Sources */,
+				ACA7C5791CB78EDF0045E4B5 /* CYViewControllerTransitioningDelegate.m in Sources */,
 				AC5314211C6C9DED00F3F302 /* GroupsScreen.m in Sources */,
 				AC799E601C6B5873002983BD /* LoginScreen.m in Sources */,
 				ACD95DF41C6A11DC0044B5EC /* SharedClass.m in Sources */,
 				AC799E4E1C6B020F002983BD /* UINavigationController+PushPopAnimation.m in Sources */,
+				ACA7C5911CB7C9FC0045E4B5 /* ViewCanvasIntegration.m in Sources */,
+				ACA7C59B1CB7CD970045E4B5 /* CanvasGroupsModal.m in Sources */,
 				87F2661A1CB590B70022FE63 /* CommentCell.m in Sources */,
 				AC41A7371C6DC2D500DBD1FA /* SearchUsersCell.m in Sources */,
 				AC88B6681C75848F009A4260 /* MyGroupsDataSource.m in Sources */,
 				AC0D87521CAC003300A317D1 /* NewBroadcast.m in Sources */,
+				ACA7C5741CB78EDF0045E4B5 /* CYPortalTransitionContext.m in Sources */,
 				AC606DD41CB3D63700F43D44 /* groupFeedImageCell.m in Sources */,
 				ACD95DEE1C69CC4A0044B5EC /* SplashVC.m in Sources */,
+				ACA7C5761CB78EDF0045E4B5 /* UIViewController+PortalTransition.m in Sources */,
 				ACD95DB41C69C9940044B5EC /* main.m in Sources */,
 				AC1184D31C859B22004C5DBF /* TabBarController.m in Sources */,
 				ACC244D31C9A9A5E00A955AE /* GroupDetailsModal.m in Sources */,
 				ACD3D1C41CAE8BC400D57F12 /* floatTableViewCell.m in Sources */,
 				AC805F021CA10BC30083BE00 /* GroupFeedModal.m in Sources */,
 				ACC5C91A1CB547B100D29585 /* CommentsModal.m in Sources */,
+				ACA7C5951CB7CC480045E4B5 /* CanvasGroupsCell.m in Sources */,
 				ACD3D1BD1CAE60E400D57F12 /* PostImagesCell.m in Sources */,
+				ACA7C5651CB77AB20045E4B5 /* UINavigationController+RadialTransaction.m in Sources */,
 				AC0C3E611CAD5A14000C157C /* NewPostVC.m in Sources */,
 				AC41A7241C6DAC4B00DBD1FA /* ViewSearch.m in Sources */,
 				ACC244CF1C9A932000A955AE /* GroupDetailVC.m in Sources */,
 				ACD3D1C01CAE8B9F00D57F12 /* VCFloatingActionButton.m in Sources */,
 				AC53142B1C6CAA0E00F3F302 /* DataSourceClass.m in Sources */,
+				ACA7C5751CB78EDF0045E4B5 /* CYPortalTransitionAnimator.m in Sources */,
 				AC88B6771C760F7E009A4260 /* BLMultiColorLoader.m in Sources */,
 				AC0C3E581CAD27E1000C157C /* SelectGroupsBroadcast.m in Sources */,
 				ACA48BA61C9FC1E200C91802 /* GroupDetailMembersCell.m in Sources */,
@@ -1363,36 +1404,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ACD95DC41C69C9940044B5EC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ACD95DCD1C69C9940044B5EC /* COILTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ACD95DCF1C69C9940044B5EC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ACD95DD81C69C9940044B5EC /* COILUITests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		ACD95DCA1C69C9940044B5EC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = ACD95DAE1C69C9940044B5EC /* COIL */;
-			targetProxy = ACD95DC91C69C9940044B5EC /* PBXContainerItemProxy */;
-		};
-		ACD95DD51C69C9940044B5EC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = ACD95DAE1C69C9940044B5EC /* COIL */;
-			targetProxy = ACD95DD41C69C9940044B5EC /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		ACD95DBB1C69C9940044B5EC /* Main.storyboard */ = {
@@ -1432,8 +1444,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Gannon Giguiere (M9PCAQ3273)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gannon Giguiere (M9PCAQ3273)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Grant Rosenberg (952HG36992)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Grant Rosenberg (952HG36992)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1452,7 +1464,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1476,8 +1488,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Gannon Giguiere (M9PCAQ3273)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gannon Giguiere (M9PCAQ3273)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Grant Rosenberg (952HG36992)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Grant Rosenberg (952HG36992)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1490,7 +1502,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1502,14 +1514,14 @@
 			baseConfigurationReference = 5C5633346452E1ECCEA418FB /* Pods-COIL.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Gannon Giguiere (M9PCAQ3273)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gannon Giguiere (M9PCAQ3273)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = COIL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.useherbo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codebrew.COIL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "482811fc-1ee9-4a0f-9234-506216dde4c5";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1519,63 +1531,15 @@
 			baseConfigurationReference = 4661FB8D67BB581F45D485AE /* Pods-COIL.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Gannon Giguiere (M9PCAQ3273)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gannon Giguiere (M9PCAQ3273)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = COIL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.useherbo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codebrew.COIL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "482811fc-1ee9-4a0f-9234-506216dde4c5";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
-		ACD95DE01C69C9940044B5EC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = COILTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = codebrew.COILTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/COIL.app/COIL";
-			};
-			name = Debug;
-		};
-		ACD95DE11C69C9940044B5EC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = COILTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = codebrew.COILTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/COIL.app/COIL";
-			};
-			name = Release;
-		};
-		ACD95DE31C69C9940044B5EC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = COILUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = codebrew.COILUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = COIL;
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		ACD95DE41C69C9940044B5EC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = COILUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = codebrew.COILUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = COIL;
-				USES_XCTRUNNER = YES;
 			};
 			name = Release;
 		};
@@ -1596,24 +1560,6 @@
 			buildConfigurations = (
 				ACD95DDD1C69C9940044B5EC /* Debug */,
 				ACD95DDE1C69C9940044B5EC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		ACD95DDF1C69C9940044B5EC /* Build configuration list for PBXNativeTarget "COILTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				ACD95DE01C69C9940044B5EC /* Debug */,
-				ACD95DE11C69C9940044B5EC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		ACD95DE21C69C9940044B5EC /* Build configuration list for PBXNativeTarget "COILUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				ACD95DE31C69C9940044B5EC /* Debug */,
-				ACD95DE41C69C9940044B5EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

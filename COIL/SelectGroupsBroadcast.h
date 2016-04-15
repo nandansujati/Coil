@@ -8,16 +8,23 @@
 
 #import <UIKit/UIKit.h>
 #import "Header.h"
+
 @interface SelectGroupsBroadcast : UIViewController
+
+@property BOOL VideoData;
+@property(nonatomic,strong)NSData *dataMedia;
+@property(nonatomic,strong)NSString *TextViewPost;
 @property(nonatomic,strong)NSString *Access_Token;
 @property(nonatomic,strong)NSMutableArray *FinalGroupsArray;
 @property(nonatomic,strong)NSMutableArray *values;
 @property(nonatomic,strong)NSMutableArray *ArrayGroupIds;
 @property(nonatomic,strong)NSDictionary *DictParameters;
+@property(nonatomic,strong)NSDictionary *DictParametersForPost;
 @property(nonatomic,strong)NSArray *NewFinalArray;
 @property(nonatomic,strong)NSMutableArray *ArrayAllStrings;
-@property DataSourceClass *datasource;
+
 - (IBAction)btnBack:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+- (IBAction)btnPost:(id)sender;
 
 @end

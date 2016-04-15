@@ -30,13 +30,26 @@
 #define UrlAddNewMembers [NSString stringWithFormat:@"%@%@",BasePath,@"addUserToGroup"]
 #define UrlCommentOnPost [NSString stringWithFormat:@"%@%@",BasePath,@"commentPost"]
 #define UrlgetCommentsOnPost [NSString stringWithFormat:@"%@%@",BasePath,@"getComments"]
-
-
+#define UrlGetCanvasCourses [NSString stringWithFormat:@"%@%@",BasePath,@"listCourses"]
 
 
 #define ImagePath [NSString stringWithFormat:@"%@%@",BasePath,@"photo/"]
 
+
+#import "ViewCanvasIntegration.h"
+#import "YPBubbleTransition.h"
+#import "ImageView.h"
+#import "CanvasGroupsModal.h"
+#import "SelectGroupsBroadcast.h"
+#import "CanvasGroupsCell.h"
+#import "UINavigationController+RadialTransaction.h"
+#import <MediaPlayer/MediaPlayer.h>
+#import <AVFoundation/AVFoundation.h>
 #import "CommentCell.h"
+#import "UIViewController+PortalTransition.h"
+#import "UINavigationController+PortalTransition.h"
+#import "CYViewControllerTransitioningDelegate.h"
+#import "CYNavigationControllerDelegate.h"
 #import "CommentsModal.h"
 #import "CommentsVC.h"
 #import "AppDelegate.h"
