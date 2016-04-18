@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="SF-UI-Text-Medium.otf">
+            <string>SFUIText-Medium</string>
+            <string>SFUIText-Medium</string>
+        </mutableArray>
+        <mutableArray key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
+        </mutableArray>
+        <mutableArray key="SF-UI-Text-Semibold.otf">
+            <string>SFUIText-Semibold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ViewProfileHeader">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="357"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_user_profilepic_back" translatesAutoresizingMaskIntoConstraints="NO" id="pfZ-1h-GXg">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="Rs1-Ai-Bbb"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="knb-Vm-wbq">
+                    <rect key="frame" x="8" y="8" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="cB3-y4-ybI"/>
+                        <constraint firstAttribute="height" constant="40" id="zcY-SE-ILP"/>
+                    </constraints>
+                    <state key="normal" image="ic_back"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pSx-Zg-A6e">
+                    <rect key="frame" x="560" y="8" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="XWK-JW-3yE"/>
+                        <constraint firstAttribute="height" constant="40" id="zzA-R7-R58"/>
+                    </constraints>
+                    <state key="normal" image="ic_3dots"/>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_user_profilepic" translatesAutoresizingMaskIntoConstraints="NO" id="KBn-pC-hJP">
+                    <rect key="frame" x="230" y="70" width="141" height="141"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vc0-8Z-gRK">
+                    <rect key="frame" x="56" y="17" width="496" height="20"/>
+                    <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bruce Wayne" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jy2-2e-2Ep">
+                    <rect key="frame" x="240" y="219" width="122" height="23"/>
+                    <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="19"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nX2-Qk-Qoy">
+                    <rect key="frame" x="289" y="250" width="24" height="1"/>
+                    <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="24" id="g1e-uq-hFl"/>
+                        <constraint firstAttribute="height" constant="1" id="nhe-fv-C71"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGH-W3-10y">
+                    <rect key="frame" x="40" y="271" width="520" height="18"/>
+                    <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="15"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 Groups" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9u3-nk-ELs">
+                    <rect key="frame" x="268" y="309" width="64" height="16"/>
+                    <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="13"/>
+                    <color key="textColor" red="1" green="0.59999999999999998" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view alpha="0.20000000298023224" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XUf-tG-KwH">
+                    <rect key="frame" x="0.0" y="356" width="600" height="1"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="Ibv-0i-QYs"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="jy2-2e-2Ep" firstAttribute="centerX" secondItem="KBn-pC-hJP" secondAttribute="centerX" id="0X1-Zz-qLX"/>
+                <constraint firstItem="knb-Vm-wbq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="7uI-Oq-e3H"/>
+                <constraint firstItem="pSx-Zg-A6e" firstAttribute="leading" secondItem="Vc0-8Z-gRK" secondAttribute="trailing" constant="8" symbolic="YES" id="9mc-hN-vaa"/>
+                <constraint firstAttribute="trailing" secondItem="pfZ-1h-GXg" secondAttribute="trailing" id="AeY-7K-Exw"/>
+                <constraint firstItem="pfZ-1h-GXg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="EoQ-fT-YvA"/>
+                <constraint firstItem="KBn-pC-hJP" firstAttribute="top" secondItem="Vc0-8Z-gRK" secondAttribute="bottom" constant="33" id="HcI-mR-mWd"/>
+                <constraint firstItem="xGH-W3-10y" firstAttribute="top" secondItem="nX2-Qk-Qoy" secondAttribute="bottom" constant="20" id="LGl-j1-aqq"/>
+                <constraint firstItem="XUf-tG-KwH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="LxJ-jt-27S"/>
+                <constraint firstItem="Vc0-8Z-gRK" firstAttribute="leading" secondItem="knb-Vm-wbq" secondAttribute="trailing" constant="8" symbolic="YES" id="SmG-31-Wvf"/>
+                <constraint firstItem="knb-Vm-wbq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Tcm-T0-Nzn"/>
+                <constraint firstItem="nX2-Qk-Qoy" firstAttribute="centerX" secondItem="jy2-2e-2Ep" secondAttribute="centerX" id="U1h-Ta-9yT"/>
+                <constraint firstItem="nX2-Qk-Qoy" firstAttribute="top" secondItem="jy2-2e-2Ep" secondAttribute="bottom" constant="8" id="Zk8-WF-s0X"/>
+                <constraint firstItem="xGH-W3-10y" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="bBk-Le-7wY"/>
+                <constraint firstItem="Vc0-8Z-gRK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="17" id="d03-ca-f7Q"/>
+                <constraint firstAttribute="trailing" secondItem="XUf-tG-KwH" secondAttribute="trailing" id="dRd-gC-Ycy"/>
+                <constraint firstItem="9u3-nk-ELs" firstAttribute="centerX" secondItem="xGH-W3-10y" secondAttribute="centerX" id="dXh-7I-Fnt"/>
+                <constraint firstItem="KBn-pC-hJP" firstAttribute="centerX" secondItem="pfZ-1h-GXg" secondAttribute="centerX" id="f38-PJ-LrY"/>
+                <constraint firstAttribute="trailing" secondItem="pSx-Zg-A6e" secondAttribute="trailing" id="gqk-Vn-ohp"/>
+                <constraint firstItem="jy2-2e-2Ep" firstAttribute="top" secondItem="KBn-pC-hJP" secondAttribute="bottom" constant="8" id="hbO-dm-LAX"/>
+                <constraint firstItem="9u3-nk-ELs" firstAttribute="top" secondItem="xGH-W3-10y" secondAttribute="bottom" constant="20" id="n0U-zh-sFc"/>
+                <constraint firstItem="XUf-tG-KwH" firstAttribute="top" secondItem="9u3-nk-ELs" secondAttribute="bottom" multiplier="1.07" constant="8" symbolic="YES" id="omS-rZ-SiF"/>
+                <constraint firstAttribute="trailing" secondItem="xGH-W3-10y" secondAttribute="trailing" constant="40" id="t6i-fb-jac"/>
+                <constraint firstItem="pSx-Zg-A6e" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="toy-O3-9Bk"/>
+                <constraint firstItem="pfZ-1h-GXg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="uId-xV-Hpn"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="369" y="174.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_3dots" width="4" height="16"/>
+        <image name="ic_back" width="16" height="16"/>
+        <image name="img_user_profilepic" width="141" height="141"/>
+        <image name="img_user_profilepic_back" width="360" height="158"/>
+    </resources>
+</document>

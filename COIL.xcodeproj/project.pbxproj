@@ -122,6 +122,10 @@
 		ACE3741D1CA15F7C000920F5 /* ViewHeaderGroupDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACE3741C1CA15F7C000920F5 /* ViewHeaderGroupDetail.xib */; };
 		E1E242B11CC11B0A00150034 /* ImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E242B01CC11B0A00150034 /* ImageView.m */; };
 		E1E242B31CC11B1800150034 /* ImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E242B21CC11B1800150034 /* ImageView.xib */; };
+		E1E677621CC5085F00A6CC58 /* ViewProfileHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E677611CC5085F00A6CC58 /* ViewProfileHeader.m */; };
+		E1E677641CC5086900A6CC58 /* ViewProfileHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E677631CC5086900A6CC58 /* ViewProfileHeader.xib */; };
+		E1F5768C1CC50C3B00D7D6C2 /* UserProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F5768B1CC50C3B00D7D6C2 /* UserProfileVC.m */; };
+		E1F576901CC50E2C00D7D6C2 /* UserProfileModal.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F5768F1CC50E2C00D7D6C2 /* UserProfileModal.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -317,6 +321,13 @@
 		E1E242AF1CC11B0A00150034 /* ImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageView.h; sourceTree = "<group>"; };
 		E1E242B01CC11B0A00150034 /* ImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageView.m; sourceTree = "<group>"; };
 		E1E242B21CC11B1800150034 /* ImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageView.xib; sourceTree = "<group>"; };
+		E1E677601CC5085F00A6CC58 /* ViewProfileHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewProfileHeader.h; sourceTree = "<group>"; };
+		E1E677611CC5085F00A6CC58 /* ViewProfileHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewProfileHeader.m; sourceTree = "<group>"; };
+		E1E677631CC5086900A6CC58 /* ViewProfileHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewProfileHeader.xib; sourceTree = "<group>"; };
+		E1F5768A1CC50C3B00D7D6C2 /* UserProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileVC.h; sourceTree = "<group>"; };
+		E1F5768B1CC50C3B00D7D6C2 /* UserProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileVC.m; sourceTree = "<group>"; };
+		E1F5768E1CC50E2C00D7D6C2 /* UserProfileModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileModal.h; sourceTree = "<group>"; };
+		E1F5768F1CC50E2C00D7D6C2 /* UserProfileModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileModal.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1051,6 +1062,7 @@
 		ACD95DE81C69CA370044B5EC /* Modals */ = {
 			isa = PBXGroup;
 			children = (
+				E1F5768D1CC50E0D00D7D6C2 /* UserProfileModal */,
 				ACA7C5981CB7CD7D0045E4B5 /* CanvasGroupsModal */,
 				ACC5C9171CB5479000D29585 /* CommentsModal */,
 				AC805EFF1CA10BA40083BE00 /* GroupFeedModal */,
@@ -1065,6 +1077,7 @@
 		ACD95DE91C69CA420044B5EC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E1E6775F1CC5084A00A6CC58 /* ViewProfileHeader */,
 				E1E242AE1CC11AF400150034 /* ImageView */,
 				ACA7C58C1CB7C9C40045E4B5 /* ViewCanvasIntegration */,
 				ACE374181CA15F49000920F5 /* ViewHeaderGroupDetail */,
@@ -1078,6 +1091,7 @@
 		ACD95DEA1C69CA480044B5EC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E1F576891CC50C0A00D7D6C2 /* UserProfileVC */,
 				ACC5C9131CB52F4000D29585 /* CommentsVC */,
 				AC0C3E5E1CAD59FA000C157C /* NewPost */,
 				AC0C3E551CAD27C1000C157C /* SelectGroupsBroadcast */,
@@ -1170,6 +1184,34 @@
 			name = ImageView;
 			sourceTree = "<group>";
 		};
+		E1E6775F1CC5084A00A6CC58 /* ViewProfileHeader */ = {
+			isa = PBXGroup;
+			children = (
+				E1E677601CC5085F00A6CC58 /* ViewProfileHeader.h */,
+				E1E677611CC5085F00A6CC58 /* ViewProfileHeader.m */,
+				E1E677631CC5086900A6CC58 /* ViewProfileHeader.xib */,
+			);
+			name = ViewProfileHeader;
+			sourceTree = "<group>";
+		};
+		E1F576891CC50C0A00D7D6C2 /* UserProfileVC */ = {
+			isa = PBXGroup;
+			children = (
+				E1F5768A1CC50C3B00D7D6C2 /* UserProfileVC.h */,
+				E1F5768B1CC50C3B00D7D6C2 /* UserProfileVC.m */,
+			);
+			name = UserProfileVC;
+			sourceTree = "<group>";
+		};
+		E1F5768D1CC50E0D00D7D6C2 /* UserProfileModal */ = {
+			isa = PBXGroup;
+			children = (
+				E1F5768E1CC50E2C00D7D6C2 /* UserProfileModal.h */,
+				E1F5768F1CC50E2C00D7D6C2 /* UserProfileModal.m */,
+			);
+			name = UserProfileModal;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1259,6 +1301,7 @@
 				AC41A7281C6DAC6300DBD1FA /* ViewSearch.xib in Resources */,
 				AC805F231CA11C130083BE00 /* SF-UI-Display-Semibold.otf in Resources */,
 				ACD95DBD1C69C9940044B5EC /* Main.storyboard in Resources */,
+				E1E677641CC5086900A6CC58 /* ViewProfileHeader.xib in Resources */,
 				ACA48BA71C9FC1E200C91802 /* GroupDetailMembersCell.xib in Resources */,
 				ACC5C9121CB5193A00D29585 /* FilesCollection.xib in Resources */,
 				AC805F211CA11C130083BE00 /* SF-UI-Display-Medium.otf in Resources */,
@@ -1339,6 +1382,7 @@
 				ACA48BAF1C9FF0F400C91802 /* GroupSettingMenu.m in Sources */,
 				AC97BBD21CB23CFB001120E6 /* PostVideoCell.m in Sources */,
 				ACA7EE301C6F021600B06158 /* SearchUserExplore.m in Sources */,
+				E1F576901CC50E2C00D7D6C2 /* UserProfileModal.m in Sources */,
 				AC41A73D1C6DC37D00DBD1FA /* SearchGroupCell.m in Sources */,
 				AC0C3E641CAD5C8D000C157C /* YPBubbleTransition.m in Sources */,
 				ACC5C9161CB52F5F00D29585 /* CommentsVC.m in Sources */,
@@ -1356,6 +1400,7 @@
 				AC5314181C6C6DC200F3F302 /* TLAlertView.m in Sources */,
 				ACA7C5641CB77AB20045E4B5 /* AAPTransitionDirector.m in Sources */,
 				AC5314251C6CA94900F3F302 /* GroupsMenu.m in Sources */,
+				E1F5768C1CC50C3B00D7D6C2 /* UserProfileVC.m in Sources */,
 				AC799E4A1C6AFF20002983BD /* SignUp1Screen.m in Sources */,
 				ACA48BAB1C9FE35800C91802 /* GroupsFeed.m in Sources */,
 				AC41A7201C6DA1DA00DBD1FA /* AddPeopleVC.m in Sources */,
@@ -1364,6 +1409,7 @@
 				AC799E5A1C6B1FFB002983BD /* SignUp2Screen.m in Sources */,
 				ACD95DB71C69C9940044B5EC /* AppDelegate.m in Sources */,
 				AC0D87551CAC09C500A317D1 /* TPKeyboardAvoidingScrollView.m in Sources */,
+				E1E677621CC5085F00A6CC58 /* ViewProfileHeader.m in Sources */,
 				AC53143A1C6CCADE00F3F302 /* NewGroupVC.m in Sources */,
 				ACA7C5661CB77AB20045E4B5 /* UIView+Radial.m in Sources */,
 				AC88B6621C758096009A4260 /* CollectionGroups.m in Sources */,

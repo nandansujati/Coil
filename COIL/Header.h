@@ -31,13 +31,16 @@
 #define UrlCommentOnPost [NSString stringWithFormat:@"%@%@",BasePath,@"commentPost"]
 #define UrlgetCommentsOnPost [NSString stringWithFormat:@"%@%@",BasePath,@"getComments"]
 #define UrlGetCanvasCourses [NSString stringWithFormat:@"%@%@",BasePath,@"listCourses"]
-
+#define UrlGetUserProfile [NSString stringWithFormat:@"%@%@",BasePath,@"viewUserProfile"]
 
 #define ImagePath [NSString stringWithFormat:@"%@%@",BasePath,@"photo/"]
 
 
 #import "ViewCanvasIntegration.h"
 #import "YPBubbleTransition.h"
+#import "ViewProfileHeader.h"
+#import "UserProfileVC.h"
+#import "UserProfileModal.h"
 #import "ImageView.h"
 #import "CanvasGroupsModal.h"
 #import "SelectGroupsBroadcast.h"

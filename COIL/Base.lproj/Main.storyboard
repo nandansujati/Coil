@@ -460,8 +460,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tb_explore_normal" translatesAutoresizingMaskIntoConstraints="NO" id="HUB-0Q-vjc">
                                 <rect key="frame" x="16" y="85" width="24" height="24"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i0M-UN-3yo">
-                                <rect key="frame" x="0.0" y="126" width="600" height="474"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i0M-UN-3yo">
+                                <rect key="frame" x="0.0" y="126" width="600" height="425"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="bOP-1P-yGL" id="cht-EQ-axZ"/>
@@ -1588,10 +1588,10 @@
             </objects>
             <point key="canvasLocation" x="2651" y="2624"/>
         </scene>
-        <!--View Controller-->
+        <!--User ProfileVC-->
         <scene sceneID="2oC-rx-HES">
             <objects>
-                <viewController id="OmM-h0-8S7" sceneMemberID="viewController">
+                <viewController id="OmM-h0-8S7" customClass="UserProfileVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hTU-IJ-bz4"/>
                         <viewControllerLayoutGuide type="bottom" id="rtU-2X-eCk"/>
@@ -1599,19 +1599,7 @@
                     <view key="view" contentMode="scaleToFill" id="uD4-bV-wbx">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming Soon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xnZ-20-bZF">
-                                <rect key="frame" x="249" y="290" width="103" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="xnZ-20-bZF" firstAttribute="centerX" secondItem="uD4-bV-wbx" secondAttribute="centerX" id="CDU-Mq-dfR"/>
-                            <constraint firstItem="xnZ-20-bZF" firstAttribute="centerY" secondItem="uD4-bV-wbx" secondAttribute="centerY" id="FCX-SP-kxg"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="ic_profile_nav" selectedImage="tb_my_profile_pressed" id="dCr-Co-lq8"/>
                 </viewController>

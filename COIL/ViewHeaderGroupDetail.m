@@ -59,25 +59,6 @@
     
     if (!(FilesArray.count==0) )
     {
-//        CollectionViewCellConfigureBlock configureCell = ^(FilesCollection *cell,id item)
-//        {
-//            
-//            [cell configureForCellWithCountry:item ];
-//        };
-        
-        //        CollectionViewCellDelegateConfigureBlock configureDelegateCell=^(id item)
-        //        {
-        //
-        //            [self CallGroupDetail:item];
-        //
-        //        };
-        
-        
-//        self.datasource = [[MyGroupsDataSource alloc] initWithItems:FilesArray
-//                                                            cellIdentifier:CellidentifierFilesCell
-//                                                        configureCellBlock:configureCell configureDelegateBlock:nil];
-//        self.collectionViewFiles.dataSource =  _datasource;
-        //        self.collectionView.delegate= _datasource;
         [self.collectionViewFiles reloadData];
     }
     else
@@ -95,10 +76,10 @@
     
     FilesCollection *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellidentifierFilesCell forIndexPath:indexPath];
     cell.layer.cornerRadius=5.0f;
- //   id item = [self itemAtIndexPath:indexPath];
+
     GroupDetailsModal *modal=[_filesArray objectAtIndex:indexPath.row];
     [cell configureForCellWithCountry:modal ];
-//    _configureCellBlock(_cell,item);
+
     
     
     return cell;
