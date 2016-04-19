@@ -45,7 +45,12 @@
     
     NSDictionary *Dictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"AccessToken"];
     _Access_token=[Dictionary valueForKey:@"access_token"];
-    [self configurePost:_FeedModal];
+    if (_ProfileModal==nil) {
+        [self configurePost:_FeedModal];
+    }
+    else
+        [self configurePostProfile:_ProfileModal];
+        
     [self loadData];
 }
 
@@ -276,6 +281,49 @@
 
 
 
+-(void)configurePostProfile:(UserProfileModal *)modal
+{
+    if (modal.PostImage)
+    {
+        NSURL *URLImage=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@/40/40",ImagePath,modal.PostImage]];
+        [self.imagePost sd_setImageWithURL:URLImage placeholderImage:[UIImage imageNamed:@"img_placeholder_user"]];
+    }
+    else
+        self.imagePost.image=[UIImage imageNamed:@"img_placeholder_user"];
+    
+    _postId=modal.PostId;
+    
+    
+    NSString *labelText = modal.PostTitle;
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:labelText];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineSpacing:5];
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [labelText length])];
+    
+    
+    _lblPost.attributedText=attributedString;
+    _lblUserName.text=modal.PostName;
+    _lblComment_Likes.text=[NSString stringWithFormat:@"%@ comments . %@ likes",modal.PostCommentCount,modal.PostLikeCount];
+    
+    _lblTimeAdded.text=[[SharedClass SharedManager] GetTimePeriodLeftFromUser:modal];
+    
+    
+    NSInteger IsFavourite=[modal.PostIsLiked intValue];
+    
+    if (IsFavourite ==1)
+    {
+        
+        [self.btnLike setImage:[UIImage imageNamed:@"ic_like_active"] forState:UIControlStateSelected];
+        [self.btnLike setSelected:YES];
+    }
+    else
+    {
+        
+        [self.btnLike setImage:[UIImage imageNamed:@"ic_like_inactive"] forState:UIControlStateSelected];
+        [self.btnLike setSelected:NO];
+    }
+
+}
 
 -(void)SendCommentApi
 {
@@ -307,8 +355,13 @@
 
 - (IBAction)btnLikePressed:(id)sender
 {
-   
-    NSString *postId=_FeedModal.postId;
+    NSString *postId;
+    if (_ProfileModal==nil) {
+         postId=_FeedModal.postId;
+    }
+   else
+       postId=_ProfileModal.PostId;
+    
     NSDictionary * DictMarklist=@{@"access_token" :_Access_token, @"post_id": postId };
     
     if([self.btnLike isSelected])
@@ -383,9 +436,15 @@
 
 -(void)updateModal
 {
-    _lblComment_Likes.text=[NSString stringWithFormat:@"%@ comments • %@ likes",_FeedModal.comment_count,_FeedModal.like_count];
+    if (_ProfileModal==nil)
+    {
+         _lblComment_Likes.text=[NSString stringWithFormat:@"%@ comments • %@ likes",_FeedModal.comment_count,_FeedModal.like_count];
+    }
+    else
+        _lblComment_Likes.text=[NSString stringWithFormat:@"%@ comments • %@ likes",_ProfileModal.PostCommentCount,_ProfileModal.PostLikeCount];
 
 }
+
 
 
 
@@ -398,11 +457,17 @@
 }
 
 - (IBAction)btnSend:(id)sender {
-    [self SendCommentApi];
-    self.txtViewComment.text=@"";
-    [self.txtViewComment resignFirstResponder];
-    _constraintBottomView.constant = 0 ;
-    _constraintBottomViewHeight.constant=70;
+    
+    if (!([_txtViewComment.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length==0) && !([_txtViewComment.text isEqualToString:@"Comment.."]))
+    {
+        [self SendCommentApi];
+        self.txtViewComment.text=@"";
+        [self.txtViewComment resignFirstResponder];
+        _constraintBottomView.constant = 0 ;
+        _constraintBottomViewHeight.constant=70;
+    }
+   
+   
     
 
 }

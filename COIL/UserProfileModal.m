@@ -14,10 +14,10 @@
     UserProfileModal *data=[[UserProfileModal alloc]init];
     
     data.mutual_group_count = [Dict valueForKey:@"mutual_group_count"];
-      data.user_posts=[UserProfileModal parserArray:[Dict valueForKey:@"user_posts"]];
-    //    data.comment = [Dict valueForKey:@"comment"];
-    //    data.Username = [Dict valueForKey:@"name"];
-    //    data.image = [Dict valueForKey:@"image"];
+    data.userPosts=[UserProfileModal parserArray:[Dict valueForKey:@"user_posts"]];
+    data.userName = [[Dict valueForKey:@"user"]valueForKey:@"name"];
+    data.userImage = [[Dict valueForKey:@"user"]valueForKey:@"image"];
+    data.userBiography = [[Dict valueForKey:@"user"]valueForKey:@"bio"];
     //    data.created_at=[Dict valueForKey:@"created_at"];
     
     return data;
@@ -59,6 +59,8 @@
     data.PostTitle=[dict valueForKey:@"title"];
     data.PostMedia=[dict valueForKey:@"media"];
     data.PostThumb=[dict valueForKey:@"thumb"];
+    data.PostId=[dict valueForKey:@"id"];
+    data.PostImage=[dict valueForKey:@"image"];
     data.PostCreatedAt=[dict valueForKey:@"created_at"];
     data.PostUserId=[dict valueForKey:@"user_id"];
     data.PostName=[dict valueForKey:@"name"];

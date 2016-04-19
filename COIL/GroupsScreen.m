@@ -47,7 +47,7 @@
     NSDictionary *Dictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"AccessToken"];
     _Access_Token=[Dictionary valueForKey:@"access_token"];
     [[UITabBar appearance]setTintColor:[UIColor colorWithRed:255.0f/255.0f green:153.0/255.0f blue:120.0f/255.0f alpha:1.0f ]];
-   // [[UITabBar appearance]setDelegate:self];
+  
     [[SharedClass SharedManager]Loader:self.view];
     
     

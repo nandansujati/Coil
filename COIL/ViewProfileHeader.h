@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@protocol ButtonPressedFromProfileHeader
+-(void)btnBackPressed;
+@end
 @interface ViewProfileHeader : UIView
+@property(nonatomic,strong)id<ButtonPressedFromProfileHeader>delegate;
+@property (weak, nonatomic) IBOutlet UIImageView *UserImage;
+@property (weak, nonatomic) IBOutlet UIImageView *ImageBackground;
+@property (weak, nonatomic) IBOutlet UILabel *lblHeaderName;
+@property (weak, nonatomic) IBOutlet UILabel *lblUserName;
 
+@property (weak, nonatomic) IBOutlet UILabel *lblBiography;
+@property (weak, nonatomic) IBOutlet UILabel *lblMutualGroups;
+- (IBAction)btnBack:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btnBack;
 @end

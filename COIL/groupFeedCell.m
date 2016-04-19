@@ -28,7 +28,7 @@
 }
 -(void)configureForCellWithCountry:(GroupFeedModal *)modal
 {
-    if (modal.MemberImage)
+    if (modal.MemberImage.length!=0)
     {
         NSURL *URLImage=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@/40/40",ImagePath,modal.MemberImage]];
         [self.imageUser sd_setImageWithURL:URLImage placeholderImage:[UIImage imageNamed:@"img_placeholder_user"]];
@@ -54,6 +54,34 @@
     
 }
 
+
+-(void)configureForCellWithUser:(UserProfileModal *)modal
+{
+    if (modal.PostImage.length!=0)
+    {
+        NSURL *URLImage=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@/40/40",ImagePath,modal.PostImage]];
+        [self.imageUser sd_setImageWithURL:URLImage placeholderImage:[UIImage imageNamed:@"img_placeholder_user"]];
+    }
+    else
+        self.imageUser.image=[UIImage imageNamed:@"img_placeholder_user"];
+    
+    
+    
+    
+    NSString *labelText = modal.PostTitle;
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:labelText];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineSpacing:5];
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [labelText length])];
+    
+    
+    _lblPost.attributedText=attributedString;
+    _lblUserName.text=modal.PostName;
+    _lblComment_Likes.text=[NSString stringWithFormat:@"%@ comments • %@ likes",modal.PostCommentCount,modal.PostLikeCount];
+    
+    _lblTimeAdded.text=[[SharedClass SharedManager] GetTimePeriodLeftFromUser:modal];
+    
+}
 
 
 

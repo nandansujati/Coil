@@ -10,6 +10,7 @@
 #import "Header.h"
 #import "GroupFeedModal.h"
 @protocol CommentPostedDelegate
+@optional
 -(void)commentPosted;
 -(void)likeClicked :(BOOL)liked;
 @end
@@ -34,6 +35,7 @@
 @property(nonatomic,strong)NSString *postId;
 @property(nonatomic,strong)NSIndexPath *indexPath;
 @property(nonatomic,strong) GroupFeedModal *FeedModal;
+@property(nonatomic,strong)UserProfileModal *ProfileModal;
 @property (weak, nonatomic) IBOutlet UIImageView *imagePost;
 @property (weak, nonatomic) IBOutlet UIView *viewBottom;
 @property (weak, nonatomic) IBOutlet UITextView *txtViewComment;

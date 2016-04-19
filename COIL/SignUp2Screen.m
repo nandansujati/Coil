@@ -337,7 +337,6 @@
         {
             [[SharedClass SharedManager]AlertErrors:@"Error" :@"Please enter your Bio Description" :@"Ok"];
             ValueValidation=1;
-            
         }
         
     }

@@ -30,7 +30,7 @@
 @property(nonatomic,strong)CNContactStore *store;
 @property(nonatomic,strong)NSMutableArray *arrayAllContactList;
 -(NSString*)GetTimePeriodLeft:(GroupFeedModal*)modal;
-
+-(NSString*)GetTimePeriodLeftFromUser:(UserProfileModal*)modal;
 -(NSString*)getMonth:(NSString*)Month;
 -(void)Loader:(UIView*)view;
 -(void)LoaderWhiteOverlay:(UIView*)view;

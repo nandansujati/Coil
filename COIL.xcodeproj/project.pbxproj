@@ -120,6 +120,11 @@
 		ACD95DFC1C6A17CD0044B5EC /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD95DFB1C6A17CD0044B5EC /* CustomButton.m */; };
 		ACE3741B1CA15F6B000920F5 /* ViewHeaderGroupDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE3741A1CA15F6B000920F5 /* ViewHeaderGroupDetail.m */; };
 		ACE3741D1CA15F7C000920F5 /* ViewHeaderGroupDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACE3741C1CA15F7C000920F5 /* ViewHeaderGroupDetail.xib */; };
+		E1D516BF1CC64D3E006AD359 /* GetImagesView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D516BE1CC64D3E006AD359 /* GetImagesView.m */; };
+		E1D516C11CC64D7B006AD359 /* GetImagesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1D516C01CC64D7B006AD359 /* GetImagesView.xib */; };
+		E1D516C61CC6555B006AD359 /* DummyImagesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D516C41CC6555B006AD359 /* DummyImagesCell.m */; };
+		E1D516C71CC6555B006AD359 /* DummyImagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1D516C51CC6555B006AD359 /* DummyImagesCell.xib */; };
+		E1D516CB1CC659C2006AD359 /* BIZGrid4plus1CollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D516CA1CC659C2006AD359 /* BIZGrid4plus1CollectionViewLayout.m */; };
 		E1E242B11CC11B0A00150034 /* ImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E242B01CC11B0A00150034 /* ImageView.m */; };
 		E1E242B31CC11B1800150034 /* ImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E242B21CC11B1800150034 /* ImageView.xib */; };
 		E1E677621CC5085F00A6CC58 /* ViewProfileHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E677611CC5085F00A6CC58 /* ViewProfileHeader.m */; };
@@ -318,6 +323,14 @@
 		ACE374191CA15F6B000920F5 /* ViewHeaderGroupDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewHeaderGroupDetail.h; sourceTree = "<group>"; };
 		ACE3741A1CA15F6B000920F5 /* ViewHeaderGroupDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewHeaderGroupDetail.m; sourceTree = "<group>"; };
 		ACE3741C1CA15F7C000920F5 /* ViewHeaderGroupDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewHeaderGroupDetail.xib; sourceTree = "<group>"; };
+		E1D516BD1CC64D3E006AD359 /* GetImagesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetImagesView.h; sourceTree = "<group>"; };
+		E1D516BE1CC64D3E006AD359 /* GetImagesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetImagesView.m; sourceTree = "<group>"; };
+		E1D516C01CC64D7B006AD359 /* GetImagesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetImagesView.xib; sourceTree = "<group>"; };
+		E1D516C31CC6555B006AD359 /* DummyImagesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DummyImagesCell.h; sourceTree = "<group>"; };
+		E1D516C41CC6555B006AD359 /* DummyImagesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DummyImagesCell.m; sourceTree = "<group>"; };
+		E1D516C51CC6555B006AD359 /* DummyImagesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DummyImagesCell.xib; sourceTree = "<group>"; };
+		E1D516C91CC659C2006AD359 /* BIZGrid4plus1CollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BIZGrid4plus1CollectionViewLayout.h; sourceTree = "<group>"; };
+		E1D516CA1CC659C2006AD359 /* BIZGrid4plus1CollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BIZGrid4plus1CollectionViewLayout.m; sourceTree = "<group>"; };
 		E1E242AF1CC11B0A00150034 /* ImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageView.h; sourceTree = "<group>"; };
 		E1E242B01CC11B0A00150034 /* ImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageView.m; sourceTree = "<group>"; };
 		E1E242B21CC11B1800150034 /* ImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageView.xib; sourceTree = "<group>"; };
@@ -676,6 +689,8 @@
 		AC88B65D1C75806D009A4260 /* CollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				E1D516C81CC659B0006AD359 /* GridLayout */,
+				E1D516C21CC6550E006AD359 /* DummyImagesCell */,
 				ACC5C90D1CB4FE7700D29585 /* FilesCollection */,
 				AC97BBCF1CB23CD4001120E6 /* PostVideoCell */,
 				ACD3D1BA1CAE60BB00D57F12 /* PostImagesCell */,
@@ -1077,6 +1092,7 @@
 		ACD95DE91C69CA420044B5EC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E1D516BC1CC64C9F006AD359 /* GetImagesView */,
 				E1E6775F1CC5084A00A6CC58 /* ViewProfileHeader */,
 				E1E242AE1CC11AF400150034 /* ImageView */,
 				ACA7C58C1CB7C9C40045E4B5 /* ViewCanvasIntegration */,
@@ -1172,6 +1188,35 @@
 				ACE3741C1CA15F7C000920F5 /* ViewHeaderGroupDetail.xib */,
 			);
 			name = ViewHeaderGroupDetail;
+			sourceTree = "<group>";
+		};
+		E1D516BC1CC64C9F006AD359 /* GetImagesView */ = {
+			isa = PBXGroup;
+			children = (
+				E1D516BD1CC64D3E006AD359 /* GetImagesView.h */,
+				E1D516BE1CC64D3E006AD359 /* GetImagesView.m */,
+				E1D516C01CC64D7B006AD359 /* GetImagesView.xib */,
+			);
+			name = GetImagesView;
+			sourceTree = "<group>";
+		};
+		E1D516C21CC6550E006AD359 /* DummyImagesCell */ = {
+			isa = PBXGroup;
+			children = (
+				E1D516C31CC6555B006AD359 /* DummyImagesCell.h */,
+				E1D516C41CC6555B006AD359 /* DummyImagesCell.m */,
+				E1D516C51CC6555B006AD359 /* DummyImagesCell.xib */,
+			);
+			name = DummyImagesCell;
+			sourceTree = "<group>";
+		};
+		E1D516C81CC659B0006AD359 /* GridLayout */ = {
+			isa = PBXGroup;
+			children = (
+				E1D516C91CC659C2006AD359 /* BIZGrid4plus1CollectionViewLayout.h */,
+				E1D516CA1CC659C2006AD359 /* BIZGrid4plus1CollectionViewLayout.m */,
+			);
+			name = GridLayout;
 			sourceTree = "<group>";
 		};
 		E1E242AE1CC11AF400150034 /* ImageView */ = {
@@ -1289,6 +1334,7 @@
 				AC805F1C1CA11C130083BE00 /* License Agreement for SF UI Font.pdf in Resources */,
 				AC805F311CA11C130083BE00 /* SF-UI-Text-SemiboldItalic.otf in Resources */,
 				AC805F2D1CA11C130083BE00 /* SF-UI-Text-MediumItalic.otf in Resources */,
+				E1D516C71CC6555B006AD359 /* DummyImagesCell.xib in Resources */,
 				ACD3D1C51CAE8BC400D57F12 /* floatTableViewCell.xib in Resources */,
 				ACD95DBF1C69C9940044B5EC /* Assets.xcassets in Resources */,
 				AC805F301CA11C130083BE00 /* SF-UI-Text-Semibold.otf in Resources */,
@@ -1296,6 +1342,7 @@
 				AC805F2E1CA11C130083BE00 /* SF-UI-Text-Regular.otf in Resources */,
 				AC805F291CA11C130083BE00 /* SF-UI-Text-HeavyItalic.otf in Resources */,
 				AC805F271CA11C130083BE00 /* SF-UI-Text-BoldItalic.otf in Resources */,
+				E1D516C11CC64D7B006AD359 /* GetImagesView.xib in Resources */,
 				AC805F261CA11C130083BE00 /* SF-UI-Text-Bold.otf in Resources */,
 				ACA48BB71C9FF2A900C91802 /* GroupSettingsCell.xib in Resources */,
 				AC41A7281C6DAC6300DBD1FA /* ViewSearch.xib in Resources */,
@@ -1388,13 +1435,16 @@
 				ACC5C9161CB52F5F00D29585 /* CommentsVC.m in Sources */,
 				ACC5C9101CB4FE9900D29585 /* FilesCollection.m in Sources */,
 				ACA7EE341C6F376800B06158 /* ContactModal.m in Sources */,
+				E1D516C61CC6555B006AD359 /* DummyImagesCell.m in Sources */,
 				ACD95DFC1C6A17CD0044B5EC /* CustomButton.m in Sources */,
 				ACE3741B1CA15F6B000920F5 /* ViewHeaderGroupDetail.m in Sources */,
+				E1D516CB1CC659C2006AD359 /* BIZGrid4plus1CollectionViewLayout.m in Sources */,
 				ACA48BB61C9FF2A900C91802 /* GroupSettingsCell.m in Sources */,
 				AC53140F1C6C575F00F3F302 /* iOSRequest.m in Sources */,
 				AC53141D1C6C70EA00F3F302 /* NSString+TrimmingCharacters.m in Sources */,
 				ACBF63F51C6F819600315BAA /* AddPeopleCell.m in Sources */,
 				AC88B66C1C758F5B009A4260 /* MyGroupsModal.m in Sources */,
+				E1D516BF1CC64D3E006AD359 /* GetImagesView.m in Sources */,
 				AC805EFD1CA109ED0083BE00 /* groupFeedCell.m in Sources */,
 				ACA7C5781CB78EDF0045E4B5 /* CYNavigationControllerDelegate.m in Sources */,
 				AC5314181C6C6DC200F3F302 /* TLAlertView.m in Sources */,
@@ -1490,8 +1540,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Grant Rosenberg (952HG36992)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Grant Rosenberg (952HG36992)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Eco Science Solutions, Inc. (94L4UQ837G)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eco Science Solutions, Inc. (94L4UQ837G)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1534,8 +1584,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Grant Rosenberg (952HG36992)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Grant Rosenberg (952HG36992)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Eco Science Solutions, Inc. (94L4UQ837G)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eco Science Solutions, Inc. (94L4UQ837G)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1560,14 +1610,14 @@
 			baseConfigurationReference = 5C5633346452E1ECCEA418FB /* Pods-COIL.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Eco Science Solutions, Inc. (94L4UQ837G)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eco Science Solutions, Inc. (94L4UQ837G)";
 				INFOPLIST_FILE = COIL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.codebrew.COIL;
+				PRODUCT_BUNDLE_IDENTIFIER = com.useherbo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "d55bee74-baaa-4355-82e2-b6349c5305d5";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1577,14 +1627,14 @@
 			baseConfigurationReference = 4661FB8D67BB581F45D485AE /* Pods-COIL.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Eco Science Solutions, Inc. (94L4UQ837G)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eco Science Solutions, Inc. (94L4UQ837G)";
 				INFOPLIST_FILE = COIL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.codebrew.COIL;
+				PRODUCT_BUNDLE_IDENTIFIER = com.useherbo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "d55bee74-baaa-4355-82e2-b6349c5305d5";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

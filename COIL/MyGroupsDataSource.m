@@ -73,6 +73,7 @@ configureDelegateBlock:(CollectionViewCellDelegateConfigureBlock)aConfigureCellD
 {
     
     return CGSizeMake([UIScreen mainScreen].bounds.size.width/2-1,[UIScreen mainScreen].bounds.size.width/2);
+    
 }
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 //{

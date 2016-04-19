@@ -54,7 +54,17 @@
         NSInteger NetworkValue=[[SharedClass SharedManager]NetworkCheck];
         if (NetworkValue==0)
         {
-            _DictParameters=@{@"access_token":_Access_token,@"keyword":newString};
+            if (_Access_token!=nil) {
+                   _DictParameters=@{@"access_token":_Access_token,@"keyword":newString};
+            }
+            else
+            {
+                NSDictionary *Dictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"AccessToken"];
+                
+                _Access_token=[Dictionary valueForKey:@"access_token"];
+
+            }
+         
             
             [iOSRequest postData:UrlSearch :_DictParameters :^(NSDictionary *response_success) {
                 

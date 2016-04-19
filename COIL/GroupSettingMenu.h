@@ -10,6 +10,8 @@
 #import "Header.h"
 @protocol menuPressed
 -(void)makeGroupAdminPressed;
+-(void)ViewUserProfile;
+-(void)removeMember;
 @end
 @interface GroupSettingMenu : UIView
 @property DataSourceClass *datasource;

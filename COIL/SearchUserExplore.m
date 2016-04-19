@@ -101,7 +101,14 @@
 {
     if (IndexPathRow==3)
     {
-        [_ViewSearchExplore removeFromSuperview];
+//        [_ViewSearchExplore removeFromSuperview];
+        for (UIView *view in self.view.subviews) {
+            if ([view isKindOfClass:[ViewSearch class]]) {
+                [view removeFromSuperview];
+            }
+           
+        }
+        
          removedView=YES;
          _UserArray=UsersArray;
         [self setData];
@@ -149,11 +156,31 @@
     
 }
 
+#pragma mark- TableView Delegate Methods
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.view endEditing:YES];
+    SearchModal *modal=[_UserArray objectAtIndex:indexPath.row];
+    UserProfileVC *userVC=[self.storyboard instantiateViewControllerWithIdentifier:@"UserProfileVC"];
+    userVC.User_Id=modal.Group_Id;
+    userVC.OtherUserProfile=YES;
+    [modalView hide];
+    [self.navigationController pushViewController:userVC animated:YES];
+
+}
+
+
 
 - (IBAction)btnCross:(id)sender {
     _tableView.hidden=YES;
     _txtFieldSearch.text=@"";
-    [_ViewSearchExplore removeFromSuperview];
+//    [_ViewSearchExplore removeFromSuperview];
+    for (UIView *view in self.view.subviews) {
+        if ([view isKindOfClass:[ViewSearch class]]) {
+            [view removeFromSuperview];
+        }
+        
+    }
     removedView=YES;
     [self.view endEditing:YES];
 }

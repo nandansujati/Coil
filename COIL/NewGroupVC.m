@@ -8,13 +8,14 @@
 
 #import "NewGroupVC.h"
 
-@interface NewGroupVC ()<btnPressedfromCanvasView>
+@interface NewGroupVC ()<btnPressedfromCanvasView,dummyImageDelegate>
 {
     BOOL notificationTrue;
     RNBlurModalView *modalView;
 }
 @property(nonatomic,strong)AddPeopleVC *AddPeople;
 @property(nonatomic,strong)ViewCanvasIntegration *ViewCanvas;
+@property(nonatomic,strong)GetImagesView *customImagesView;
 @end
 
 @implementation NewGroupVC
@@ -29,20 +30,17 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 #pragma mark- Call from ViewDidLoad
 -(void)setupUI
 {
     _image.layer.cornerRadius=3.0f;
-    
     
     UIImage * backgroundImg = [UIImage imageNamed:@"Patch"];
     
     backgroundImg = [backgroundImg resizableImageWithCapInsets:UIEdgeInsetsMake(2,2, 2, 2)];
     
     [_ImageStretched setImage:backgroundImg];
-    
-    
-   
     [ _txtGroupName setValue:[UIColor colorWithRed:117.0/255.0 green:117.0/255.0 blue:119.0/255.0 alpha:1.0f]
                  forKeyPath:@"_placeholderLabel.textColor"];
     
@@ -81,9 +79,8 @@
                                                      style:UIAlertActionStyleDefault
                                                    handler:^(UIAlertAction * action)
                              {
-                                 
-                                 
-                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                                 [self getImagesArray];
+                                  [alert dismissViewControllerAnimated:YES completion:nil];
                              } ];
     
     
@@ -156,6 +153,54 @@
     
 }
 
+
+-(void)callGetImagesView :(NSArray*)ImagesArray
+{
+    _customImagesView = (GetImagesView *)[[[NSBundle mainBundle] loadNibNamed:@"GetImagesView" owner:self options:nil] objectAtIndex:0];
+    _customImagesView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    _customImagesView.delegate=self;
+    [_customImagesView getImagesArray:ImagesArray];
+    [self.view addSubview:_customImagesView];
+
+}
+
+-(void)getDummyImage:(UIImage *)image
+{
+     self.image.image=image;
+    _ImageStretched.hidden=YES;
+    _ImageBubble.hidden=YES;
+    _labelOnImage.hidden=YES;
+    self.imagePlus.hidden=YES;
+    [_customImagesView removeFromSuperview];
+}
+-(void)getImagesArray
+{
+    __block NSMutableArray *Imagesarray=[[NSMutableArray alloc]init];
+    NSInteger valueNetwork=[[SharedClass SharedManager]NetworkCheck];
+    if (valueNetwork==0)
+    {
+        [iOSRequest postData:UrlGetDummyImages :nil :^(NSDictionary *response_success) {
+            [[SharedClass SharedManager]removeLoader];
+            NSInteger value=[[response_success valueForKey:@"success"]integerValue];
+            if (value==1)
+            {
+               
+                NSArray *array=[response_success valueForKey:@"images"];
+                for (int i=0; i<array.count; i++) {
+                    [Imagesarray addObject:[[array objectAtIndex:i]valueForKey :@"image"]];
+                }
+                [self callGetImagesView:Imagesarray];
+            }
+            
+        }
+                            :^(NSError *response_error) {
+                                
+                                [[SharedClass SharedManager]AlertErrors:@"Error !!" :response_error.localizedDescription :@"OK"];
+                                [[SharedClass SharedManager]removeLoader];
+                            }];
+    }
+
+}
 #pragma mark- Function Calls
 -(NSInteger)TextFieldValidations
 {
@@ -230,6 +275,7 @@
 
 - (IBAction)btnDiscoverabilityDD:(id)sender
 {
+    [self.view endEditing:YES];
     NSString *actionSheetTitle = @"Select Group Discoverability"; //Action Sheet Title
     NSString *destructiveTitle = @"CANCEL"; //Action Sheet Button Titles
     NSString*btn1=@"Open";
@@ -266,6 +312,7 @@
 }
 
 - (IBAction)btnCanvasIntegration:(id)sender {
+    [self.view endEditing:YES];
     if (notificationTrue==YES) {
         notificationTrue=NO;
       

@@ -15,7 +15,10 @@
     NSIndexPath *currentIndexpath;
      NSIndexPath *IndexpathUpdate;
 }
+
+@property(nonatomic,strong)ImageView *imageView;
 @property(nonatomic,strong)AVPlayer *avPlayer;
+@property(nonatomic,strong)AVPlayerLayer *avPlayerLayer;
 @property(nonatomic,strong)YPBubbleTransition * transition;
 @property DataSourceClass *datasource;
 @property (nonatomic, strong) CYViewControllerTransitioningDelegate *viewControllerTransitionDelegate;
@@ -41,6 +44,13 @@
 }
 
 
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [_avPlayer pause];
+    // uncomment if the player not needed anymore
+    // playerLayer.player = nil;
+    [_avPlayerLayer removeFromSuperlayer];
+}
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
@@ -85,9 +95,15 @@
 -(void)setUp
 {
 
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(playerItemDidReachEnd:)
+                                                 name:AVPlayerItemDidPlayToEndTimeNotification 
+                                               object:self.avPlayer.currentItem];
+    
+    
     self.viewControllerTransitionDelegate = [CYViewControllerTransitioningDelegate new];
     self.navDelegate = [CYNavigationControllerDelegate new];
-    [self.navigationController enableRadialSwipe];
+    
     _lblNoPosts.hidden=YES;
     _values = [[NSMutableArray alloc]init];
     _finalFeedArray=[[NSMutableArray alloc]init];
@@ -98,6 +114,12 @@
     [self loadData];
 }
 
+
+
+-(void)playerItemDidReachEnd:(NSNotification*)noti
+{
+    [_avPlayerLayer removeFromSuperlayer];
+}
 
 -(void)loadData
 {
@@ -200,91 +222,101 @@
         _cellImage = [nib objectAtIndex:0];
         
     }
-//    id item = [self itemAtIndexPath:indexPath];
-//    id ImageItem=[self imageAtIndexPath:indexPath];
+
       GroupFeedModal *modal=[_finalFeedArray objectAtIndex:indexPath.row];
-    if ([modal.media isEqualToString:@""]) {
-        [cell configureForCellWithCountry:modal];
-        cell.delegate=self;
-        cell.indexPath=indexPath;
-        
-        for (int i = 0; i<[_finalFeedArray count]; i++)
-        {
-            [_values addObject:@"NO"];
-        }
-        
-        if([[_values objectAtIndex:indexPath.row]isEqualToString:@"NO"])
-        {
-            [cell.btnLike setSelected:NO];
-        }
-        else
-        {
-            [cell.btnLike setSelected:YES];
-        }
-        
-        
-        
-        NSInteger IsFavourite=[modal.is_liked intValue];
-        
-        if (IsFavourite ==1)
-        {
-            [_values replaceObjectAtIndex:indexPath.row withObject:@"YES"];
-            [cell.btnLike setImage:[UIImage imageNamed:@"ic_like_active"] forState:UIControlStateSelected];
-            [cell.btnLike setSelected:YES];
-        }
-        else
-        {
-            [_values replaceObjectAtIndex:indexPath.row withObject:@"NO"];
-            [cell.btnLike setImage:[UIImage imageNamed:@"ic_like_inactive"] forState:UIControlStateSelected];
-            [cell.btnLike setSelected:NO];
-        }
-        
+    
+    for (int i = 0; i<[_finalFeedArray count]; i++)
+    {
+        [_values addObject:@"NO"];
+    }
+    
+      if ([modal.media isEqualToString:@""]) {
+          [self configureFeedCell:cell:modal :indexPath];
+          
         return cell;
 
     }
     else
     {
-        [_cellImage configureForCellWithCountry:modal];
-        _cellImage.delegate=self;
-        _cellImage.indexPath=indexPath;
-        
-        for (int i = 0; i<[_finalFeedArray count]; i++)
-        {
-            [_values addObject:@"NO"];
-        }
-        
-        if([[_values objectAtIndex:indexPath.row]isEqualToString:@"NO"])
-        {
-            [_cellImage.btnLike setSelected:NO];
-        }
-        else
-        {
-            [_cellImage.btnLike setSelected:YES];
-        }
-        
-        
-        
-        NSInteger IsFavourite=[modal.is_liked intValue];
-        
-        if (IsFavourite ==1)
-        {
-            [_values replaceObjectAtIndex:indexPath.row withObject:@"YES"];
-            [_cellImage.btnLike setImage:[UIImage imageNamed:@"ic_like_active"] forState:UIControlStateSelected];
-            [_cellImage.btnLike setSelected:YES];
-        }
-        else
-        {
-            [_values replaceObjectAtIndex:indexPath.row withObject:@"NO"];
-            [_cellImage.btnLike setImage:[UIImage imageNamed:@"ic_like_inactive"] forState:UIControlStateSelected];
-            [_cellImage.btnLike setSelected:NO];
-        }
-        
-        return _cellImage;
+        [self configureFeedImageCell :_cellImage: modal :indexPath];
+                return _cellImage;
 
     }
-         }
+}
 
 
+
+-(void)configureFeedCell:(groupFeedCell*)FeedCell :(GroupFeedModal*)modal :(NSIndexPath*)indexPath
+{
+    [FeedCell configureForCellWithCountry:modal];
+    FeedCell.delegate=self;
+    FeedCell.indexPath=indexPath;
+   
+    
+    if([[_values objectAtIndex:indexPath.row]isEqualToString:@"NO"])
+    {
+        [FeedCell.btnLike setSelected:NO];
+    }
+    else
+    {
+        [FeedCell.btnLike setSelected:YES];
+    }
+    
+    
+    
+    NSInteger IsFavourite=[modal.is_liked intValue];
+    
+    if (IsFavourite ==1)
+    {
+        [_values replaceObjectAtIndex:indexPath.row withObject:@"YES"];
+        [FeedCell.btnLike setImage:[UIImage imageNamed:@"ic_like_active"] forState:UIControlStateSelected];
+        [FeedCell.btnLike setSelected:YES];
+    }
+    else
+    {
+        [_values replaceObjectAtIndex:indexPath.row withObject:@"NO"];
+        [FeedCell.btnLike setImage:[UIImage imageNamed:@"ic_like_inactive"] forState:UIControlStateSelected];
+        [FeedCell.btnLike setSelected:NO];
+    }
+
+}
+
+-(void)configureFeedImageCell:(groupFeedImageCell*)FeedCell :(GroupFeedModal*)modal :(NSIndexPath*)indexPath
+{
+    [_cellImage configureForCellWithCountry:modal];
+    _cellImage.delegate=self;
+    _cellImage.indexPath=indexPath;
+    
+   
+    
+    if([[_values objectAtIndex:indexPath.row]isEqualToString:@"NO"])
+    {
+        [_cellImage.btnLike setSelected:NO];
+    }
+    else
+    {
+        [_cellImage.btnLike setSelected:YES];
+    }
+    
+    
+    
+    NSInteger IsFavourite=[modal.is_liked intValue];
+    
+    if (IsFavourite ==1)
+    {
+        [_values replaceObjectAtIndex:indexPath.row withObject:@"YES"];
+        [_cellImage.btnLike setImage:[UIImage imageNamed:@"ic_like_active"] forState:UIControlStateSelected];
+        [_cellImage.btnLike setSelected:YES];
+    }
+    else
+    {
+        [_values replaceObjectAtIndex:indexPath.row withObject:@"NO"];
+        [_cellImage.btnLike setImage:[UIImage imageNamed:@"ic_like_inactive"] forState:UIControlStateSelected];
+        [_cellImage.btnLike setSelected:NO];
+    }
+    
+
+}
 - (IBAction)unwindForSegue:(UIStoryboardSegue *)unwindSegue towardsViewController:(UIViewController *)subsequentV
 {
     
@@ -322,31 +354,42 @@
     _cellImage = (groupFeedImageCell*)[self.tableView cellForRowAtIndexPath:indexPath];
     GroupFeedModal * modal = [_finalFeedArray objectAtIndex:indexPath.row];
     //    NSString *postId=modal.postId;
-    NSURL *fileURL = [NSURL URLWithString:@"https://s3-us-west-2.amazonaws.com/cbdevs3/uploads/1459945851yCfsRNiBecaCedo39hqZOE4D73M4vE.mp4"];
-//    AVPlayer *avPlayer = [AVPlayer playerWithURL:fileURL];
-//    
-//    AVPlayerLayer *layer = [AVPlayerLayer playerLayerWithPlayer:avPlayer];
-//    avPlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-//    layer.frame = CGRectMake(0, 0,self.view.frame.size.width,self.view.frame.size.height);
-//  
-//  [self.view.layer addSublayer: layer];
-//   
-//   [avPlayer play];
+    NSURL *fileURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",VideoPath,modal.media]];
+
     
     AVAsset *asset = [AVAsset assetWithURL:fileURL];
     AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:asset];
     self.avPlayer = [AVPlayer playerWithPlayerItem:playerItem];
-    AVPlayerLayer *avPlayerLayer = [AVPlayerLayer playerLayerWithPlayer:self.avPlayer];
+    _avPlayerLayer = [AVPlayerLayer playerLayerWithPlayer:self.avPlayer];
     
-    avPlayerLayer.frame = self.view.bounds;
-    [self.view.layer addSublayer:avPlayerLayer];
+    _avPlayerLayer.frame = self.view.bounds;
+    [self.view.layer addSublayer:_avPlayerLayer];
     
     
-    avPlayerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    _avPlayerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     [self.avPlayer play];
 
 }
 
+
+-(void)ImagePressed:(NSIndexPath *)indexPath
+{
+    _cellImage = (groupFeedImageCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+    GroupFeedModal * modal = [_finalFeedArray objectAtIndex:indexPath.row];
+    NSURL  *ImageFromFile=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@/400/400",ImagePath,modal.media]];
+    [self imageTapped:ImageFromFile];
+}
+
+
+-(void)imageTapped:(NSURL*)ImageFromFile
+{
+    
+    _imageView = (ImageView *)[[[NSBundle mainBundle] loadNibNamed:@"ImageView" owner:self options:nil] objectAtIndex:0];
+    _imageView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+    [_imageView getImage:ImageFromFile :NO];
+    [self.view addSubview:_imageView];
+    
+}
 -(void)btnCommentClicked:(NSIndexPath *)indexPath
 {
     cell = (groupFeedCell*)[self.tableView cellForRowAtIndexPath:indexPath];

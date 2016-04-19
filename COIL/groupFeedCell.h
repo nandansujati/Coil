@@ -20,6 +20,7 @@
 @property(nonatomic,strong)NSIndexPath *indexPath;
 @property (weak, nonatomic) IBOutlet UIImageView *imageUser;
 -(void)configureForCellWithCountry:(GroupFeedModal *)modal;
+-(void)configureForCellWithUser:(UserProfileModal *)modal;
 @property (weak, nonatomic) IBOutlet UILabel *lblUserName;
 @property (weak, nonatomic) IBOutlet UILabel *lblPost;
 @property (weak, nonatomic) IBOutlet UIButton *btnLike;

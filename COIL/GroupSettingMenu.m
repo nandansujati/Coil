@@ -11,6 +11,7 @@
 @implementation GroupSettingMenu
 -(void)awakeFromNib
 {
+    
     self.tableView.dataSource = self.datasource;
     _ArrayItems=[NSArray arrayWithObjects:@"View Tiffany's Profile",@"Make Group Admin",@"Remove Tiffany", nil];
     [self setData];
@@ -46,6 +47,8 @@
                                           configureCellBlock:configureCell];
     self.tableView.dataSource = _datasource;
     [self.tableView reloadData];
+    AppDelegate *appDelegate= (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate.window setUserInteractionEnabled:YES];
     
     
 }
@@ -53,9 +56,17 @@
 #pragma mark- TableView Delegate Methods
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row==1)
+    if (indexPath.row==0)
+    {
+        [_delegate ViewUserProfile];
+    }
+    else if (indexPath.row==1)
     {
         [_delegate makeGroupAdminPressed];
+    }
+    else if (indexPath.row==2)
+    {
+        [_delegate removeMember];
     }
 
    

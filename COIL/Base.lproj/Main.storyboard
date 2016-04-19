@@ -1591,7 +1591,7 @@
         <!--User ProfileVC-->
         <scene sceneID="2oC-rx-HES">
             <objects>
-                <viewController id="OmM-h0-8S7" customClass="UserProfileVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserProfileVC" id="OmM-h0-8S7" customClass="UserProfileVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hTU-IJ-bz4"/>
                         <viewControllerLayoutGuide type="bottom" id="rtU-2X-eCk"/>
@@ -1599,9 +1599,27 @@
                     <view key="view" contentMode="scaleToFill" id="uD4-bV-wbx">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Tac-o7-Who">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="OmM-h0-8S7" id="cD1-fq-dCE"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rtU-2X-eCk" firstAttribute="top" secondItem="Tac-o7-Who" secondAttribute="bottom" id="0Fv-zs-NR3"/>
+                            <constraint firstAttribute="trailing" secondItem="Tac-o7-Who" secondAttribute="trailing" id="12u-gT-EZJ"/>
+                            <constraint firstItem="Tac-o7-Who" firstAttribute="leading" secondItem="uD4-bV-wbx" secondAttribute="leading" id="1y6-kc-Rfc"/>
+                            <constraint firstItem="Tac-o7-Who" firstAttribute="top" secondItem="uD4-bV-wbx" secondAttribute="top" id="Z9t-0M-I4R"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="ic_profile_nav" selectedImage="tb_my_profile_pressed" id="dCr-Co-lq8"/>
+                    <connections>
+                        <outlet property="tableView" destination="Tac-o7-Who" id="pOH-qh-QHM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1g2-Vp-oo5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1701,6 +1719,9 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="74" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1qg-du-tHr">
                                 <rect key="frame" x="0.0" y="131" width="600" height="420"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="4Fj-Fy-fxH" id="OtX-5T-DvD"/>
+                                </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="People you may know" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbq-fn-7w9">
                                 <rect key="frame" x="20" y="91" width="167" height="20"/>
@@ -2316,7 +2337,7 @@
         <image name="tb_settings_pressed" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JKZ-LT-acO"/>
+        <segue reference="vlz-Fj-Zyk"/>
         <segue reference="baG-VM-Fnc"/>
     </inferredMetricsTieBreakers>
 </document>

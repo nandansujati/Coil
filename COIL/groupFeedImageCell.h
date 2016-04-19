@@ -12,6 +12,7 @@
 @protocol BtnFeedImageCellPressed
 -(void)btnLikePressedImage :(NSIndexPath*)indexPath;
 -(void)btnPlayVideoPressed :(NSIndexPath*)indexPath;
+-(void)ImagePressed :(NSIndexPath*)indexPath;
 -(void)btnCommentClickedImage:(NSIndexPath*)indexPath;
 @end
 @interface groupFeedImageCell : UITableViewCell
@@ -29,6 +30,7 @@
 @property(nonatomic,strong)NSIndexPath *indexPath;
 @property (weak, nonatomic) IBOutlet UIImageView *imageUser;
 -(void)configureForCellWithCountry:(GroupFeedModal *)modal;
+-(void)configureForCellWithUserModal:(UserProfileModal *)modal;
 @property (weak, nonatomic) IBOutlet UIImageView *imagePosted;
 @property (weak, nonatomic) IBOutlet UILabel *lblUserName;
 @property (weak, nonatomic) IBOutlet UILabel *lblPost;

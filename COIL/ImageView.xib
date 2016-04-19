@@ -12,13 +12,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C4B-tt-5Tk">
-                    <rect key="frame" x="0.0" y="175" width="600" height="250"/>
+                    <rect key="frame" x="0.0" y="150" width="600" height="300"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="250" id="sGY-el-D78"/>
+                        <constraint firstAttribute="height" constant="300" id="sGY-el-D78"/>
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UWb-pI-nEG">
-                    <rect key="frame" x="542" y="117" width="50" height="50"/>
+                    <rect key="frame" x="542" y="92" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="LQv-Wy-qAH"/>
                         <constraint firstAttribute="width" constant="50" id="UIY-h3-gV7"/>

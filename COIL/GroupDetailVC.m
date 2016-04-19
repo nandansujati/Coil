@@ -177,43 +177,12 @@
         _tableView.hidden=NO;
           [self.tableView reloadData];
     }
-    else
-        _tableView.hidden=YES;
+//    else
+//        _tableView.hidden=YES;
     
     
 }
-//-(void)setFilesData
-//{
-//    
-//    
-//    if (!(_FilesArray.count==0) )
-//    {
-//        CollectionViewCellConfigureBlock configureCell = ^(FilesCollection *cell,id item)
-//        {
-//            
-//            [cell configureForCellWithCountry:item ];
-//        };
-//        
-////        CollectionViewCellDelegateConfigureBlock configureDelegateCell=^(id item)
-////        {
-////            
-////            [self CallGroupDetail:item];
-////            
-////        };
-//        
-//        
-//        _HeaderView.datasource = [[MyGroupsDataSource alloc] initWithItems:_FilesArray
-//                                                     cellIdentifier:CellidentifierFilesCell
-//                                                 configureCellBlock:configureCell configureDelegateBlock:nil];
-//        _HeaderView.collectionViewFiles.dataSource =  _HeaderView.datasource;
-////        self.collectionView.delegate= _datasource;
-//        [_HeaderView.collectionViewFiles reloadData];
-//    }
-//    else
-//        _HeaderView.collectionViewFiles.hidden=YES;
-//    
-//    
-//}
+
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -246,7 +215,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [_appDelegate.window setUserInteractionEnabled:NO];
     BOOL useCustomView = YES;
+    
     if (useCustomView)
     {
         _GroupsMenu = (GroupSettingMenu *)[[[NSBundle mainBundle] loadNibNamed:@"GroupSettingMenu" owner:self options:nil] objectAtIndex:0];
@@ -256,9 +227,10 @@
         _GroupsMenu.layer.borderWidth = 3.f;
         _GroupsMenu.delegate=self;
         currentIndexPath=indexPath;
-         modalView = [[RNBlurModalView alloc] initWithViewController:self view:_GroupsMenu];
+        modalView = [[RNBlurModalView alloc] initWithViewController:self view:_GroupsMenu];
     }
-        [modalView show];
+    [modalView show];
+    
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -270,7 +242,7 @@
 
 -(void)makeGroupAdminPressed
 {
-     GroupDetailsModal *modal=[_MemberArray objectAtIndex:currentIndexPath.row];
+    GroupDetailsModal *modal=[_MemberArray objectAtIndex:currentIndexPath.row];
    NSLog(@"%@", modal.MemberId);
     NSDictionary *dictParam=@{@"access_token":_Access_Token,@"group_id":_Group_Id,@"other_id":modal.MemberId};
     
@@ -285,7 +257,6 @@
         NSString *ValueChanged=[NSString stringWithFormat:@"%li",(long)Value];
         modal.MemberAdmin_Access=ValueChanged;
         
-        
         [_MemberArray replaceObjectAtIndex:currentIndexPath.row withObject:modal];
         
         [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:currentIndexPath.row inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
@@ -294,6 +265,44 @@
         [modalView hide];
     }];
 }
+
+-(void)ViewUserProfile
+{
+    GroupDetailsModal *modal=[_MemberArray objectAtIndex:currentIndexPath.row];
+    NSLog(@"%@", modal.MemberId);
+    UserProfileVC *userVC=[self.storyboard instantiateViewControllerWithIdentifier:@"UserProfileVC"];
+    userVC.User_Id=modal.MemberId;
+    userVC.OtherUserProfile=YES;
+    [modalView hide];
+    [self.navigationController pushViewController:userVC animated:YES];
+}
+
+-(void)removeMember
+{
+    GroupDetailsModal *modal=[_MemberArray objectAtIndex:currentIndexPath.row];
+    NSLog(@"%@", modal.MemberId);
+    NSDictionary *dictParam=@{@"access_token":_Access_Token,@"group_id":_Group_Id,@"other_id":modal.MemberId};
+    
+    [iOSRequest postData:UrlRemoveMember :dictParam :^(NSDictionary *response_success) {
+        [modalView hide];
+        
+
+        [_MemberArray removeObjectAtIndex:currentIndexPath.row];
+        
+        [_tableView reloadData];
+        NSInteger count=[_memberCount integerValue];
+        count=count-1;
+        _memberCount=[NSString stringWithFormat:@"%ld",(long)count];
+        _HeaderView.memberCount.text=_memberCount;
+        
+        
+    } :^(NSError *response_error) {
+        [modalView hide];
+    }];
+
+}
+
+
 
 -(void)setMemberTable :(GroupDetailsModal*)modal
 {

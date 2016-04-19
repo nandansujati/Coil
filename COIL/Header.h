@@ -32,14 +32,18 @@
 #define UrlgetCommentsOnPost [NSString stringWithFormat:@"%@%@",BasePath,@"getComments"]
 #define UrlGetCanvasCourses [NSString stringWithFormat:@"%@%@",BasePath,@"listCourses"]
 #define UrlGetUserProfile [NSString stringWithFormat:@"%@%@",BasePath,@"viewUserProfile"]
+#define UrlRemoveMember [NSString stringWithFormat:@"%@%@",BasePath,@"removeUserFromGroup"]
+#define  UrlGetDummyImages [NSString stringWithFormat:@"%@%@",BasePath,@"getDummyImages"]
 
 #define ImagePath [NSString stringWithFormat:@"%@%@",BasePath,@"photo/"]
-
+#define VideoPath @"https://s3-us-west-2.amazonaws.com/cbdevs3/uploads/"
 
 #import "ViewCanvasIntegration.h"
 #import "YPBubbleTransition.h"
+#import "GetImagesView.h"
 #import "ViewProfileHeader.h"
 #import "UserProfileVC.h"
+#import "DummyImagesCell.h"
 #import "UserProfileModal.h"
 #import "ImageView.h"
 #import "CanvasGroupsModal.h"
