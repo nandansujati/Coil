@@ -1540,8 +1540,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Eco Science Solutions, Inc. (94L4UQ837G)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eco Science Solutions, Inc. (94L4UQ837G)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1584,8 +1584,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Eco Science Solutions, Inc. (94L4UQ837G)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eco Science Solutions, Inc. (94L4UQ837G)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1610,14 +1610,14 @@
 			baseConfigurationReference = 5C5633346452E1ECCEA418FB /* Pods-COIL.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Eco Science Solutions, Inc. (94L4UQ837G)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eco Science Solutions, Inc. (94L4UQ837G)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Grant Rosenberg (952HG36992)";
 				INFOPLIST_FILE = COIL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.useherbo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AlList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d55bee74-baaa-4355-82e2-b6349c5305d5";
+				PROVISIONING_PROFILE = "b1e9b370-b856-4020-b693-2f743e41b73e";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1627,14 +1627,14 @@
 			baseConfigurationReference = 4661FB8D67BB581F45D485AE /* Pods-COIL.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Eco Science Solutions, Inc. (94L4UQ837G)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Eco Science Solutions, Inc. (94L4UQ837G)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Grant Rosenberg (952HG36992)";
 				INFOPLIST_FILE = COIL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.useherbo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AlList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d55bee74-baaa-4355-82e2-b6349c5305d5";
+				PROVISIONING_PROFILE = "b1e9b370-b856-4020-b693-2f743e41b73e";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

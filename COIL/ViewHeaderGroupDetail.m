@@ -88,29 +88,31 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     GroupDetailsModal *modal=[_filesArray objectAtIndex:indexPath.row];
-    
+    NSString *videoUrl;
     if (![modal.fileThumb isEqualToString:@""])
     {
 
         _ImageFromFile=[NSURL URLWithString:modal.fileThumb];
+        videoUrl=modal.fileMedia;
         VideoIsDere=YES;
     }
     else
     {
         _ImageFromFile=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@/400/400",ImagePath,modal.fileMedia]];
         VideoIsDere=NO;
+        
     }
     
-    [self imageTapped];
+    [self imageTapped :videoUrl];
 }
 
 
--(void)imageTapped
+-(void)imageTapped :(NSString *)videoUrl
 {
     
     _imageView = (ImageView *)[[[NSBundle mainBundle] loadNibNamed:@"ImageView" owner:self options:nil] objectAtIndex:0];
     _imageView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
-    [_imageView getImage:_ImageFromFile :VideoIsDere];
+    [_imageView getImage:_ImageFromFile :VideoIsDere :videoUrl];
     [self addSubview:_imageView];
     
 }

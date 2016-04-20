@@ -13,11 +13,12 @@
 {
     NSIndexPath *currentIndexpath;
 }
+@property(nonatomic,strong)ImageView *imageView;
+
 @property(nonatomic,strong)AppDelegate *appDelegate;
 @property(nonatomic,strong)groupFeedCell *cell;
 @property(nonatomic,strong)groupFeedImageCell *cellImage;
 @property(nonatomic,strong)ViewProfileHeader *HeaderView;
-@property(nonatomic,strong)AVPlayer *avPlayer;
 @property (nonatomic, strong) CYViewControllerTransitioningDelegate *viewControllerTransitionDelegate;
 
 
@@ -47,8 +48,10 @@
 //    [[SharedClass SharedManager]removeLoader];
 //    [self.view setUserInteractionEnabled:YES];
 }
+
 -(void)setupUI
 {
+    
     _FeedsArray=[[NSMutableArray alloc]init];
     self.viewControllerTransitionDelegate = [CYViewControllerTransitioningDelegate new];
  
@@ -66,6 +69,7 @@
     [self loadData];
     self.tableView.estimatedRowHeight=200;
 }
+
 
 -(void)loadParameters
 {
@@ -333,13 +337,13 @@
     
     if (IsFavourite ==1)
     {
-       // [_values replaceObjectAtIndex:indexPath.row withObject:@"YES"];
+        [_values replaceObjectAtIndex:indexPath.row withObject:@"YES"];
         [FeedCell.btnLike setImage:[UIImage imageNamed:@"ic_like_active"] forState:UIControlStateSelected];
         [FeedCell.btnLike setSelected:YES];
     }
     else
     {
-        //[_values replaceObjectAtIndex:indexPath.row withObject:@"NO"];
+        [_values replaceObjectAtIndex:indexPath.row withObject:@"NO"];
         [FeedCell.btnLike setImage:[UIImage imageNamed:@"ic_like_inactive"] forState:UIControlStateSelected];
         [FeedCell.btnLike setSelected:NO];
     }
@@ -369,13 +373,13 @@
     
     if (IsFavourite ==1)
     {
-       // [_values replaceObjectAtIndex:indexPath.row withObject:@"YES"];
+        [_values replaceObjectAtIndex:indexPath.row withObject:@"YES"];
         [_cellImage.btnLike setImage:[UIImage imageNamed:@"ic_like_active"] forState:UIControlStateSelected];
         [_cellImage.btnLike setSelected:YES];
     }
     else
     {
-      //  [_values replaceObjectAtIndex:indexPath.row withObject:@"NO"];
+        [_values replaceObjectAtIndex:indexPath.row withObject:@"NO"];
         [_cellImage.btnLike setImage:[UIImage imageNamed:@"ic_like_inactive"] forState:UIControlStateSelected];
         [_cellImage.btnLike setSelected:NO];
     }
@@ -384,31 +388,33 @@
 
 -(void)btnPlayVideoPressed:(NSIndexPath *)indexPath
 {
+    
     _cellImage = (groupFeedImageCell*)[self.tableView cellForRowAtIndexPath:indexPath];
     UserProfileModal * modal = [_FeedsArray objectAtIndex:indexPath.row];
-    //    NSString *postId=modal.postId;
-    NSURL *fileURL = [NSURL URLWithString:@"https://s3-us-west-2.amazonaws.com/cbdevs3/uploads/1459945851yCfsRNiBecaCedo39hqZOE4D73M4vE.mp4"];
-    //    AVPlayer *avPlayer = [AVPlayer playerWithURL:fileURL];
-    //
-    //    AVPlayerLayer *layer = [AVPlayerLayer playerLayerWithPlayer:avPlayer];
-    //    avPlayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
-    //    layer.frame = CGRectMake(0, 0,self.view.frame.size.width,self.view.frame.size.height);
-    //
-    //  [self.view.layer addSublayer: layer];
-    //
-    //   [avPlayer play];
+  
+    NSString *fileURL = [NSString stringWithFormat:@"%@",modal.PostMedia];
+    NSURL  *ImageFromFile=[NSURL URLWithString:[NSString stringWithFormat:@"%@",modal.PostThumb]];
     
-    AVAsset *asset = [AVAsset assetWithURL:fileURL];
-    AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:asset];
-    self.avPlayer = [AVPlayer playerWithPlayerItem:playerItem];
-    AVPlayerLayer *avPlayerLayer = [AVPlayerLayer playerLayerWithPlayer:self.avPlayer];
-    
-    avPlayerLayer.frame = self.view.bounds;
-    [self.view.layer addSublayer:avPlayerLayer];
+    [self imageTapped:ImageFromFile :YES :fileURL];
     
     
-    avPlayerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    [self.avPlayer play];
+}
+
+-(void)ImagePressed:(NSIndexPath *)indexPath
+{
+    _cellImage = (groupFeedImageCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+    UserProfileModal * modal = [_FeedsArray objectAtIndex:indexPath.row];
+    NSURL  *ImageFromFile=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@/400/400",ImagePath,modal.PostMedia]];
+   [self imageTapped:ImageFromFile :NO:nil];
+}
+
+-(void)imageTapped:(NSURL*)ImageFromFile :(BOOL)isVideoAvailable :(NSString *)VideoUrl
+{
+    
+    _imageView = (ImageView *)[[[NSBundle mainBundle] loadNibNamed:@"ImageView" owner:self options:nil] objectAtIndex:0];
+    _imageView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+   [_imageView getImage:ImageFromFile :isVideoAvailable :VideoUrl];
+    [self.tabBarController.view addSubview:_imageView];
     
 }
 

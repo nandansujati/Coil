@@ -9,12 +9,27 @@
 #import "GroupSettingMenu.h"
 #define CellIdentifierGroupsSettingsMenu @"GroupsSettingsMenuCell"
 @implementation GroupSettingMenu
--(void)awakeFromNib
+
+-(void)getName :(NSString*)Name andId :(NSString*)Id
 {
-    
+    _memberId=[Id integerValue];
+    _MemberName=[Name capitalizedString];
+    NSString *IstObject;
     self.tableView.dataSource = self.datasource;
-    _ArrayItems=[NSArray arrayWithObjects:@"View Tiffany's Profile",@"Make Group Admin",@"Remove Tiffany", nil];
-    [self setData];
+    NSDictionary *dict=[[NSUserDefaults standardUserDefaults]objectForKey:@"AccessToken"];
+    NSString *userId=[dict valueForKey:@"user_Id"];
+    if ([userId integerValue]==_memberId) {
+        IstObject=@"View My Profile";
+         _ArrayItems=[NSArray arrayWithObjects:IstObject, nil];
+    }
+    else
+    {
+        IstObject=[NSString stringWithFormat:@"View %@'s Profile",_MemberName];
+        NSString *ThirdObject=[NSString stringWithFormat:@"Remove %@",_MemberName];
+        _ArrayItems=[NSArray arrayWithObjects:IstObject,@"Make Group Admin",ThirdObject, nil];
+
+    }
+       [self setData];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder

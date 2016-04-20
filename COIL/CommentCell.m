@@ -11,6 +11,8 @@
 @implementation CommentCell
 
 - (void)awakeFromNib {
+    _userImage.layer.cornerRadius=5.0f;
+    _userImage.layer.masksToBounds=YES;
     // Initialization code
 }
 

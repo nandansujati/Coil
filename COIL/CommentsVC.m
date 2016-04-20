@@ -43,6 +43,8 @@
     [self registerForKeyboardNotifications];
     self.tableView.estimatedRowHeight=50;
     
+    _imagePost.layer.cornerRadius=5.0f;
+     _imagePost.layer.masksToBounds=YES;
     NSDictionary *Dictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"AccessToken"];
     _Access_token=[Dictionary valueForKey:@"access_token"];
     if (_ProfileModal==nil) {

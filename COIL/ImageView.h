@@ -10,9 +10,11 @@
 #import "Header.h"
 @interface ImageView : UIView
 
-@property (weak, nonatomic) IBOutlet UIButton *btnPlay;
 
--(void)getImage:(NSURL*)imageUrl :(BOOL)VideoAvailable;
+@property (weak, nonatomic) IBOutlet UIButton *btnPlay;
+@property(nonatomic,strong)NSString *videoUrl;
+-(void)getImage:(NSURL*)imageUrl :(BOOL)VideoAvailable :(NSString *)videoUrl;
 @property (weak, nonatomic) IBOutlet UIImageView *imageFile;
 - (IBAction)btnCross:(id)sender;
+- (IBAction)btnPlay:(id)sender;
 @end

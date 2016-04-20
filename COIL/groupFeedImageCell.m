@@ -104,6 +104,7 @@
             NSURL *URLImage=[NSURL URLWithString:modal.PostThumb];
             _btnPlay.hidden=NO;
             [  self.imagePosted sd_setImageWithURL:URLImage placeholderImage:[UIImage imageNamed:@"img_placeholder_group"]];
+            _imagePosted.userInteractionEnabled=NO;
             
         }
         else
@@ -111,6 +112,7 @@
             NSURL *URLImage=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@/400/400",ImagePath,modal.PostMedia]];
             _btnPlay.hidden=YES;
             [self.imagePosted sd_setImageWithURL:URLImage placeholderImage:[UIImage imageNamed:@"img_placeholder_group"]];
+            _imagePosted.userInteractionEnabled=YES;
         }
         
     }

@@ -17,8 +17,7 @@
 }
 
 @property(nonatomic,strong)ImageView *imageView;
-@property(nonatomic,strong)AVPlayer *avPlayer;
-@property(nonatomic,strong)AVPlayerLayer *avPlayerLayer;
+
 @property(nonatomic,strong)YPBubbleTransition * transition;
 @property DataSourceClass *datasource;
 @property (nonatomic, strong) CYViewControllerTransitioningDelegate *viewControllerTransitionDelegate;
@@ -43,14 +42,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
--(void)viewDidDisappear:(BOOL)animated
-{
-    [_avPlayer pause];
-    // uncomment if the player not needed anymore
-    // playerLayer.player = nil;
-    [_avPlayerLayer removeFromSuperlayer];
-}
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
@@ -94,11 +85,6 @@
 
 -(void)setUp
 {
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(playerItemDidReachEnd:)
-                                                 name:AVPlayerItemDidPlayToEndTimeNotification 
-                                               object:self.avPlayer.currentItem];
     
     
     self.viewControllerTransitionDelegate = [CYViewControllerTransitioningDelegate new];
@@ -114,12 +100,6 @@
     [self loadData];
 }
 
-
-
--(void)playerItemDidReachEnd:(NSNotification*)noti
-{
-    [_avPlayerLayer removeFromSuperlayer];
-}
 
 -(void)loadData
 {
@@ -354,20 +334,13 @@
     _cellImage = (groupFeedImageCell*)[self.tableView cellForRowAtIndexPath:indexPath];
     GroupFeedModal * modal = [_finalFeedArray objectAtIndex:indexPath.row];
     //    NSString *postId=modal.postId;
-    NSURL *fileURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",VideoPath,modal.media]];
+    NSURL  *ImageFromFile=[NSURL URLWithString:[NSString stringWithFormat:@"%@",modal.thumb]];
+
+    NSString *fileURL = [NSString stringWithFormat:@"%@",modal.media];
 
     
-    AVAsset *asset = [AVAsset assetWithURL:fileURL];
-    AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithAsset:asset];
-    self.avPlayer = [AVPlayer playerWithPlayerItem:playerItem];
-    _avPlayerLayer = [AVPlayerLayer playerLayerWithPlayer:self.avPlayer];
-    
-    _avPlayerLayer.frame = self.view.bounds;
-    [self.view.layer addSublayer:_avPlayerLayer];
-    
-    
-    _avPlayerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    [self.avPlayer play];
+    [self imageTapped:ImageFromFile :YES :fileURL];
+
 
 }
 
@@ -377,16 +350,16 @@
     _cellImage = (groupFeedImageCell*)[self.tableView cellForRowAtIndexPath:indexPath];
     GroupFeedModal * modal = [_finalFeedArray objectAtIndex:indexPath.row];
     NSURL  *ImageFromFile=[NSURL URLWithString:[NSString stringWithFormat:@"%@%@/400/400",ImagePath,modal.media]];
-    [self imageTapped:ImageFromFile];
+    [self imageTapped:ImageFromFile :NO:nil];
 }
 
 
--(void)imageTapped:(NSURL*)ImageFromFile
+-(void)imageTapped:(NSURL*)ImageFromFile :(BOOL)isVideoAvailable :(NSString *)VideoUrl
 {
     
     _imageView = (ImageView *)[[[NSBundle mainBundle] loadNibNamed:@"ImageView" owner:self options:nil] objectAtIndex:0];
-    _imageView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
-    [_imageView getImage:ImageFromFile :NO];
+    _imageView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [_imageView getImage:ImageFromFile :isVideoAvailable :VideoUrl];
     [self.view addSubview:_imageView];
     
 }

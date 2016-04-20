@@ -216,15 +216,25 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [_appDelegate.window setUserInteractionEnabled:NO];
+    
+    GroupDetailsModal *modal=[_MemberArray objectAtIndex:indexPath.row];
+   
     BOOL useCustomView = YES;
     
     if (useCustomView)
     {
         _GroupsMenu = (GroupSettingMenu *)[[[NSBundle mainBundle] loadNibNamed:@"GroupSettingMenu" owner:self options:nil] objectAtIndex:0];
+        NSDictionary *dict=[[NSUserDefaults standardUserDefaults]objectForKey:@"AccessToken"];
+        NSString *userId=[dict valueForKey:@"user_Id"];
+        if ([userId integerValue]==[modal.MemberId integerValue]) {
+             _GroupsMenu.frame = CGRectMake(20, self.view.frame.size.height/2-50/2, self.view.frame.size.width-40, 50);
+        }else
         _GroupsMenu.frame = CGRectMake(20, self.view.frame.size.height/2-_GroupsMenu.frame.size.height/2, self.view.frame.size.width-40, _GroupsMenu.frame.size.height);
+        
         _GroupsMenu.layer.cornerRadius = 3.f;
         _GroupsMenu.layer.borderColor = [UIColor clearColor].CGColor;
         _GroupsMenu.layer.borderWidth = 3.f;
+        [_GroupsMenu getName:modal.MemberName andId:modal.MemberId];
         _GroupsMenu.delegate=self;
         currentIndexPath=indexPath;
         modalView = [[RNBlurModalView alloc] initWithViewController:self view:_GroupsMenu];

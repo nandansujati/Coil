@@ -49,4 +49,7 @@
     UIImage *image=[UIImage imageWithData:fileData];
     [_delegate getDummyImage:image];
 }
+- (IBAction)btnBack:(id)sender {
+    [self removeFromSuperview];
+}
 @end

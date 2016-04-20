@@ -13,9 +13,14 @@
 -(void)ViewUserProfile;
 -(void)removeMember;
 @end
+
 @interface GroupSettingMenu : UIView
 @property DataSourceClass *datasource;
+@property(nonatomic,strong)NSString *MemberName;
+@property NSInteger memberId;
 @property(nonatomic,strong)id<menuPressed>delegate;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property(nonatomic,strong)NSArray *ArrayItems;
+-(void)getName :(NSString*)Name andId :(NSString*)Id;
+
 @end

@@ -16,4 +16,5 @@
 @property(nonatomic,strong)NSArray *ImagesArray;
 -(void)getImagesArray :(NSArray *)ImagesArray;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+- (IBAction)btnBack:(id)sender;
 @end

@@ -29,13 +29,16 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UIA-Xa-YhN">
-                            <rect key="frame" x="16" y="10" width="40" height="40"/>
+                            <rect key="frame" x="16" y="0.0" width="60" height="60"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="40" id="R3c-5m-QjR"/>
-                                <constraint firstAttribute="height" constant="40" id="ha9-7a-aJd"/>
+                                <constraint firstAttribute="width" constant="60" id="R3c-5m-QjR"/>
+                                <constraint firstAttribute="height" constant="60" id="ha9-7a-aJd"/>
                             </constraints>
-                            <inset key="contentEdgeInsets" minX="-4" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" image="ic_back_orange"/>
+                            <connections>
+                                <action selector="btnBack:" destination="iN0-l3-epB" eventType="touchUpInside" id="Jhz-2B-HAZ"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Images" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w0a-VA-7d3">
                             <rect key="frame" x="245" y="20" width="111" height="20"/>
@@ -47,11 +50,11 @@
                     <color key="backgroundColor" red="0.1529411765" green="0.14901960780000001" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="w0a-VA-7d3" firstAttribute="centerX" secondItem="CuH-IR-ziP" secondAttribute="centerX" id="5oI-na-EV7"/>
+                        <constraint firstItem="UIA-Xa-YhN" firstAttribute="centerY" secondItem="w0a-VA-7d3" secondAttribute="centerY" id="GUL-am-TPP"/>
                         <constraint firstAttribute="height" constant="64" id="NO4-d2-wgO"/>
                         <constraint firstItem="w0a-VA-7d3" firstAttribute="centerY" secondItem="UIA-Xa-YhN" secondAttribute="centerY" id="cXR-F0-7gU"/>
                         <constraint firstItem="UIA-Xa-YhN" firstAttribute="leading" secondItem="CuH-IR-ziP" secondAttribute="leading" constant="16" id="dmE-oB-jQv"/>
-                        <constraint firstItem="w0a-VA-7d3" firstAttribute="top" secondItem="CuH-IR-ziP" secondAttribute="top" constant="20" symbolic="YES" id="fT5-89-WLF"/>
-                        <constraint firstItem="UIA-Xa-YhN" firstAttribute="centerY" secondItem="w0a-VA-7d3" secondAttribute="centerY" id="uIM-My-rbs"/>
+                        <constraint firstItem="w0a-VA-7d3" firstAttribute="top" secondItem="CuH-IR-ziP" secondAttribute="top" constant="20" symbolic="YES" id="j7v-81-iN1"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
@@ -73,6 +76,7 @@
             <connections>
                 <outlet property="collectionView" destination="CH9-Av-C4y" id="K87-Mm-Qjk"/>
             </connections>
+            <point key="canvasLocation" x="373" y="198"/>
         </view>
     </objects>
     <resources>

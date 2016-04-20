@@ -24,33 +24,47 @@
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_placeholder_user" translatesAutoresizingMaskIntoConstraints="NO" id="iNA-hf-7aO">
                         <rect key="frame" x="8" y="16" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="QDb-cM-p6L"/>
+                            <constraint firstAttribute="height" constant="40" id="YC2-WM-R3Z"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="64r-WG-KDi">
-                        <rect key="frame" x="64" y="18" width="44" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="64r-WG-KDi">
+                        <rect key="frame" x="64" y="18" width="44" height="19"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lud-2X-B41">
-                        <rect key="frame" x="64" y="44" width="248" height="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lud-2X-B41">
+                        <rect key="frame" x="64" y="43" width="248" height="15"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="12"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.72999999999999998" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7VR-Lx-feK">
-                        <rect key="frame" x="261" y="18" width="36" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7VR-Lx-feK">
+                        <rect key="frame" x="261" y="18" width="36" height="19"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="14"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tSD-D9-1FA">
+                        <rect key="frame" x="0.0" y="65" width="320" height="1"/>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="0.14999999999999999" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="ady-vj-cOb"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="Lud-2X-B41" secondAttribute="bottom" id="3I4-h7-xOh"/>
                     <constraint firstItem="iNA-hf-7aO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="7iN-1E-R60"/>
                     <constraint firstItem="7VR-Lx-feK" firstAttribute="bottom" secondItem="64r-WG-KDi" secondAttribute="bottom" id="7ib-B2-73q"/>
+                    <constraint firstItem="tSD-D9-1FA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="U7J-kF-wiQ"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Lud-2X-B41" secondAttribute="trailing" id="YPi-BI-0PM"/>
                     <constraint firstItem="Lud-2X-B41" firstAttribute="leading" secondItem="64r-WG-KDi" secondAttribute="leading" id="ZJK-CT-nyt"/>
+                    <constraint firstAttribute="bottom" secondItem="tSD-D9-1FA" secondAttribute="bottom" id="b2J-Zc-WXx"/>
                     <constraint firstItem="7VR-Lx-feK" firstAttribute="centerY" secondItem="64r-WG-KDi" secondAttribute="centerY" id="fNS-Ws-jhW"/>
+                    <constraint firstAttribute="trailing" secondItem="tSD-D9-1FA" secondAttribute="trailing" id="h3K-45-nms"/>
                     <constraint firstItem="64r-WG-KDi" firstAttribute="leading" secondItem="iNA-hf-7aO" secondAttribute="trailing" constant="16" id="i6Q-in-NSI"/>
                     <constraint firstAttribute="trailingMargin" secondItem="7VR-Lx-feK" secondAttribute="trailing" constant="15" id="luC-g6-kAt"/>
                     <constraint firstAttribute="leadingMargin" secondItem="iNA-hf-7aO" secondAttribute="leading" id="mSl-qV-HlE"/>
