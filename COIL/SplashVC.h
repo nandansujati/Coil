@@ -10,6 +10,9 @@
 #import "Header.h"
 @interface SplashVC : UIViewController<UITextViewDelegate>
 
+
+@property (weak, nonatomic) IBOutlet UIImageView *imgLogo;
+@property (weak, nonatomic) IBOutlet UIButton *btnSignUp;
 @property (weak, nonatomic) IBOutlet UITextView *txtView;
 - (IBAction)btnLogin:(id)sender;
 @property (strong, nonatomic) IBOutlet UIButton *btnLogin;

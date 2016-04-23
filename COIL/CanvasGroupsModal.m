@@ -14,8 +14,8 @@
 {
     CanvasGroupsModal *data=[[CanvasGroupsModal alloc]init];
     
-    data.groupName = [Dict valueForKey:@"name"];
-//    data.comment = [Dict valueForKey:@"comment"];
+    data.CourseName = [Dict valueForKey:@"name"];
+    data.CourseId = [Dict valueForKey:@"id"];
 //    data.Username = [Dict valueForKey:@"name"];
 //    data.image = [Dict valueForKey:@"image"];
 //    data.created_at=[Dict valueForKey:@"created_at"];

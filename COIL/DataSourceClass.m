@@ -65,7 +65,7 @@ cellIdentifier:(NSString *)aCellIdentifier
                                                             forIndexPath:indexPath];
     id item = [self itemAtIndexPath:indexPath];
     id ImageItem=[self imageAtIndexPath:indexPath];
-    _configureCellBlock(cell,item,ImageItem);
+    _configureCellBlock(cell,item,ImageItem ,indexPath);
    
     return cell;
 }

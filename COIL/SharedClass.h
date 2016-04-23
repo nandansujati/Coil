@@ -32,6 +32,7 @@
 -(NSString*)GetTimePeriodLeft:(GroupFeedModal*)modal;
 -(NSString*)GetTimePeriodLeftFromUser:(UserProfileModal*)modal;
 -(NSString*)getMonth:(NSString*)Month;
+-(NSString*)getFullMonth:(NSString*)Month;
 -(void)Loader:(UIView*)view;
 -(void)LoaderWhiteOverlay:(UIView*)view;
 -(void)removeLoader;

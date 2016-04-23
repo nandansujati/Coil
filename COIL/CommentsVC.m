@@ -102,7 +102,7 @@
 {
     
     
-    TableViewCellConfigureBlock configureCell = ^(CommentCell *cell,id item,id imageItems)
+    TableViewCellConfigureBlock configureCell = ^(CommentCell *cell,id item,id imageItems,NSIndexPath *indexPath)
     {
         
         [cell configureForCellWithCountry:item];

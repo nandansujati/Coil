@@ -338,4 +338,35 @@
     return str;
 }
 
+-(NSString*)getFullMonth:(NSString*)Month
+{
+    NSString *str;
+    if ([Month isEqualToString:@"01"])
+        str=@"January";
+    else if ([Month isEqualToString:@"02"])
+        str=@"February";
+    else if ([Month isEqualToString:@"03"])
+        str=@"March";
+    else if ([Month isEqualToString:@"04"])
+        str=@"April";
+    else if ([Month isEqualToString:@"05"])
+        str=@"May";
+    else if ([Month isEqualToString:@"06"])
+        str=@"June";
+    else if ([Month isEqualToString:@"07"])
+        str=@"July";
+    else if ([Month isEqualToString:@"08"])
+        str=@"August";
+    else if ([Month isEqualToString:@"09"])
+        str=@"September";
+    else if ([Month isEqualToString:@"10"])
+        str=@"October";
+    else if ([Month isEqualToString:@"11"])
+        str=@"November";
+    else if ([Month isEqualToString:@"12"])
+        str=@"December";
+    return str;
+}
+
+
 @end

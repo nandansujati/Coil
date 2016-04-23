@@ -18,6 +18,7 @@
     NSInteger notificationTag;
     BOOL notificationTrue;
     NSIndexPath *currentIndexPath;
+    BOOL imageChanged;
 }
 
 @property(nonatomic,strong)id<settingGroupChanged>delegate;

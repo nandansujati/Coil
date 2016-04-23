@@ -18,7 +18,7 @@
 {
      _viewContainer.layer.cornerRadius =10.0f;
     [self loadData];
-    
+    _CourseIds=[[NSMutableArray alloc]init];
 }
 //-(void)loadUpdateParameters
 //{
@@ -83,12 +83,14 @@
     return UITableViewAutomaticDimension ;
     
 }
+
 - (IBAction)btnCross:(id)sender {
     [_delegate btnCrossPressed];
 }
 
 -(void)checkBoxClicked:(NSIndexPath *)indexPath
 {
+     CanvasGroupsModal *modal=[_GroupsArray objectAtIndex:indexPath.row];
     CanvasGroupsCell *cell = (CanvasGroupsCell*)[self.tableViewCanvas cellForRowAtIndexPath:indexPath];
 
     if([cell.btnCheckbox isSelected])
@@ -96,7 +98,7 @@
       
         [cell.btnCheckbox setImage:[UIImage imageNamed:@"ic_checkbox_inactive"] forState:UIControlStateSelected];
         [cell.btnCheckbox setSelected:NO];
-
+        [_CourseIds removeObject:modal.CourseId];
         
     }
     
@@ -105,10 +107,15 @@
 
         [cell.btnCheckbox setImage:[UIImage imageNamed:@"ic_checkbox_active"] forState:UIControlStateSelected];
         [cell.btnCheckbox setSelected:YES];
-
+        [_CourseIds addObject:modal.CourseId];
         
         
     }
 
+}
+- (IBAction)btnSync:(id)sender
+{
+    NSString *str=[_CourseIds componentsJoinedByString:@","];
+    [_delegate btnSyncPressed :str];
 }
 @end

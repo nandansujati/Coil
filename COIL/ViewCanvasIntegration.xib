@@ -58,6 +58,9 @@
                     <state key="normal" title="SYNC">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="btnSync:" destination="iN0-l3-epB" eventType="touchUpInside" id="odE-Sj-4Pc"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Pd-Hh-KVE">
                     <rect key="frame" x="311" y="8" width="12" height="22"/>

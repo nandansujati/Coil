@@ -7,13 +7,8 @@ target 'COIL' do
 pod 'AFNetworking', '~> 2.0’
 pod 'SDWebImage', '~>3.7'
 pod 'RNBlurModalView', '~> 0.1.0'
+pod 'JTCalendar', '~> 2.0'
 end
 
-target 'COILTests' do
 
-end
-
-target 'COILUITests' do
-
-end
 

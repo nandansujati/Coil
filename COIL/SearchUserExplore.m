@@ -129,7 +129,7 @@
 }
 -(void)setData
 {
-    TableViewCellConfigureBlock configureCell = ^(UserExploreCell *cell,id item,id imageItems)
+    TableViewCellConfigureBlock configureCell = ^(UserExploreCell *cell,id item,id imageItems,NSIndexPath *indexPath)
     {
         [cell configureForCellWithCountry:item];
     };

@@ -120,11 +120,18 @@
 		ACD95DFC1C6A17CD0044B5EC /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD95DFB1C6A17CD0044B5EC /* CustomButton.m */; };
 		ACE3741B1CA15F6B000920F5 /* ViewHeaderGroupDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE3741A1CA15F6B000920F5 /* ViewHeaderGroupDetail.m */; };
 		ACE3741D1CA15F7C000920F5 /* ViewHeaderGroupDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACE3741C1CA15F7C000920F5 /* ViewHeaderGroupDetail.xib */; };
+		E1BD6F431CCA5975007EF8A4 /* CalenderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BD6F421CCA5975007EF8A4 /* CalenderVC.m */; };
 		E1D516BF1CC64D3E006AD359 /* GetImagesView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D516BE1CC64D3E006AD359 /* GetImagesView.m */; };
 		E1D516C11CC64D7B006AD359 /* GetImagesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1D516C01CC64D7B006AD359 /* GetImagesView.xib */; };
 		E1D516C61CC6555B006AD359 /* DummyImagesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D516C41CC6555B006AD359 /* DummyImagesCell.m */; };
 		E1D516C71CC6555B006AD359 /* DummyImagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1D516C51CC6555B006AD359 /* DummyImagesCell.xib */; };
 		E1D516CB1CC659C2006AD359 /* BIZGrid4plus1CollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D516CA1CC659C2006AD359 /* BIZGrid4plus1CollectionViewLayout.m */; };
+		E1DCC7961CCB603E008BD89F /* EventsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1DCC7951CCB603E008BD89F /* EventsCell.m */; };
+		E1DCC79B1CCB6122008BD89F /* CanvasEventsModal.m in Sources */ = {isa = PBXBuildFile; fileRef = E1DCC79A1CCB6122008BD89F /* CanvasEventsModal.m */; };
+		E1DCC79F1CCB780E008BD89F /* SettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1DCC79E1CCB780E008BD89F /* SettingsVC.m */; };
+		E1DCC7A31CCB7B3D008BD89F /* SettingsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1DCC7A21CCB7B3D008BD89F /* SettingsCell.m */; };
+		E1DCC7A71CCB8F4D008BD89F /* ChangePasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1DCC7A61CCB8F4D008BD89F /* ChangePasswordView.m */; };
+		E1DCC7A91CCB8F66008BD89F /* ChangePasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1DCC7A81CCB8F66008BD89F /* ChangePasswordView.xib */; };
 		E1E242B11CC11B0A00150034 /* ImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E242B01CC11B0A00150034 /* ImageView.m */; };
 		E1E242B31CC11B1800150034 /* ImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E242B21CC11B1800150034 /* ImageView.xib */; };
 		E1E677621CC5085F00A6CC58 /* ViewProfileHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E677611CC5085F00A6CC58 /* ViewProfileHeader.m */; };
@@ -323,6 +330,8 @@
 		ACE374191CA15F6B000920F5 /* ViewHeaderGroupDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewHeaderGroupDetail.h; sourceTree = "<group>"; };
 		ACE3741A1CA15F6B000920F5 /* ViewHeaderGroupDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewHeaderGroupDetail.m; sourceTree = "<group>"; };
 		ACE3741C1CA15F7C000920F5 /* ViewHeaderGroupDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewHeaderGroupDetail.xib; sourceTree = "<group>"; };
+		E1BD6F411CCA5975007EF8A4 /* CalenderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalenderVC.h; sourceTree = "<group>"; };
+		E1BD6F421CCA5975007EF8A4 /* CalenderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalenderVC.m; sourceTree = "<group>"; };
 		E1D516BD1CC64D3E006AD359 /* GetImagesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetImagesView.h; sourceTree = "<group>"; };
 		E1D516BE1CC64D3E006AD359 /* GetImagesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetImagesView.m; sourceTree = "<group>"; };
 		E1D516C01CC64D7B006AD359 /* GetImagesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetImagesView.xib; sourceTree = "<group>"; };
@@ -331,6 +340,17 @@
 		E1D516C51CC6555B006AD359 /* DummyImagesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DummyImagesCell.xib; sourceTree = "<group>"; };
 		E1D516C91CC659C2006AD359 /* BIZGrid4plus1CollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BIZGrid4plus1CollectionViewLayout.h; sourceTree = "<group>"; };
 		E1D516CA1CC659C2006AD359 /* BIZGrid4plus1CollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BIZGrid4plus1CollectionViewLayout.m; sourceTree = "<group>"; };
+		E1DCC7941CCB603E008BD89F /* EventsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventsCell.h; sourceTree = "<group>"; };
+		E1DCC7951CCB603E008BD89F /* EventsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventsCell.m; sourceTree = "<group>"; };
+		E1DCC7991CCB6122008BD89F /* CanvasEventsModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasEventsModal.h; sourceTree = "<group>"; };
+		E1DCC79A1CCB6122008BD89F /* CanvasEventsModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanvasEventsModal.m; sourceTree = "<group>"; };
+		E1DCC79D1CCB780E008BD89F /* SettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsVC.h; sourceTree = "<group>"; };
+		E1DCC79E1CCB780E008BD89F /* SettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsVC.m; sourceTree = "<group>"; };
+		E1DCC7A11CCB7B3D008BD89F /* SettingsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsCell.h; sourceTree = "<group>"; };
+		E1DCC7A21CCB7B3D008BD89F /* SettingsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsCell.m; sourceTree = "<group>"; };
+		E1DCC7A51CCB8F4D008BD89F /* ChangePasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordView.h; sourceTree = "<group>"; };
+		E1DCC7A61CCB8F4D008BD89F /* ChangePasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordView.m; sourceTree = "<group>"; };
+		E1DCC7A81CCB8F66008BD89F /* ChangePasswordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePasswordView.xib; sourceTree = "<group>"; };
 		E1E242AF1CC11B0A00150034 /* ImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageView.h; sourceTree = "<group>"; };
 		E1E242B01CC11B0A00150034 /* ImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageView.m; sourceTree = "<group>"; };
 		E1E242B21CC11B1800150034 /* ImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageView.xib; sourceTree = "<group>"; };
@@ -549,6 +569,8 @@
 		AC53142C1C6CADA600F3F302 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				E1DCC7A01CCB7B25008BD89F /* SettingsCell */,
+				E1DCC7971CCB6042008BD89F /* EventsCell */,
 				ACA7C5971CB7CC4E0045E4B5 /* CanvasGroupsCell */,
 				87F266161CB5909D0022FE63 /* CommentCell */,
 				AC606DD01CB3D60500F43D44 /* GroupFeedImageCell */,
@@ -1077,6 +1099,7 @@
 		ACD95DE81C69CA370044B5EC /* Modals */ = {
 			isa = PBXGroup;
 			children = (
+				E1DCC7981CCB6115008BD89F /* CanvasEventsModal */,
 				E1F5768D1CC50E0D00D7D6C2 /* UserProfileModal */,
 				ACA7C5981CB7CD7D0045E4B5 /* CanvasGroupsModal */,
 				ACC5C9171CB5479000D29585 /* CommentsModal */,
@@ -1092,6 +1115,7 @@
 		ACD95DE91C69CA420044B5EC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E1DCC7A41CCB8F2E008BD89F /* ChangePasswordView */,
 				E1D516BC1CC64C9F006AD359 /* GetImagesView */,
 				E1E6775F1CC5084A00A6CC58 /* ViewProfileHeader */,
 				E1E242AE1CC11AF400150034 /* ImageView */,
@@ -1107,6 +1131,8 @@
 		ACD95DEA1C69CA480044B5EC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E1DCC79C1CCB77E5008BD89F /* SettingsVC */,
+				E1BD6F401CCA5946007EF8A4 /* CalenderVC */,
 				E1F576891CC50C0A00D7D6C2 /* UserProfileVC */,
 				ACC5C9131CB52F4000D29585 /* CommentsVC */,
 				AC0C3E5E1CAD59FA000C157C /* NewPost */,
@@ -1190,6 +1216,15 @@
 			name = ViewHeaderGroupDetail;
 			sourceTree = "<group>";
 		};
+		E1BD6F401CCA5946007EF8A4 /* CalenderVC */ = {
+			isa = PBXGroup;
+			children = (
+				E1BD6F411CCA5975007EF8A4 /* CalenderVC.h */,
+				E1BD6F421CCA5975007EF8A4 /* CalenderVC.m */,
+			);
+			name = CalenderVC;
+			sourceTree = "<group>";
+		};
 		E1D516BC1CC64C9F006AD359 /* GetImagesView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1217,6 +1252,52 @@
 				E1D516CA1CC659C2006AD359 /* BIZGrid4plus1CollectionViewLayout.m */,
 			);
 			name = GridLayout;
+			sourceTree = "<group>";
+		};
+		E1DCC7971CCB6042008BD89F /* EventsCell */ = {
+			isa = PBXGroup;
+			children = (
+				E1DCC7941CCB603E008BD89F /* EventsCell.h */,
+				E1DCC7951CCB603E008BD89F /* EventsCell.m */,
+			);
+			name = EventsCell;
+			sourceTree = "<group>";
+		};
+		E1DCC7981CCB6115008BD89F /* CanvasEventsModal */ = {
+			isa = PBXGroup;
+			children = (
+				E1DCC7991CCB6122008BD89F /* CanvasEventsModal.h */,
+				E1DCC79A1CCB6122008BD89F /* CanvasEventsModal.m */,
+			);
+			name = CanvasEventsModal;
+			sourceTree = "<group>";
+		};
+		E1DCC79C1CCB77E5008BD89F /* SettingsVC */ = {
+			isa = PBXGroup;
+			children = (
+				E1DCC79D1CCB780E008BD89F /* SettingsVC.h */,
+				E1DCC79E1CCB780E008BD89F /* SettingsVC.m */,
+			);
+			name = SettingsVC;
+			sourceTree = "<group>";
+		};
+		E1DCC7A01CCB7B25008BD89F /* SettingsCell */ = {
+			isa = PBXGroup;
+			children = (
+				E1DCC7A11CCB7B3D008BD89F /* SettingsCell.h */,
+				E1DCC7A21CCB7B3D008BD89F /* SettingsCell.m */,
+			);
+			name = SettingsCell;
+			sourceTree = "<group>";
+		};
+		E1DCC7A41CCB8F2E008BD89F /* ChangePasswordView */ = {
+			isa = PBXGroup;
+			children = (
+				E1DCC7A51CCB8F4D008BD89F /* ChangePasswordView.h */,
+				E1DCC7A61CCB8F4D008BD89F /* ChangePasswordView.m */,
+				E1DCC7A81CCB8F66008BD89F /* ChangePasswordView.xib */,
+			);
+			name = ChangePasswordView;
 			sourceTree = "<group>";
 		};
 		E1E242AE1CC11AF400150034 /* ImageView */ = {
@@ -1291,7 +1372,7 @@
 				TargetAttributes = {
 					ACD95DAE1C69C9940044B5EC = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = Z2TB6G4VCE;
+						DevelopmentTeam = 94L4UQ837G;
 					};
 				};
 			};
@@ -1329,6 +1410,7 @@
 				87F2661B1CB590B70022FE63 /* CommentCell.xib in Resources */,
 				AC805EFE1CA109ED0083BE00 /* groupFeedCell.xib in Resources */,
 				AC805F2A1CA11C130083BE00 /* SF-UI-Text-Light.otf in Resources */,
+				E1DCC7A91CCB8F66008BD89F /* ChangePasswordView.xib in Resources */,
 				AC805F2C1CA11C130083BE00 /* SF-UI-Text-Medium.otf in Resources */,
 				AC805F251CA11C130083BE00 /* SF-UI-Display-Ultralight.otf in Resources */,
 				AC805F1C1CA11C130083BE00 /* License Agreement for SF UI Font.pdf in Resources */,
@@ -1423,8 +1505,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1DCC7961CCB603E008BD89F /* EventsCell.m in Sources */,
 				E1E242B11CC11B0A00150034 /* ImageView.m in Sources */,
 				AC5314311C6CADF800F3F302 /* GroupsMenuCell.m in Sources */,
+				E1DCC7A71CCB8F4D008BD89F /* ChangePasswordView.m in Sources */,
 				AC0D87581CAC0B7500A317D1 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				ACA48BAF1C9FF0F400C91802 /* GroupSettingMenu.m in Sources */,
 				AC97BBD21CB23CFB001120E6 /* PostVideoCell.m in Sources */,
@@ -1445,11 +1529,13 @@
 				ACBF63F51C6F819600315BAA /* AddPeopleCell.m in Sources */,
 				AC88B66C1C758F5B009A4260 /* MyGroupsModal.m in Sources */,
 				E1D516BF1CC64D3E006AD359 /* GetImagesView.m in Sources */,
+				E1DCC79F1CCB780E008BD89F /* SettingsVC.m in Sources */,
 				AC805EFD1CA109ED0083BE00 /* groupFeedCell.m in Sources */,
 				ACA7C5781CB78EDF0045E4B5 /* CYNavigationControllerDelegate.m in Sources */,
 				AC5314181C6C6DC200F3F302 /* TLAlertView.m in Sources */,
 				ACA7C5641CB77AB20045E4B5 /* AAPTransitionDirector.m in Sources */,
 				AC5314251C6CA94900F3F302 /* GroupsMenu.m in Sources */,
+				E1BD6F431CCA5975007EF8A4 /* CalenderVC.m in Sources */,
 				E1F5768C1CC50C3B00D7D6C2 /* UserProfileVC.m in Sources */,
 				AC799E4A1C6AFF20002983BD /* SignUp1Screen.m in Sources */,
 				ACA48BAB1C9FE35800C91802 /* GroupsFeed.m in Sources */,
@@ -1457,6 +1543,8 @@
 				ACA7C5771CB78EDF0045E4B5 /* UINavigationController+PortalTransition.m in Sources */,
 				AC41A7321C6DBFDA00DBD1FA /* SearchModal.m in Sources */,
 				AC799E5A1C6B1FFB002983BD /* SignUp2Screen.m in Sources */,
+				E1DCC7A31CCB7B3D008BD89F /* SettingsCell.m in Sources */,
+				E1DCC79B1CCB6122008BD89F /* CanvasEventsModal.m in Sources */,
 				ACD95DB71C69C9940044B5EC /* AppDelegate.m in Sources */,
 				AC0D87551CAC09C500A317D1 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				E1E677621CC5085F00A6CC58 /* ViewProfileHeader.m in Sources */,
@@ -1540,7 +1628,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1584,7 +1672,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1611,13 +1699,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Grant Rosenberg (952HG36992)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = COIL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.AlList;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codebrew.COIL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b1e9b370-b856-4020-b693-2f743e41b73e";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1628,13 +1716,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Grant Rosenberg (952HG36992)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = COIL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.AlList;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codebrew.COIL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b1e9b370-b856-4020-b693-2f743e41b73e";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

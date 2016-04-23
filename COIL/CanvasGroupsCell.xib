@@ -21,13 +21,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQJ-MP-Q3j">
-                        <rect key="frame" x="24" y="10" width="34" height="16"/>
+                        <rect key="frame" x="24" y="10" width="253" height="16"/>
                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="13"/>
                         <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jjc-4h-c8Y">
                         <rect key="frame" x="285" y="7" width="17" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="17" id="M7b-TS-WAk"/>
+                        </constraints>
                         <state key="normal" image="ic_checkbox_small_inactive"/>
                         <connections>
                             <action selector="btnCheckbox:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Eqx-t2-b81"/>
@@ -36,6 +39,7 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
+                    <constraint firstItem="jjc-4h-c8Y" firstAttribute="leading" secondItem="yQJ-MP-Q3j" secondAttribute="trailing" constant="8" symbolic="YES" id="3SZ-0w-Yz8"/>
                     <constraint firstItem="yQJ-MP-Q3j" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="8zI-lv-Kdo"/>
                     <constraint firstAttribute="bottom" secondItem="yQJ-MP-Q3j" secondAttribute="bottom" id="W8J-FH-L25"/>
                     <constraint firstAttribute="trailingMargin" secondItem="jjc-4h-c8Y" secondAttribute="trailing" constant="10" id="frd-xX-hdf"/>

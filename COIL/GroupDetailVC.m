@@ -4,7 +4,7 @@
 //
 //  Created by Aseem 9 on 17/03/16.
 //  Copyright © 2016 Aseem 9. All rights reserved.
-//
+
 
 #import "GroupDetailVC.h"
 #define CellIdentifierMemberCell @"groupDetailMemberCell"
@@ -39,6 +39,7 @@
 
 -(void)setupUI
 {
+    imageChanged=NO;
     _MemberArray=[[NSMutableArray alloc]init];
     _arrayImage=[[NSMutableArray alloc]init];
    
@@ -520,6 +521,7 @@
         _HeaderView.imageGroup.image=chosenImage;
         [_arrayImage removeAllObjects];
         [_arrayImage addObject:chosenImage];
+        imageChanged=YES;
         [picker dismissViewControllerAnimated:YES completion:NULL];
         
     }
@@ -648,18 +650,36 @@
     if (valueNetwork==0)
     {
         [self loadUpdateParameters];
-        [iOSRequest postMutliPartData:UrlUpdateGroup :@"image":_DictUpdateParameters :imageData :^(NSDictionary *response_success) {
-            [[SharedClass SharedManager]removeLoader];
-            NSInteger value=[[response_success valueForKey:@"success"]integerValue];
-            if (value==1)
-            {
-              
-            }
+        
+        if (imageChanged==YES) {
+            [iOSRequest postMutliPartData:UrlUpdateGroup :@"image":_DictUpdateParameters :imageData :^(NSDictionary *response_success) {
+                [[SharedClass SharedManager]removeLoader];
+                NSInteger value=[[response_success valueForKey:@"success"]integerValue];
+                if (value==1)
+                {
+                    
+                }
+                
+            } :^(NSError *response_error) {
+                [[SharedClass SharedManager]AlertErrors:@"Error !!" :response_error.localizedDescription :@"OK"];
+                [[SharedClass SharedManager]removeLoader];
+            }];
+        }
+        else
+        {
+            [iOSRequest postData:UrlUpdateGroup :_DictUpdateParameters :^(NSDictionary *response_success) {
+                [[SharedClass SharedManager]removeLoader];
+                NSInteger value=[[response_success valueForKey:@"success"]integerValue];
+                if (value==1)
+                {
+                    
+                }
+            } :^(NSError *response_error) {
+                [[SharedClass SharedManager]AlertErrors:@"Error !!" :response_error.localizedDescription :@"OK"];
+                [[SharedClass SharedManager]removeLoader];
 
-        } :^(NSError *response_error) {
-            [[SharedClass SharedManager]AlertErrors:@"Error !!" :response_error.localizedDescription :@"OK"];
-            [[SharedClass SharedManager]removeLoader];
-        }];
+            }];
+                    }
       
        
     }

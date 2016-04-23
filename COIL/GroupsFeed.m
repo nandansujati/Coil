@@ -24,6 +24,7 @@
 @property (nonatomic, strong) CYNavigationControllerDelegate *navDelegate;
 
 @property(nonatomic,strong)GroupDetailVC *groupDetailsVC;
+@property(nonatomic,strong)CalenderVC *calVC;
 @property(nonatomic,strong)groupFeedCell *cell;
 @property(nonatomic,strong)groupFeedImageCell *cellImage;
 
@@ -582,6 +583,16 @@
     
     [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:currentIndexpath.row inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
 }
+- (IBAction)btnCalendar:(id)sender {
+    _calVC=[self.storyboard instantiateViewControllerWithIdentifier:@"CalenderVC"];
+   
+    _calVC.modalPresentationStyle = UIModalPresentationCustom;
+    self.viewControllerTransitionDelegate.viewController = _calVC;
+    
+    [self presentPortalTransitionViewController:_calVC completion:nil];
+
+}
+
 - (IBAction)btnBack:(id)sender
 {
 //    [self.navigationController popViewControllerAnimated:YES];

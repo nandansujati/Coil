@@ -16,6 +16,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpUI];
+    _btnLogin.hidden=YES;
+    _btnSignUp.hidden=YES;
+    _txtView.hidden=YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -25,12 +28,28 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    
+   
     [super viewWillAppear:YES];
      self.navigationController.navigationBarHidden=YES;//hide Navigation Bar
 }
+
 #pragma mark- Call From ViewDidLoad
 -(void)setUpUI
 {
+    _imgLogo.alpha=0;
+    [UIView animateWithDuration:0.5
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{ _imgLogo.alpha = 1; }
+                     completion:^(BOOL finished){
+                         _btnLogin.hidden=NO;
+                         _btnSignUp.hidden=NO;
+                         _txtView.hidden=NO;
+                        }
+     ];
+    
+    
     [self TextViewLinksMethod];//Set Links in PrivacyPolicy
 }
 

@@ -16,7 +16,7 @@
 
 -(void)configureCellWithModal:(CanvasGroupsModal*)modal
 {
-    _lblGroupName.text=[modal.groupName capitalizedString];
+    _lblGroupName.text=[modal.CourseName capitalizedString];
     
 }
 

@@ -10,7 +10,7 @@
 #import <Foundation/Foundation.h>
 @interface DataSourceClass : NSObject<UITableViewDataSource>
 
-typedef void (^TableViewCellConfigureBlock)(id cell, id item,id imageItems);
+typedef void (^TableViewCellConfigureBlock)(id cell, id item,id imageItems ,id indexPath);
 
 - (id)initWithItems:(NSArray *)anItems
          imageItems:(NSArray*)Imageitems

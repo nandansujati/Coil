@@ -31,7 +31,7 @@
 
 -(void)setData
 {
-    TableViewCellConfigureBlock configureCell = ^(GroupsMenuCell *cell,id item,id imageItems)
+    TableViewCellConfigureBlock configureCell = ^(GroupsMenuCell *cell,id item,id imageItems,NSIndexPath *indexPath)
     {
         
         [cell configureForCellWithCountry:item :imageItems];

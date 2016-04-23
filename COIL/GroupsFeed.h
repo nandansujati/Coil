@@ -23,6 +23,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *groupName;
 @property (weak, nonatomic) IBOutlet UIButton *btnAddPost;
+- (IBAction)btnCalendar:(id)sender;
 
 - (IBAction)btnBack:(id)sender;
 - (IBAction)btnAddPost:(id)sender;

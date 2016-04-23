@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Header.h"
 @protocol btnPressedfromCanvasView
+@optional
 -(void)btnCrossPressed;
+-(void)btnSyncPressed :(NSString *)CourseIds;
 @end
 @interface ViewCanvasIntegration : UIView
 @property(nonatomic,strong)id<btnPressedfromCanvasView>delegate;
@@ -17,4 +19,6 @@
 @property(nonatomic,strong)NSArray *GroupsArray;
 - (IBAction)btnCross:(id)sender;
 @property (weak, nonatomic) IBOutlet UIView *viewContainer;
+@property(nonatomic,strong)NSMutableArray *CourseIds;
+- (IBAction)btnSync:(id)sender;
 @end
