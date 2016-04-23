@@ -81,11 +81,11 @@
     
     CGRect kbRect = [[[aNotification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
    
-    CGRect tfRect = [self convertRect:_activeField.bounds fromView:_activeField];
+   // CGRect tfRect = [self convertRect:_activeField.bounds fromView:_activeField];
     
-    tfRect = CGRectMake(tfRect.origin.x, tfRect.origin.y, tfRect.size.width, tfRect.size.height);
+   CGRect tfRect = CGRectMake(_activeField.frame.origin.x, _activeField.frame.origin.y, _activeField.frame.size.width, _activeField.frame.size.height);
     
-    float OFFSET = (self.frame.size.height -kbRect.size.height) - (tfRect.origin.y+tfRect.size.height);
+    float OFFSET = (self.superview.frame.size.height -kbRect.size.height) - (tfRect.origin.y+tfRect.size.height);
     
     if (OFFSET < 0) {
         
@@ -95,7 +95,10 @@
         
     }
 }
- 
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self endEditing:YES];
+}
 
 //Keyboard Hidden
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
