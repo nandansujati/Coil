@@ -588,7 +588,7 @@
    
     _calVC.modalPresentationStyle = UIModalPresentationCustom;
     self.viewControllerTransitionDelegate.viewController = _calVC;
-    
+    _calVC.groupName=_groupName.text;
     [self presentPortalTransitionViewController:_calVC completion:nil];
 
 }

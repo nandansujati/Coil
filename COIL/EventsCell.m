@@ -12,6 +12,40 @@
 
 -(void)configureCellWithModal:(CanvasEventsModal*)modal
 {
+    _lblEventName.text=modal.EventTitle;
+    NSDate *randomDate = [self convertDate:modal.EventStartAt];
     
+    NSString *key = [[self dateFormatter]stringFromDate:randomDate];
+    _lblEventTime.text=key;
+}
+
+- (NSDateFormatter *)dateFormatter
+{
+    static NSDateFormatter *dateFormatter;
+    if(!dateFormatter){
+        dateFormatter = [NSDateFormatter new];
+        dateFormatter.dateFormat = @"hh:mm a";
+        [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    }
+    
+    return dateFormatter;
+}
+
+-(NSDate*)convertDate:(NSString *)strDate
+{
+ 
+    NSTimeZone *timeZone = [NSTimeZone defaultTimeZone];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeZone:timeZone];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+     NSDate *date = [dateFormatter dateFromString:strDate];
+    NSTimeInterval secondsInEightHours = (1 * 60 * 60)/2;
+    NSDate *dateHalfAhead = [date dateByAddingTimeInterval:secondsInEightHours];
+    
+    
+      NSLog(@"date = %@", dateHalfAhead);
+
+
+    return  dateHalfAhead;
 }
 @end

@@ -81,9 +81,9 @@
     
     CGRect kbRect = [[[aNotification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
    
-   // CGRect tfRect = [self convertRect:_activeField.bounds fromView:_activeField];
+    CGRect tfRect = [self.superview convertRect:_activeField.bounds fromView:_activeField];
     
-   CGRect tfRect = CGRectMake(_activeField.frame.origin.x, _activeField.frame.origin.y, _activeField.frame.size.width, _activeField.frame.size.height);
+    tfRect = CGRectMake(tfRect.origin.x, tfRect.origin.y, tfRect.size.width, tfRect.size.height);
     
     float OFFSET = (self.superview.frame.size.height -kbRect.size.height) - (tfRect.origin.y+tfRect.size.height);
     
@@ -112,9 +112,85 @@
     [[NSNotificationCenter defaultCenter] removeObserver:UIKeyboardWillHideNotification];
 }
 
-- (IBAction)btnDone:(id)sender {
-    [_delegate btnDonePressed];
-    [self removeKeyboardObservers];
+
+-(void)loadParameters
+{
+    NSDictionary *Dictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"AccessToken"];
+    NSString *Access_Token=[Dictionary valueForKey:@"access_token"];
+    _DictParameters=@{@"access_token":Access_Token,@"current_password":_txtOldPassword.text,@"new_password":_txtNewPassword.text};
+  
+}
+-(void)loadPasswordApi
+{
+    NSInteger valueNetwork=[[SharedClass SharedManager]NetworkCheck];
+    if (valueNetwork==0)
+    {
+        [self loadParameters];
+        [iOSRequest getData:UrlChangePassword :_DictParameters :^(NSArray *response_success) {
+            [[SharedClass SharedManager]removeLoader];
+            NSInteger value=[[response_success valueForKey:@"success"]integerValue];
+            if (value==1)
+            {
+                [_delegate btnDonePressed];
+                [self removeKeyboardObservers];
+            }
+            else
+                [[SharedClass SharedManager]AlertErrors:@"Error !!" :[response_success valueForKey:@"msg"] :@"OK"];
+            
+        }  :^(NSError *response_error) {
+            
+                [[SharedClass SharedManager]AlertErrors:@"Error !!" :response_error.localizedDescription :@"OK"];
+                [[SharedClass SharedManager]removeLoader];
+            }];
+        }
+        
+  
+
+}
+-(NSInteger)textFieldValidations
+{
+    NSInteger ValueValidation=0;
+    if ([_txtOldPassword.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length==0)
+    {
+        [[SharedClass SharedManager]AlertErrors:@"Error" :@"Please enter your Old password" :@"Ok"];
+        [[SharedClass SharedManager]removeLoader];
+        ValueValidation=1;
+    }
+    if ([_txtNewPassword.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length==0)
+    {
+        [[SharedClass SharedManager]AlertErrors:@"Error" :@"Please enter your New password" :@"Ok"];
+        [[SharedClass SharedManager]removeLoader];
+        ValueValidation=1;
+    }
+    if ([_txtConfirmNewPassword.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length==0)
+    {
+        [[SharedClass SharedManager]AlertErrors:@"Error" :@"Please enter your password again" :@"Ok"];
+        [[SharedClass SharedManager]removeLoader];
+        ValueValidation=1;
+    }
+    else if (_txtNewPassword.text.length <6)
+    {
+        [[SharedClass SharedManager]AlertErrors:@"Error" :@"Password must be of atleast 6 characters" :@"Ok"];
+        [[SharedClass SharedManager]removeLoader];
+        ValueValidation=1;
+    }
+    else if (![_txtConfirmNewPassword.text isEqualToString:_txtNewPassword.text])
+    {
+        [[SharedClass SharedManager]AlertErrors:@"Error" :@"Password not matched" :@"Ok"];
+        [[SharedClass SharedManager]removeLoader];
+        ValueValidation=1;
+    }
+    return ValueValidation;
+}
+- (IBAction)btnDone:(id)sender
+{
+   NSInteger Vlaue= [self textFieldValidations];
+    if (Vlaue==0) {
+        [[SharedClass SharedManager]Loader:self];
+        [self loadPasswordApi];
+    }
+   
+ 
 }
 
 - (IBAction)btnCancel:(id)sender {

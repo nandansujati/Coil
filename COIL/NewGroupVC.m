@@ -348,6 +348,9 @@
     [self.btnCanvasInt setImage:[UIImage imageNamed:@"switch_normal"] forState:UIControlStateNormal];
 }
 
-
+-(void)btnSyncPressed:(NSString *)CourseIds
+{
+    
+}
 
 @end

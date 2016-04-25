@@ -34,6 +34,10 @@
 #define UrlGetUserProfile [NSString stringWithFormat:@"%@%@",BasePath,@"viewUserProfile"]
 #define UrlRemoveMember [NSString stringWithFormat:@"%@%@",BasePath,@"removeUserFromGroup"]
 #define  UrlGetDummyImages [NSString stringWithFormat:@"%@%@",BasePath,@"getDummyImages"]
+#define  UrlChangePassword [NSString stringWithFormat:@"%@%@",BasePath,@"changePassword"]
+#define  UrlGetCalenderEvents [NSString stringWithFormat:@"%@%@",BasePath,@"getCalenderEvent"]
+
+
 
 #define ImagePath [NSString stringWithFormat:@"%@%@",BasePath,@"photo/"]
 #define VideoPath @"https://s3-us-west-2.amazonaws.com/cbdevs3/uploads/"

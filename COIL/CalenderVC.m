@@ -22,7 +22,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _ArrayEvents =@[@"sgsrt"];
+    _lblGroupName.text=_groupName;
     _calendarManager = [JTCalendarManager new];
     _calendarManager.delegate = self;
     
@@ -32,14 +32,16 @@
     _weekDayView.manager = _calendarManager;
     [_weekDayView reload];
     
-    // Generate random events sort by date using a dateformatter for the demonstration
-    [self createRandomEvents];
+//    // Generate random events sort by date using a dateformatter for the demonstration
+//    [self createRandomEvents];
     
     [_calendarManager setMenuView:_calendarMenuView];
     [_calendarManager setContentView:_calendarContentView];
     [_calendarManager setDate:[NSDate date]];
     [self setDateOnLabel:[NSDate date]];
     
+    
+   
     _calendarMenuView.scrollView.scrollEnabled = NO; // Scroll not supported with JTVerticalCalendarView
 }
 
@@ -116,8 +118,14 @@
     _dateSelected = dayView.date;
     
     [self setDateOnLabel:_dateSelected];
-    
-    
+    _KeyClicked = [[self dateFormatter] stringFromDate:_dateSelected];
+   BOOL value= [self containsKey:_KeyClicked];
+    _ArrayDateEvents=[[NSArray alloc]init];
+    if (value==YES) {
+        _ArrayDateEvents=[_eventsByDate valueForKey:_KeyClicked];
+        
+    }
+    [self setEvents];
     
     // Animation for the circleView
     dayView.circleView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.1, 0.1);
@@ -150,6 +158,7 @@
     static NSDateFormatter *dateFormatter;
     if(!dateFormatter){
         dateFormatter = [NSDateFormatter new];
+        
         dateFormatter.dateFormat = @"dd-MM-yyyy";
     }
     
@@ -168,14 +177,15 @@
     
 }
 
-- (void)createRandomEvents
+- (void)setEventsOnCalender
 {
     _eventsByDate = [NSMutableDictionary new];
     
-    for(int i = 0; i < 30; ++i){
-        // Generate 30 random dates between now and 60 days later
-        NSDate *randomDate = [NSDate dateWithTimeInterval:(rand() % (3600 * 24 * 60)) sinceDate:[NSDate date]];
-        
+    for (CanvasEventsModal *modal in _ArrayEvents) {
+       
+        NSDate *randomDate = [self convertDate:modal.EventStartAt];
+
+
         // Use the date as key for eventsByDate
         NSString *key = [[self dateFormatter] stringFromDate:randomDate];
         
@@ -183,10 +193,34 @@
             _eventsByDate[key] = [NSMutableArray new];
         }
         
-        [_eventsByDate[key] addObject:randomDate];
+        [_eventsByDate[key] addObject:modal];
     }
+    
+    
+    [_calendarManager reload];
 }
 
+- (BOOL)containsKey: (NSString *)key {
+    BOOL retVal = 0;
+    NSArray *allKeys = [_eventsByDate allKeys];
+    retVal = [allKeys containsObject:key];
+    return retVal;
+}
+
+
+-(NSDate*)convertDate:(NSString *)strDate
+{
+   // NSString *dateString = strDate;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+    
+    // Always use this locale when parsing fixed format date strings
+    NSLocale *posix = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+    [formatter setLocale:posix];
+    NSDate *date = [formatter dateFromString:strDate];
+    NSLog(@"date = %@", date);
+    return date;
+}
 -(void)showView
 {
     _ViewCanvas = (ViewCanvasIntegration *)[[[NSBundle mainBundle] loadNibNamed:@"ViewCanvasIntegration" owner:self options:nil] objectAtIndex:0];
@@ -209,10 +243,42 @@
 {
     [modalView hide];
     if (CourseIds !=nil) {
-        [self setEvents];
+        [self GetEvents];
+     
     }
 }
 
+
+-(void)GetEvents
+{
+    CanvasEventsModal *modal=[[CanvasEventsModal alloc]init];
+    NSInteger valueNetwork=[[SharedClass SharedManager]NetworkCheck];
+    if (valueNetwork==0)
+    {
+       // [self loadParameters];
+        [iOSRequest getData:UrlGetCalenderEvents :nil :^(NSArray *response_success) {
+            [[SharedClass SharedManager]removeLoader];
+            NSMutableArray *array=[[NSMutableArray alloc]init];
+            [array addObjectsFromArray:response_success];
+            _ArrayEvents = [modal ListmethodCall:array ];
+            [self setEventsOnCalender];
+            
+            _KeyClicked = [[self dateFormatter] stringFromDate:[NSDate date]];
+            BOOL value= [self containsKey:_KeyClicked];
+            _ArrayDateEvents=[[NSArray alloc]init];
+            if (value==YES) {
+                _ArrayDateEvents=[_eventsByDate valueForKey:_KeyClicked];
+                
+            }
+            [self setEvents];
+        }  :^(NSError *response_error) {
+            
+            [[SharedClass SharedManager]AlertErrors:@"Error !!" :response_error.localizedDescription :@"OK"];
+            [[SharedClass SharedManager]removeLoader];
+        }];
+    }
+
+}
 -(void)setEvents
 {
     TableViewCellConfigureBlock configureCell = ^(EventsCell *cell,id item,id imageItems,NSIndexPath *indexPath)
@@ -226,7 +292,7 @@
     
     
     
-    self.datasource = [[DataSourceClass alloc] initWithItems:_ArrayEvents
+    self.datasource = [[DataSourceClass alloc] initWithItems:_ArrayDateEvents
                                                   imageItems:nil
                                               cellIdentifier:CellIdentifierEvents
                                           configureCellBlock:configureCell];

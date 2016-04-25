@@ -15,9 +15,13 @@
 @property (weak, nonatomic) IBOutlet JTVerticalCalendarView *calendarContentView;
 @property (weak, nonatomic) IBOutlet UILabel *lblDateSelected;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property(nonatomic,strong)NSArray *ArrayEvents;
+@property(nonatomic,strong) NSString *KeyClicked;
+@property(nonatomic,strong) NSArray *ArrayEvents;
+@property(nonatomic,strong)NSArray *ArrayDateEvents;
+@property(nonatomic,strong)NSString *groupName;
 - (IBAction)btnSync:(id)sender;
 @property (strong, nonatomic) JTCalendarManager *calendarManager;
+@property (weak, nonatomic) IBOutlet UILabel *lblGroupName;
 - (IBAction)btnBack:(id)sender;
 
 @end

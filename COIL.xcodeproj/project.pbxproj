@@ -121,6 +121,7 @@
 		ACE3741B1CA15F6B000920F5 /* ViewHeaderGroupDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE3741A1CA15F6B000920F5 /* ViewHeaderGroupDetail.m */; };
 		ACE3741D1CA15F7C000920F5 /* ViewHeaderGroupDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACE3741C1CA15F7C000920F5 /* ViewHeaderGroupDetail.xib */; };
 		E1BD6F431CCA5975007EF8A4 /* CalenderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BD6F421CCA5975007EF8A4 /* CalenderVC.m */; };
+		E1CB6A561CCDE97A003513A0 /* NotificationsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CB6A551CCDE97A003513A0 /* NotificationsVC.m */; };
 		E1D516BF1CC64D3E006AD359 /* GetImagesView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D516BE1CC64D3E006AD359 /* GetImagesView.m */; };
 		E1D516C11CC64D7B006AD359 /* GetImagesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1D516C01CC64D7B006AD359 /* GetImagesView.xib */; };
 		E1D516C61CC6555B006AD359 /* DummyImagesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D516C41CC6555B006AD359 /* DummyImagesCell.m */; };
@@ -332,6 +333,8 @@
 		ACE3741C1CA15F7C000920F5 /* ViewHeaderGroupDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewHeaderGroupDetail.xib; sourceTree = "<group>"; };
 		E1BD6F411CCA5975007EF8A4 /* CalenderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalenderVC.h; sourceTree = "<group>"; };
 		E1BD6F421CCA5975007EF8A4 /* CalenderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalenderVC.m; sourceTree = "<group>"; };
+		E1CB6A541CCDE97A003513A0 /* NotificationsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsVC.h; sourceTree = "<group>"; };
+		E1CB6A551CCDE97A003513A0 /* NotificationsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsVC.m; sourceTree = "<group>"; };
 		E1D516BD1CC64D3E006AD359 /* GetImagesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetImagesView.h; sourceTree = "<group>"; };
 		E1D516BE1CC64D3E006AD359 /* GetImagesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetImagesView.m; sourceTree = "<group>"; };
 		E1D516C01CC64D7B006AD359 /* GetImagesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetImagesView.xib; sourceTree = "<group>"; };
@@ -1131,6 +1134,7 @@
 		ACD95DEA1C69CA480044B5EC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E1CB6A531CCDE953003513A0 /* NotificationsVC */,
 				E1DCC79C1CCB77E5008BD89F /* SettingsVC */,
 				E1BD6F401CCA5946007EF8A4 /* CalenderVC */,
 				E1F576891CC50C0A00D7D6C2 /* UserProfileVC */,
@@ -1223,6 +1227,15 @@
 				E1BD6F421CCA5975007EF8A4 /* CalenderVC.m */,
 			);
 			name = CalenderVC;
+			sourceTree = "<group>";
+		};
+		E1CB6A531CCDE953003513A0 /* NotificationsVC */ = {
+			isa = PBXGroup;
+			children = (
+				E1CB6A541CCDE97A003513A0 /* NotificationsVC.h */,
+				E1CB6A551CCDE97A003513A0 /* NotificationsVC.m */,
+			);
+			name = NotificationsVC;
 			sourceTree = "<group>";
 		};
 		E1D516BC1CC64C9F006AD359 /* GetImagesView */ = {
@@ -1574,6 +1587,7 @@
 				ACC5C91A1CB547B100D29585 /* CommentsModal.m in Sources */,
 				ACA7C5951CB7CC480045E4B5 /* CanvasGroupsCell.m in Sources */,
 				ACD3D1BD1CAE60E400D57F12 /* PostImagesCell.m in Sources */,
+				E1CB6A561CCDE97A003513A0 /* NotificationsVC.m in Sources */,
 				ACA7C5651CB77AB20045E4B5 /* UINavigationController+RadialTransaction.m in Sources */,
 				AC0C3E611CAD5A14000C157C /* NewPostVC.m in Sources */,
 				AC41A7241C6DAC4B00DBD1FA /* ViewSearch.m in Sources */,
@@ -1628,7 +1642,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1672,7 +1686,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1698,12 +1712,12 @@
 			baseConfigurationReference = 5C5633346452E1ECCEA418FB /* Pods-COIL.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = COIL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.codebrew.COIL;
+				PRODUCT_BUNDLE_IDENTIFIER = com.useherbo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1715,12 +1729,12 @@
 			baseConfigurationReference = 4661FB8D67BB581F45D485AE /* Pods-COIL.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = COIL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.codebrew.COIL;
+				PRODUCT_BUNDLE_IDENTIFIER = com.useherbo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

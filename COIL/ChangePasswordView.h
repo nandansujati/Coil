@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Header.h"
 @protocol ButtonPressedFromChnagePasword
 -(void)btnDonePressed;
 -(void)btnCancelPressed;
@@ -14,6 +15,7 @@
 @interface ChangePasswordView : UIView<UITextFieldDelegate>
 @property(nonatomic,strong)id<ButtonPressedFromChnagePasword>delegate;
 @property (weak, nonatomic) IBOutlet UITextField *txtOldPassword;
+@property(nonatomic,strong)NSDictionary *DictParameters;
 @property (weak, nonatomic) IBOutlet UITextField *txtNewPassword;
 @property (weak, nonatomic) IBOutlet UITextField *txtConfirmNewPassword;
 @property(nonatomic,strong)UITextField *activeField;
