@@ -11,9 +11,7 @@
 @interface CanvasGroupsModal : NSObject
 @property (nonatomic, strong) NSString *CourseName;
 @property (nonatomic, strong) NSString *CourseId;
-//@property (nonatomic, strong) NSString *Username;
-//@property (nonatomic,strong) NSString *image;
-//@property (nonatomic,strong) NSString *created_at;
+
 
 
 -(id)ListAttributes :(NSDictionary*)Dict;

@@ -15,6 +15,7 @@
 @property(nonatomic,strong)NSDictionary *dictParameters;
 @property(nonatomic,strong)NSMutableArray *finalFeedArray;
 @property(nonatomic,strong)NSString *Group_Id;
+@property(nonatomic,strong)NSString *CourseIds;
 @property(nonatomic,strong)NSString *accessToken;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 

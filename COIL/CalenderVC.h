@@ -14,6 +14,10 @@
 @property (weak, nonatomic) IBOutlet JTCalendarWeekDayView *weekDayView;
 @property (weak, nonatomic) IBOutlet JTVerticalCalendarView *calendarContentView;
 @property (weak, nonatomic) IBOutlet UILabel *lblDateSelected;
+@property(nonatomic,strong) NSString *SelectedCourses;
+@property(nonatomic,strong)NSString *UpdatedCourses;
+@property(nonatomic,strong)NSDictionary *DictParameters;
+@property(nonatomic,strong)NSString *GroupId;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property(nonatomic,strong) NSString *KeyClicked;
 @property(nonatomic,strong) NSArray *ArrayEvents;

@@ -239,7 +239,7 @@
 - (void)handleTap:(UITapGestureRecognizer *)tapGestureRecognizer
 {
     NSString *actionSheetTitle = @"UPLOAD IMAGES";
-    NSString *destructiveTitle = @"CANCEL";
+    NSString *destructiveTitle = @"Cancel";
     NSString*btn1=@"Upload Picture";
     NSString *btn2=@"Take Photo";
     

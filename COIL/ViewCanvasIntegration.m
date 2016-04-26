@@ -17,14 +17,21 @@
 -(void)awakeFromNib
 {
      _viewContainer.layer.cornerRadius =10.0f;
-    [self loadData];
-    _CourseIds=[[NSMutableArray alloc]init];
+     _CourseIds=[[NSMutableArray alloc]init];
+    
 }
 //-(void)loadUpdateParameters
 //{
 //    _DictParameters=@{@"access_token":_Access_Token,@"group_id":_Group_Id,@"name":_labelGroupName,@"privacy":[NSString stringWithFormat:@"%ld",(long)discoverabilityTag],@"notification":[NSString stringWithFormat:@"%ld",(long)notificationTag]};
 //    
 //}
+
+-(void)getCourse_Ids:(NSArray *)course_Ids
+{
+    _CourseIdsSelected=course_Ids;
+    NSLog(@"%@",_CourseIdsSelected);
+     [self loadData];
+}
 -(void)loadData
 {
     CanvasGroupsModal *modal=[[CanvasGroupsModal alloc]init];
@@ -34,21 +41,19 @@
         //[self loadParameters];
         [iOSRequest getData:UrlGetCanvasCourses :nil :^(NSArray *response_success) {
             [[SharedClass SharedManager]removeLoader];
-//            NSInteger value=[[response_success valueForKey:@"success"]integerValue];
-//            if (value==1)
-//            {
+
             NSMutableArray *array=[[NSMutableArray alloc]init];
             [array addObjectsFromArray:response_success];
                 _GroupsArray = [modal ListmethodCall:array ];
                 [self.tableViewCanvas reloadData];
               
-//            }
+
             
         }  :^(NSError *response_error) {
                                 
-                                [[SharedClass SharedManager]AlertErrors:@"Error !!" :response_error.localizedDescription :@"OK"];
-                                [[SharedClass SharedManager]removeLoader];
-                            }];
+                [[SharedClass SharedManager]AlertErrors:@"Error !!" :response_error.localizedDescription :@"OK"];
+                [[SharedClass SharedManager]removeLoader];
+            }];
     }
     
 }
@@ -74,6 +79,11 @@
     
     CanvasGroupsModal *modal=[_GroupsArray objectAtIndex:indexPath.row];
     [cell configureCellWithModal:modal];
+    if ([_CourseIdsSelected containsObject:[NSString stringWithFormat:@"%@",modal.CourseId]]) {
+        [cell.btnCheckbox setImage:[UIImage imageNamed:@"ic_checkbox_active"] forState:UIControlStateSelected];
+        [cell.btnCheckbox setSelected:YES];
+        [_CourseIds addObject:modal.CourseId];
+    }
     cell.delegate=self;
     cell.indexPath=indexPath;
     return cell;

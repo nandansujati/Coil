@@ -10,7 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #define CellIdentifierPostImagesCell @"PostImagesCell"
 #define CellIdentifierPostVideosCell @"PostVideoCell"
-@interface NewPostVC ()<floatMenuDelegate>
+@interface NewPostVC ()<floatMenuDelegate,MPMediaPickerControllerDelegate>
 {
     CGRect floatFrame;
 }
@@ -102,13 +102,72 @@
         [self VideoClicked];
         
     }
+    else if (row==2)
+    {
+        [self FileClicked];
+    }
 }
 
 
+-(void)FileClicked
+{
+   // NSArray *arrat;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                         NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSArray *fileList = [manager contentsOfDirectoryAtPath:documentsDirectory
+                                                     error:nil];
+    //--- Listing file by name sort
+    NSLog(@"\n File list %@",fileList);
+    
+    //---- Sorting files by extension
+    NSArray *filePathsArray =
+    [[NSFileManager defaultManager] subpathsOfDirectoryAtPath:documentsDirectory
+                                                        error:nil];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF EndsWith '.png'"];
+    filePathsArray =  [filePathsArray filteredArrayUsingPredicate:predicate];
+    NSLog(@"\n\n Sorted files by extension %@",filePathsArray);
+    
+    
+    
+    MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeMusic];
+    mediaPicker.delegate = self;
+    mediaPicker.allowsPickingMultipleItems = YES; // this is the default
+    [self presentViewController:mediaPicker animated:YES completion:nil];
+
+}
+
+
+
+
+#pragma mark MPMediaPickerController delegate methods
+
+- (void)mediaPicker: (MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection {
+    // We need to dismiss the picker
+    
+    MPMediaItem *item = [[mediaItemCollection items] objectAtIndex:0];
+    NSURL *url = [item valueForProperty:MPMediaItemPropertyAssetURL];
+    _VideoData = [NSData dataWithContentsOfURL:url];
+    UIImage *image=[self loadImage];
+    [_ArrayVideos addObject:image];
+    NSData *data = UIImageJPEGRepresentation(image, 0.5);
+    [_arrayData addObject:data];
+    _dataMedia=_VideoData;
+    [self CallDataSourceVideo];
+    [mediaPicker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)mediaPickerDidCancel:(MPMediaPickerController *)mediaPicker {
+    // User did not select anything
+    // We need to dismiss the picker
+   [self dismissViewControllerAnimated:YES completion:nil];
+}
 -(void)ImageClicked
 {
     NSString *actionSheetTitle = @"UPLOAD IMAGES";
-    NSString *destructiveTitle = @"CANCEL";
+    NSString *destructiveTitle = @"Cancel";
     NSString*btn1=@"Upload Picture";
     NSString *btn2=@"Take Photo";
     
@@ -224,7 +283,7 @@
 -(void)VideoClicked
 {
     NSString *actionSheetTitle = @"UPLOAD VIDEOS";
-    NSString *destructiveTitle = @"CANCEL";
+    NSString *destructiveTitle = @"Cancel";
     NSString*btn1=@"Upload Video";
     NSString *btn2=@"Make Video";
     

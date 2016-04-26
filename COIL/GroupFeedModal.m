@@ -26,6 +26,7 @@
     data.comment_count=[Dict valueForKey:@"comment_count"];
     data.is_liked=[Dict valueForKey:@"i_liked"];
     data.groupName = [[Dict valueForKey:@"group"] valueForKey:@"name"];
+    data.Course_ids=[[Dict valueForKey:@"group"]valueForKey:@"course_id"];
     data.activeMemberCount = [Dict valueForKey:@"member_count"];
     return data;
     

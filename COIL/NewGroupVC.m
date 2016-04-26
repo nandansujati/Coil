@@ -64,7 +64,7 @@
 - (void)handleTap:(UITapGestureRecognizer *)tapGestureRecognizer
 {
     NSString *actionSheetTitle = @"UPLOAD IMAGES";
-    NSString *destructiveTitle = @"CANCEL";
+    NSString *destructiveTitle = @"Cancel";
     NSString*btn1=@"Get Images";
     NSString*btn2=@"Upload Picture";
     NSString *btn3=@"Take Photo";
@@ -173,6 +173,7 @@
     self.imagePlus.hidden=YES;
     [_customImagesView removeFromSuperview];
 }
+
 -(void)getImagesArray
 {
     __block NSMutableArray *Imagesarray=[[NSMutableArray alloc]init];
@@ -232,6 +233,8 @@
             _AddPeople.ImageData=Imagedata;
         }
         _AddPeople.GroupName=_txtGroupName.text;
+        _AddPeople.PrivacyString=_privacyString;
+        _AddPeople.CourseIds=_Course_Ids;
     }
 }
 
@@ -246,6 +249,7 @@
        
         _lblDiscoverablity.text=@"Open";
         _lblDisOptions.text=@"Visible to all coil app users";
+        _privacyString=@"0";
       
     }
     
@@ -254,16 +258,17 @@
         
         _lblDiscoverablity.text=@"Close";
         _lblDisOptions.text=@"Visible to group Members only";
+         _privacyString=@"1";
        
     }
     if  ([buttonTitle isEqualToString:@"Secret"]) {
       
         _lblDiscoverablity.text=@"Secret";
         _lblDisOptions.text=@"Invisible for every user";
-        
+         _privacyString=@"2";
     }
     
-//    if ([buttonTitle isEqualToString:@"CANCEL"])
+//    if ([buttonTitle isEqualToString:@"Cancel"])
 //    {
 //        NSLog(@"Done");
 //    }
@@ -277,7 +282,7 @@
 {
     [self.view endEditing:YES];
     NSString *actionSheetTitle = @"Select Group Discoverability"; //Action Sheet Title
-    NSString *destructiveTitle = @"CANCEL"; //Action Sheet Button Titles
+    NSString *destructiveTitle = @"Cancel"; //Action Sheet Button Titles
     NSString*btn1=@"Open";
     NSString *btn2=@"Close";
     NSString *btn3=@"Secret";
@@ -335,6 +340,7 @@
     _ViewCanvas.layer.borderWidth = 3.f;
     _ViewCanvas.delegate=self;
 //    currentIndexPath=indexPath;
+    [_ViewCanvas getCourse_Ids:nil];
     modalView = [[RNBlurModalView alloc] initWithViewController:self view:_ViewCanvas];
     [modalView show];
 }
@@ -350,7 +356,8 @@
 
 -(void)btnSyncPressed:(NSString *)CourseIds
 {
-    
+    [modalView hide];
+    _Course_Ids=CourseIds;
 }
 
 @end

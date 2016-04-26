@@ -11,10 +11,6 @@
 @interface CanvasEventsModal : NSObject
 @property (nonatomic, strong) NSString *EventTitle;
 @property (nonatomic, strong) NSString *EventStartAt;
-//@property (nonatomic, strong) NSString *Username;
-//@property (nonatomic,strong) NSString *image;
-//@property (nonatomic,strong) NSString *created_at;
-
 
 -(id)ListAttributes :(NSDictionary*)Dict;
 -(NSMutableArray*)ListmethodCall:(NSMutableArray*)arrayFromServer;

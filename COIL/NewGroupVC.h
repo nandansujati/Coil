@@ -16,6 +16,8 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property(nonatomic,strong)NSDictionary *DictParameters;
+@property(nonatomic,strong)NSString *privacyString;
+@property(nonatomic,strong)NSString *Course_Ids;
 @property (weak, nonatomic) IBOutlet UIImageView *imagePlus;
 @property (weak, nonatomic) IBOutlet UITextField *txtGroupName;
 @property (weak, nonatomic) IBOutlet UILabel *lblDiscoverablity;

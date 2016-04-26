@@ -121,6 +121,7 @@
                 Usersarray=[response_success valueForKey:@"feed"];
                 _finalFeedArray = [modal ListmethodCall:Usersarray];
                 _groupName.text=[[response_success valueForKey:@"group"]valueForKey:@"name"];
+                _CourseIds=[[response_success valueForKey:@"group"]valueForKey:@"course_id"];
                 if (Usersarray.count==0) {
                     _lblNoPosts.hidden=NO;
                     _tableView.hidden=YES;
@@ -583,12 +584,15 @@
     
     [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:currentIndexpath.row inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
 }
+
 - (IBAction)btnCalendar:(id)sender {
     _calVC=[self.storyboard instantiateViewControllerWithIdentifier:@"CalenderVC"];
    
     _calVC.modalPresentationStyle = UIModalPresentationCustom;
     self.viewControllerTransitionDelegate.viewController = _calVC;
     _calVC.groupName=_groupName.text;
+    _calVC.GroupId=_Group_Id;
+    _calVC.SelectedCourses=_CourseIds;
     [self presentPortalTransitionViewController:_calVC completion:nil];
 
 }

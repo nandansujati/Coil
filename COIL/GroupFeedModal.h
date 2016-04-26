@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *post_type;
 @property (nonatomic,strong) NSString *media;
+@property(nonatomic,strong)NSString *Course_ids;
 @property (nonatomic,strong) NSString *media_type;
 @property(nonatomic,strong)NSString *created_at;
 @property(nonatomic,strong)NSString *groupName;

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Header.h"
 @interface NotificationsVC : UIViewController
-
+@property(nonatomic,strong) NSString *AccessToken;
+@property(nonatomic,strong)NSMutableArray *NotificationsArray;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end

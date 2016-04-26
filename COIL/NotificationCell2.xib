@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="SF-UI-Text-Bold.otf">
+            <string>SFUIText-Bold</string>
+            <string>SFUIText-Bold</string>
+        </mutableArray>
+        <mutableArray key="SF-UI-Text-Regular.otf">
+            <string>SFUIText-Regular</string>
+            <string>SFUIText-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NotificationCell2" rowHeight="113" id="KGk-i7-Jjw" customClass="NotificationCell2">
+            <rect key="frame" x="0.0" y="0.0" width="332" height="113"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="332" height="112"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_placeholder_user" translatesAutoresizingMaskIntoConstraints="NO" id="sPW-aI-p1Z">
+                        <rect key="frame" x="12" y="14" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="tLR-d0-yeO"/>
+                            <constraint firstAttribute="width" constant="40" id="xkn-hv-Dh1"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whe-0Z-Jy9">
+                        <rect key="frame" x="71" y="14" width="250" height="21"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWj-W1-0BM">
+                        <rect key="frame" x="71" y="40" width="250" height="15"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="0.43599137931034482" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KfY-Ly-nNi" customClass="CustomButton">
+                        <rect key="frame" x="71" y="64" width="115" height="40"/>
+                        <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="c00-sZ-uuw"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="13"/>
+                        <state key="normal" title="Confirm">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="btnConfirm:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="rKE-pU-RBz"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F1x-gj-eQT" customClass="CustomButton">
+                        <rect key="frame" x="206" y="63" width="115" height="40"/>
+                        <color key="backgroundColor" red="0.8901960784313725" green="0.90196078431372551" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" name="SFUIText-Bold" family="SF UI Text" pointSize="13"/>
+                        <state key="normal" title="Reject">
+                            <color key="titleColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="btnReject:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="fWh-qb-vUv"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="whe-0Z-Jy9" firstAttribute="leading" secondItem="sPW-aI-p1Z" secondAttribute="trailing" multiplier="1.2" constant="8" symbolic="YES" id="0D4-uv-cYE"/>
+                    <constraint firstItem="F1x-gj-eQT" firstAttribute="height" secondItem="KfY-Ly-nNi" secondAttribute="height" id="3Kg-pZ-4Vg"/>
+                    <constraint firstItem="F1x-gj-eQT" firstAttribute="leading" secondItem="KfY-Ly-nNi" secondAttribute="trailing" constant="20" id="6uO-23-AKa"/>
+                    <constraint firstItem="sPW-aI-p1Z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="4" id="I4X-Gk-hUK"/>
+                    <constraint firstItem="KfY-Ly-nNi" firstAttribute="top" secondItem="fWj-W1-0BM" secondAttribute="bottom" constant="9" id="ICX-jp-pip"/>
+                    <constraint firstItem="whe-0Z-Jy9" firstAttribute="top" secondItem="sPW-aI-p1Z" secondAttribute="top" id="Mub-Zr-bIF"/>
+                    <constraint firstItem="F1x-gj-eQT" firstAttribute="top" secondItem="fWj-W1-0BM" secondAttribute="bottom" constant="8" id="Rl9-gi-5ui"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="KfY-Ly-nNi" secondAttribute="bottom" id="eCX-cn-zsn"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="fWj-W1-0BM" secondAttribute="trailing" constant="3" id="eYy-eY-QMY"/>
+                    <constraint firstItem="fWj-W1-0BM" firstAttribute="top" secondItem="whe-0Z-Jy9" secondAttribute="bottom" constant="5" id="fYG-h1-oah"/>
+                    <constraint firstItem="F1x-gj-eQT" firstAttribute="width" secondItem="KfY-Ly-nNi" secondAttribute="width" id="lSV-i9-rSw"/>
+                    <constraint firstItem="KfY-Ly-nNi" firstAttribute="leading" secondItem="fWj-W1-0BM" secondAttribute="leading" id="m3O-ib-IcO"/>
+                    <constraint firstItem="F1x-gj-eQT" firstAttribute="trailing" secondItem="fWj-W1-0BM" secondAttribute="trailing" id="maZ-hK-RPf"/>
+                    <constraint firstItem="fWj-W1-0BM" firstAttribute="leading" secondItem="whe-0Z-Jy9" secondAttribute="leading" id="vdi-rR-Hlm"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="whe-0Z-Jy9" secondAttribute="trailing" constant="3" id="vpH-gI-c5A"/>
+                    <constraint firstItem="sPW-aI-p1Z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="zzS-CO-Gg3"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="imageUser" destination="sPW-aI-p1Z" id="Dyi-EP-7m3"/>
+                <outlet property="lblNotificationTxt" destination="whe-0Z-Jy9" id="O5n-Ck-8av"/>
+                <outlet property="lblPost" destination="fWj-W1-0BM" id="VkV-ne-Va8"/>
+            </connections>
+            <point key="canvasLocation" x="480" y="237.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="img_placeholder_user" width="40" height="40"/>
+    </resources>
+</document>

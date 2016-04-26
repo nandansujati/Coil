@@ -18,6 +18,9 @@
 @property(nonatomic,strong)id<SendPeopleIdsDetail>delegate;
 @property(nonatomic,strong)NSString* GroupName;
 @property(nonatomic,strong)NSData *ImageData;
+@property(nonatomic,strong)NSString *CourseIds;
+@property(nonatomic,strong)NSString *PrivacyString;
+
 @property(nonatomic,strong)NSDictionary *DictContactsParameters;
 @property(nonatomic,strong)NSDictionary *DictAddPeopleParameters;
 @property(nonatomic,strong)NSString *Access_token;

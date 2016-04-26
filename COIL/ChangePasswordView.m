@@ -156,13 +156,13 @@
         [[SharedClass SharedManager]removeLoader];
         ValueValidation=1;
     }
-    if ([_txtNewPassword.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length==0)
+  else  if ([_txtNewPassword.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length==0)
     {
         [[SharedClass SharedManager]AlertErrors:@"Error" :@"Please enter your New password" :@"Ok"];
         [[SharedClass SharedManager]removeLoader];
         ValueValidation=1;
     }
-    if ([_txtConfirmNewPassword.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length==0)
+   else if ([_txtConfirmNewPassword.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length==0)
     {
         [[SharedClass SharedManager]AlertErrors:@"Error" :@"Please enter your password again" :@"Ok"];
         [[SharedClass SharedManager]removeLoader];

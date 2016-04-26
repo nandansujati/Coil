@@ -33,15 +33,27 @@
 #define UrlGetCanvasCourses [NSString stringWithFormat:@"%@%@",BasePath,@"listCourses"]
 #define UrlGetUserProfile [NSString stringWithFormat:@"%@%@",BasePath,@"viewUserProfile"]
 #define UrlRemoveMember [NSString stringWithFormat:@"%@%@",BasePath,@"removeUserFromGroup"]
-#define  UrlGetDummyImages [NSString stringWithFormat:@"%@%@",BasePath,@"getDummyImages"]
-#define  UrlChangePassword [NSString stringWithFormat:@"%@%@",BasePath,@"changePassword"]
-#define  UrlGetCalenderEvents [NSString stringWithFormat:@"%@%@",BasePath,@"getCalenderEvent"]
+#define UrlGetDummyImages [NSString stringWithFormat:@"%@%@",BasePath,@"getDummyImages"]
+#define UrlChangePassword [NSString stringWithFormat:@"%@%@",BasePath,@"changePassword"]
+#define UrlGetCalenderEvents [NSString stringWithFormat:@"%@%@",BasePath,@"getCalenderEvent"]
 
+#define UrlUpdateCourseIds [NSString stringWithFormat:@"%@%@",BasePath,@"updateGroupCourse"]
+#define UrlGetNotifications [NSString stringWithFormat:@"%@%@",BasePath,@"notifications"]
 
 
 #define ImagePath [NSString stringWithFormat:@"%@%@",BasePath,@"photo/"]
 #define VideoPath @"https://s3-us-west-2.amazonaws.com/cbdevs3/uploads/"
 
+#define CellIdentifierNotificationCell1 @"NotificationCell1"
+#define CellIdentifierNotificationCell2 @"NotificationCell2"
+
+
+#import "DataSource2Cells.h"
+#import "NotificationsModal.h"
+#import "NotificationCell1.h"
+#import "NotificationCell2.h"
+#import "NotificationsVC.h"
+#import "TabBarController.h"
 #import "ViewCanvasIntegration.h"
 #import "YPBubbleTransition.h"
 #import "GetImagesView.h"

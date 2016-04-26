@@ -449,7 +449,7 @@
 {
 
         NSString *actionSheetTitle = @"UPLOAD IMAGES";
-        NSString *destructiveTitle = @"CANCEL";
+        NSString *destructiveTitle = @"Cancel";
         NSString*btn1=@"Upload Picture";
         NSString *btn2=@"Take Photo";
         
@@ -545,7 +545,7 @@
 -(void)btnDiscoverablitypPressed
 {
     NSString *actionSheetTitle = @"Select Group Discoverability"; //Action Sheet Title
-    NSString *destructiveTitle = @"CANCEL"; //Action Sheet Button Titles
+    NSString *destructiveTitle = @"Cancel"; //Action Sheet Button Titles
     NSString*btn1=@"Open";
     NSString *btn2=@"Close";
     NSString *btn3=@"Secret";
@@ -585,7 +585,7 @@
         discoverabilityTag=2;
     }
     
-    if ([buttonTitle isEqualToString:@"CANCEL"])
+    if ([buttonTitle isEqualToString:@"Cancel"])
     {
         NSLog(@"Done");
     }

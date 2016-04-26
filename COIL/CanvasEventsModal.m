@@ -16,10 +16,6 @@
     data.EventTitle = [Dict valueForKey:@"title"];
     data.EventStartAt = [Dict valueForKey:@"start_at"];
     
-    //    data.Username = [Dict valueForKey:@"name"];
-    //    data.image = [Dict valueForKey:@"image"];
-    //    data.created_at=[Dict valueForKey:@"created_at"];
-    
     return data;
     
 }

@@ -137,6 +137,12 @@
 		E1E242B31CC11B1800150034 /* ImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E242B21CC11B1800150034 /* ImageView.xib */; };
 		E1E677621CC5085F00A6CC58 /* ViewProfileHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E677611CC5085F00A6CC58 /* ViewProfileHeader.m */; };
 		E1E677641CC5086900A6CC58 /* ViewProfileHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E677631CC5086900A6CC58 /* ViewProfileHeader.xib */; };
+		E1F263461CCF48A5002B093F /* NotificationCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F263441CCF48A5002B093F /* NotificationCell1.m */; };
+		E1F263471CCF48A5002B093F /* NotificationCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1F263451CCF48A5002B093F /* NotificationCell1.xib */; };
+		E1F2634C1CCF515A002B093F /* NotificationCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F2634A1CCF515A002B093F /* NotificationCell2.m */; };
+		E1F2634D1CCF515A002B093F /* NotificationCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1F2634B1CCF515A002B093F /* NotificationCell2.xib */; };
+		E1F263511CCF682F002B093F /* NotificationsModal.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F263501CCF682F002B093F /* NotificationsModal.m */; };
+		E1F263551CCF72BB002B093F /* DataSource2Cells.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F263541CCF72BB002B093F /* DataSource2Cells.m */; };
 		E1F5768C1CC50C3B00D7D6C2 /* UserProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F5768B1CC50C3B00D7D6C2 /* UserProfileVC.m */; };
 		E1F576901CC50E2C00D7D6C2 /* UserProfileModal.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F5768F1CC50E2C00D7D6C2 /* UserProfileModal.m */; };
 /* End PBXBuildFile section */
@@ -360,6 +366,16 @@
 		E1E677601CC5085F00A6CC58 /* ViewProfileHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewProfileHeader.h; sourceTree = "<group>"; };
 		E1E677611CC5085F00A6CC58 /* ViewProfileHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewProfileHeader.m; sourceTree = "<group>"; };
 		E1E677631CC5086900A6CC58 /* ViewProfileHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewProfileHeader.xib; sourceTree = "<group>"; };
+		E1F263431CCF48A5002B093F /* NotificationCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationCell1.h; sourceTree = "<group>"; };
+		E1F263441CCF48A5002B093F /* NotificationCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationCell1.m; sourceTree = "<group>"; };
+		E1F263451CCF48A5002B093F /* NotificationCell1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationCell1.xib; sourceTree = "<group>"; };
+		E1F263491CCF515A002B093F /* NotificationCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationCell2.h; sourceTree = "<group>"; };
+		E1F2634A1CCF515A002B093F /* NotificationCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationCell2.m; sourceTree = "<group>"; };
+		E1F2634B1CCF515A002B093F /* NotificationCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationCell2.xib; sourceTree = "<group>"; };
+		E1F2634F1CCF682F002B093F /* NotificationsModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsModal.h; sourceTree = "<group>"; };
+		E1F263501CCF682F002B093F /* NotificationsModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsModal.m; sourceTree = "<group>"; };
+		E1F263531CCF72BB002B093F /* DataSource2Cells.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSource2Cells.h; sourceTree = "<group>"; };
+		E1F263541CCF72BB002B093F /* DataSource2Cells.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource2Cells.m; sourceTree = "<group>"; };
 		E1F5768A1CC50C3B00D7D6C2 /* UserProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileVC.h; sourceTree = "<group>"; };
 		E1F5768B1CC50C3B00D7D6C2 /* UserProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileVC.m; sourceTree = "<group>"; };
 		E1F5768E1CC50E2C00D7D6C2 /* UserProfileModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileModal.h; sourceTree = "<group>"; };
@@ -564,6 +580,7 @@
 		AC5314281C6CA9EF00F3F302 /* TableDataSource */ = {
 			isa = PBXGroup;
 			children = (
+				E1F263521CCF720E002B093F /* DataSourceFor2cells */,
 				AC41A7291C6DB17D00DBD1FA /* GroupsMenuDataSource */,
 			);
 			name = TableDataSource;
@@ -572,6 +589,8 @@
 		AC53142C1C6CADA600F3F302 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				E1F263481CCF50E2002B093F /* NotificationCell2 */,
+				E1F263421CCF486B002B093F /* NotificationCell1 */,
 				E1DCC7A01CCB7B25008BD89F /* SettingsCell */,
 				E1DCC7971CCB6042008BD89F /* EventsCell */,
 				ACA7C5971CB7CC4E0045E4B5 /* CanvasGroupsCell */,
@@ -1102,6 +1121,7 @@
 		ACD95DE81C69CA370044B5EC /* Modals */ = {
 			isa = PBXGroup;
 			children = (
+				E1F2634E1CCF6815002B093F /* NotificationsModal */,
 				E1DCC7981CCB6115008BD89F /* CanvasEventsModal */,
 				E1F5768D1CC50E0D00D7D6C2 /* UserProfileModal */,
 				ACA7C5981CB7CD7D0045E4B5 /* CanvasGroupsModal */,
@@ -1333,6 +1353,44 @@
 			name = ViewProfileHeader;
 			sourceTree = "<group>";
 		};
+		E1F263421CCF486B002B093F /* NotificationCell1 */ = {
+			isa = PBXGroup;
+			children = (
+				E1F263431CCF48A5002B093F /* NotificationCell1.h */,
+				E1F263441CCF48A5002B093F /* NotificationCell1.m */,
+				E1F263451CCF48A5002B093F /* NotificationCell1.xib */,
+			);
+			name = NotificationCell1;
+			sourceTree = "<group>";
+		};
+		E1F263481CCF50E2002B093F /* NotificationCell2 */ = {
+			isa = PBXGroup;
+			children = (
+				E1F263491CCF515A002B093F /* NotificationCell2.h */,
+				E1F2634A1CCF515A002B093F /* NotificationCell2.m */,
+				E1F2634B1CCF515A002B093F /* NotificationCell2.xib */,
+			);
+			name = NotificationCell2;
+			sourceTree = "<group>";
+		};
+		E1F2634E1CCF6815002B093F /* NotificationsModal */ = {
+			isa = PBXGroup;
+			children = (
+				E1F2634F1CCF682F002B093F /* NotificationsModal.h */,
+				E1F263501CCF682F002B093F /* NotificationsModal.m */,
+			);
+			name = NotificationsModal;
+			sourceTree = "<group>";
+		};
+		E1F263521CCF720E002B093F /* DataSourceFor2cells */ = {
+			isa = PBXGroup;
+			children = (
+				E1F263531CCF72BB002B093F /* DataSource2Cells.h */,
+				E1F263541CCF72BB002B093F /* DataSource2Cells.m */,
+			);
+			name = DataSourceFor2cells;
+			sourceTree = "<group>";
+		};
 		E1F576891CC50C0A00D7D6C2 /* UserProfileVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1412,6 +1470,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1F263471CCF48A5002B093F /* NotificationCell1.xib in Resources */,
 				AC5314271C6CA95D00F3F302 /* GroupsMenu.xib in Resources */,
 				ACA48BB11C9FF10700C91802 /* GroupSettingMenu.xib in Resources */,
 				AC606DD51CB3D63700F43D44 /* groupFeedImageCell.xib in Resources */,
@@ -1420,6 +1479,7 @@
 				AC5314321C6CADF800F3F302 /* GroupsMenuCell.xib in Resources */,
 				ACBF63F61C6F819600315BAA /* AddPeopleCell.xib in Resources */,
 				AC805F241CA11C130083BE00 /* SF-UI-Display-Thin.otf in Resources */,
+				E1F2634D1CCF515A002B093F /* NotificationCell2.xib in Resources */,
 				87F2661B1CB590B70022FE63 /* CommentCell.xib in Resources */,
 				AC805EFE1CA109ED0083BE00 /* groupFeedCell.xib in Resources */,
 				AC805F2A1CA11C130083BE00 /* SF-UI-Text-Light.otf in Resources */,
@@ -1567,13 +1627,17 @@
 				ACA7C5791CB78EDF0045E4B5 /* CYViewControllerTransitioningDelegate.m in Sources */,
 				AC5314211C6C9DED00F3F302 /* GroupsScreen.m in Sources */,
 				AC799E601C6B5873002983BD /* LoginScreen.m in Sources */,
+				E1F263551CCF72BB002B093F /* DataSource2Cells.m in Sources */,
 				ACD95DF41C6A11DC0044B5EC /* SharedClass.m in Sources */,
 				AC799E4E1C6B020F002983BD /* UINavigationController+PushPopAnimation.m in Sources */,
 				ACA7C5911CB7C9FC0045E4B5 /* ViewCanvasIntegration.m in Sources */,
+				E1F263461CCF48A5002B093F /* NotificationCell1.m in Sources */,
+				E1F2634C1CCF515A002B093F /* NotificationCell2.m in Sources */,
 				ACA7C59B1CB7CD970045E4B5 /* CanvasGroupsModal.m in Sources */,
 				87F2661A1CB590B70022FE63 /* CommentCell.m in Sources */,
 				AC41A7371C6DC2D500DBD1FA /* SearchUsersCell.m in Sources */,
 				AC88B6681C75848F009A4260 /* MyGroupsDataSource.m in Sources */,
+				E1F263511CCF682F002B093F /* NotificationsModal.m in Sources */,
 				AC0D87521CAC003300A317D1 /* NewBroadcast.m in Sources */,
 				ACA7C5741CB78EDF0045E4B5 /* CYPortalTransitionContext.m in Sources */,
 				AC606DD41CB3D63700F43D44 /* groupFeedImageCell.m in Sources */,
@@ -1712,12 +1776,12 @@
 			baseConfigurationReference = 5C5633346452E1ECCEA418FB /* Pods-COIL.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = COIL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.useherbo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codebrew.COIL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1729,12 +1793,12 @@
 			baseConfigurationReference = 4661FB8D67BB581F45D485AE /* Pods-COIL.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = COIL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.useherbo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codebrew.COIL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

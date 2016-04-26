@@ -1696,10 +1696,10 @@
             </objects>
             <point key="canvasLocation" x="2651" y="1930"/>
         </scene>
-        <!--View Controller-->
+        <!--NotificationsVC-->
         <scene sceneID="z2J-HA-37I">
             <objects>
-                <viewController id="oHQ-Df-5sv" sceneMemberID="viewController">
+                <viewController id="oHQ-Df-5sv" customClass="NotificationsVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zb6-UR-pcf"/>
                         <viewControllerLayoutGuide type="bottom" id="GNZ-U1-ak6"/>
@@ -1734,9 +1734,12 @@
                                     <constraint firstItem="Rel-Kw-ccs" firstAttribute="centerY" secondItem="ogW-p1-GA9" secondAttribute="centerY" id="gMN-Fd-QdX"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xk3-aC-6YP">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xk3-aC-6YP">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="oHQ-Df-5sv" id="U10-Kk-mIB"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1751,6 +1754,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="ic_notifications_nav" selectedImage="tb_notifications_pressed" id="X6P-pB-sT8"/>
+                    <connections>
+                        <outlet property="tableView" destination="xk3-aC-6YP" id="aiT-KD-MNd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Q2-Uq-XkY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2500,8 +2506,11 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="46" id="2gi-Y1-IyR"/>
                                                     </constraints>
-                                                    <state key="normal" image="switch_pressed"/>
-                                                    <state key="selected" image="switch_normal"/>
+                                                    <state key="normal" image="switch_normal"/>
+                                                    <state key="selected" image="switch_pressed"/>
+                                                    <connections>
+                                                        <action selector="btnReminder:" destination="KdN-YV-taG" eventType="touchUpInside" id="eyK-go-rkg"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -2515,6 +2524,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="btnReminder" destination="AVd-Of-F5e" id="Lcs-Hu-bz5"/>
                                             <outlet property="lblEventName" destination="pqv-2C-Vk4" id="KZk-xK-B19"/>
                                             <outlet property="lblEventTime" destination="UAT-ih-hqx" id="VLu-J1-wcu"/>
                                         </connections>

@@ -48,4 +48,8 @@
 
     return  dateHalfAhead;
 }
+- (IBAction)btnReminder:(id)sender {
+    [_delegate btnReminderClicked:_indexPath];
+               
+}
 @end

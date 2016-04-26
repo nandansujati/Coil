@@ -8,7 +8,7 @@
 
 #import "CalenderVC.h"
 #define CellIdentifierEvents @"CellEvents"
-@interface CalenderVC()<btnPressedfromCanvasView>
+@interface CalenderVC()<btnPressedfromCanvasView,btnClickedFromEvents>
 {
     NSMutableDictionary *_eventsByDate;
     RNBlurModalView *modalView;
@@ -32,14 +32,12 @@
     _weekDayView.manager = _calendarManager;
     [_weekDayView reload];
     
-//    // Generate random events sort by date using a dateformatter for the demonstration
-//    [self createRandomEvents];
-    
     [_calendarManager setMenuView:_calendarMenuView];
     [_calendarManager setContentView:_calendarContentView];
     [_calendarManager setDate:[NSDate date]];
     [self setDateOnLabel:[NSDate date]];
-    
+    _dateSelected=[NSDate date];
+    [self GetEvents];
     
    
     _calendarMenuView.scrollView.scrollEnabled = NO; // Scroll not supported with JTVerticalCalendarView
@@ -56,6 +54,14 @@
     return self;
 }
 
+
+-(void)loadParameters
+{
+    NSDictionary *Dictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"AccessToken"];
+    
+    _DictParameters=@{@"access_token":[Dictionary valueForKey:@"access_token"],@"group_id":_GroupId,@"course_id":_UpdatedCourses};
+    
+}
 #pragma mark - CalendarManager delegate
 
 // Exemple of implementation of prepareDayView method
@@ -229,6 +235,8 @@
     _ViewCanvas.layer.borderColor = [UIColor clearColor].CGColor;
     _ViewCanvas.layer.borderWidth = 3.f;
     _ViewCanvas.delegate=self;
+    NSArray *array=[_SelectedCourses componentsSeparatedByString:@","];
+    [_ViewCanvas getCourse_Ids:array];
     //    currentIndexPath=indexPath;
     modalView = [[RNBlurModalView alloc] initWithViewController:self view:_ViewCanvas];
     [modalView show];
@@ -236,16 +244,35 @@
 -(void)btnCrossPressed
 {
     [modalView hide];
-  //  [self.btnCanvasInt setImage:[UIImage imageNamed:@"switch_normal"] forState:UIControlStateNormal];
+ 
 }
 
 -(void)btnSyncPressed:(NSString *)CourseIds
 {
     [modalView hide];
-    if (CourseIds !=nil) {
+    if (CourseIds !=nil && CourseIds.length!=0) {
+        
         [self GetEvents];
      
     }
+    _UpdatedCourses=CourseIds;
+    [self updateCourseIds];
+}
+
+-(void)updateCourseIds
+{
+    NSInteger valueNetwork=[[SharedClass SharedManager]NetworkCheck];
+    if (valueNetwork==0)
+    {
+         [self loadParameters];
+        [iOSRequest getData:UrlUpdateCourseIds :_DictParameters :^(NSArray *response_success) {
+           
+
+        }  :^(NSError *response_error) {
+           
+        }];
+    }
+
 }
 
 
@@ -263,7 +290,7 @@
             _ArrayEvents = [modal ListmethodCall:array ];
             [self setEventsOnCalender];
             
-            _KeyClicked = [[self dateFormatter] stringFromDate:[NSDate date]];
+            _KeyClicked = [[self dateFormatter] stringFromDate:_dateSelected];
             BOOL value= [self containsKey:_KeyClicked];
             _ArrayDateEvents=[[NSArray alloc]init];
             if (value==YES) {
@@ -283,12 +310,12 @@
 {
     TableViewCellConfigureBlock configureCell = ^(EventsCell *cell,id item,id imageItems,NSIndexPath *indexPath)
     {
-        
+        cell.btnReminder.selected=YES;
+        cell.delegate=self;
+        cell.indexPath=indexPath;
         [cell configureCellWithModal:item];
     };
     
-    
-//    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([GroupSettingsCell class]) bundle:nil] forCellReuseIdentifier:CellIdentifierEvents];
     
     
     
@@ -301,7 +328,20 @@
     
     
 }
+-(void)btnReminderClicked:(NSIndexPath *)indexPath
+{
+     EventsCell *cell = (EventsCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    if([cell.btnReminder isSelected])
+    {
+        cell.btnReminder.selected=NO;
+    }
+    
+    else if (![cell.btnReminder isSelected])
+    {
+        cell.btnReminder.selected=YES;
+    }
 
+}
 
 - (IBAction)btnBack:(id)sender {
 //    [self.navigationController popFromBottom];

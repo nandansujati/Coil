@@ -28,9 +28,16 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    
-   
     [super viewWillAppear:YES];
+    
+    NSDictionary *Dictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"AccessToken"];
+    NSString *Access_Token=[Dictionary valueForKey:@"access_token"];
+    if (Access_Token!=nil) {
+        TabBarController *screen=[self.storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+        [self.navigationController pushViewController:screen animated:YES];
+    }
+    
+    
      self.navigationController.navigationBarHidden=YES;//hide Navigation Bar
 }
 

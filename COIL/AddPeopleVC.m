@@ -77,11 +77,10 @@
         
         if (DoneClicked==YES)
         {
-            _DictAddPeopleParameters=@{@"access_token":_Access_token,@"name":_GroupName,@"users":_UserIds,@"emails":_UserEmails};
+            _DictAddPeopleParameters=@{@"access_token":_Access_token,@"name":_GroupName,@"users":_UserIds,@"emails":_UserEmails,@"course_id":_CourseIds,@"privacy":_PrivacyString};
         }
        
     }
-   
     
 }
 
